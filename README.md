@@ -31,3 +31,32 @@ For this project two database are created one for the users (contractors databas
 
 ## User Stories
 
+* As a User I want to register to the website  
+* As a User I want to add information on my profile  
+* As a User I want to choose to add my company name to my profile  
+* As a User I want to add location of my company
+* As a User I want to perform a search for jobs based on category  
+* As a User I want to perform a search for jobs based on a county or location  
+* As a User I want to apply for jobs submitting my price throgh email provided 
+* As a User I want to add jobs on the jobs database
+* As a User I want to edit jobs that I entered
+* As a User I want to delete jobs that I entered  
+* As a User I want to perform a search on sub-contractors available on database 
+* As a User I want to perform a search on sub-contractors depending on category
+* As a User I want to perform a search on sub-contractors depending on county/location
+* As a Owner I want create a website to connect Main-contractors with Sub-contractors
+* As a Owner I want users to share information on my website 
+* As a Owner I want registered user to access information on database  
+* As a Owner I want users to get information about the platform value provided  
+* As a Owner I want registered users to perform actions adding, deleting, editing their entries
+* As a Owner I want users to update their profile
+* As a Owner I want apply for jobs they are intrersted to
+
+
+## future implementations
+* As a Owner I want charge a fee to users to use the service
+* As a Owner I want create a review database to allow users to rate one another and gain exposure
+* * As a Owner I want display feedbacks on users profile (rating) 
+
+
+
