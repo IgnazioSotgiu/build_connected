@@ -11,7 +11,7 @@ All users of the website need to register and provide contact details in order t
 >> [Website Structure](#website-structure)  
 >> [User Stories](#user-stories)
 >> Design Choices  
->> Wireframes  
+>> [Wireframes](#wireframes) 
 >> Technologies Used  
 >> Features Implemented  
 >> Future Features  
@@ -56,7 +56,20 @@ For this project two database are created one for the users (contractors databas
 ## future implementations
 * As a Owner I want charge a fee to users to use the service
 * As a Owner I want create a review database to allow users to rate one another and gain exposure
-* * As a Owner I want display feedbacks on users profile (rating) 
+* As a Owner I want display feedbacks on users profile (rating)   
+
+
+## Wireframes
+The wireframes were done usin Balsamiq
+
+- [Landing page](./docs/wireframes/landing-page.png)
+- [Home page](./docs/wireframes/homepage.png)
+- [Profile page](./docs/wireframes/profile-page.png)
+- [Log In form](./docs/wireframes/log-in-form.png)  
+- [Register form](./docs/wireframes/register-form.png)  
+- [Add Job page](./docs/wireframes/add-job-page.png)  
+- [My Jobs Page](./docs/wireframes/my-jobs-page.png)
+- [Search form](./docs/wireframes/perform-search.png)
 
 
 
