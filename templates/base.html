@@ -31,7 +31,7 @@
             </div>
         </nav>
         <ul class="sidenav center" id="mobile-demo">
-            <li><h4 class="text-teal darken-3">Build Connected</h4></li>
+            <li><img class="sidenav-logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a></li>
             <li><a href="#">Log In</a></li>
             <li><a href="#">Register</a></li>
             <li><a href="#">Info</a></li>
@@ -54,5 +54,22 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock %}
+    <footer class="logo-color white-text">
+        <div class="row">
+            <div class="col s6 center social-media-icon">
+                <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter white-text"></i></a>
+            </div>
+            <div class="col s6 center social-media-icon">
+                <a href="https://ie.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in white-text"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center copyright">
+                <i class="far fa-copyright"></i>
+                <span>Ignazio Sotgiu year</span>
+            </div>
+        </div>
+
+    </footer>
 </body>
 </html>

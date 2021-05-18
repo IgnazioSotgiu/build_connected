@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
+import webbrowser
 
 app = Flask(__name__)
 
@@ -25,5 +26,4 @@ def welcome_page():
 if __name__ =="__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
-
+            debug=os.environ.get("DEBUG"))
