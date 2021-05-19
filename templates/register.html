@@ -1,75 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
-<section>
+<section class="reg-bg-image">
     <div class="row">
-        <h2 class="col s12 center">Register</h2>
+        <h3 class="col s12 center">Register</h3>
     </div>
+    <h6 class="center">Already registerd? <a href="#">Log In</a></h6>
     <div class="row">
-        <form action="{{ url_for('register')}}" method="POST" class="col s10 offset-s1 m6 offset-m3 registration-form center">
+        <form action="{{ url_for('register')}}" method="POST" class="col s10 offset-s1 registration-form center">
             <div class="card blue-grey darken-1">
                 <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4 offset-m2 center">
                         <input id="username"  name="username" type="text" class="validate" required>
                         <label for="username">Username</label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4">
                         <input id="company_name"  name="company_name" type="text" class="validate" required>
                         <label for="company_name">Company Name</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4 offset-m2">
+                        <input id="construction_sector"  name="construction_sector" type="text" class="validate" required>
+                        <label for="construction_sector">Construction Sector</label>
+                    </div>
+                    <div class="input-field col s8 offset-s2 m4">
                         <input id="category"  name="category" type="text" class="validate" required>
                         <label for="category">Category</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
-                        <input id="construction_sector"  name="construction_sector" type="text" class="validate" required>
-                        <label for="construction_sector">Construction Sector</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4 offset-m2">
                         <input id="county"  name="county" type="text" class="validate" required>
                         <label for="county">County</label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4">
                         <input id="country"  name="country" type="text" class="validate" required>
                         <label for="country">Country</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4 offset-m2">
                         <input id="email"  name="email" type="email" class="validate" required>
                         <label for="email">Email</label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4">
                         <input id="phone"  name="phone" type="text" class="validate" required>
                         <label for="phone">Phone Number</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4 offset-m2">
                         <input id="password"  name="password" type="password" class="validate" required>
-                        <label for="password">Passsword</label>
+                        <label for="password">Password</label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2 ">
+                    <div class="input-field col s8 offset-s2 m4">
                         <input id="confirm_password"  name="confirm_password" type="password" class="validate" required>
-                        <label for="confirm_password">Confirm Passsword</label>
+                        <label for="confirm_password">Confirm Password</label>
                     </div>
                 </div>
-                <div class="row">
-                    <button type="submit" class="btn btn-large s12 center">Register</button>
-                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-large s12 center">Register</button>
             </div>
         </form>
     </div>
