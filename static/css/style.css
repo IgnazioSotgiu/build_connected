@@ -59,6 +59,10 @@ nav .nav-wrapper {
     -o-background-size: cover;
     background-size: cover;
 }
+.form-row {
+    margin-bottom: 0;
+    padding-bottom: 40px;
+}
 .input-field label {
      color: #fff;
    }
