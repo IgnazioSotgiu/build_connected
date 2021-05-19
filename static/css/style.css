@@ -7,8 +7,8 @@ body{
     min-height: 100vh;
     position: relative;
 }
-section {
-    margin-top: 36px;
+.reg-section {
+    padding-top: 36px;
     min-height: 80vh;
 }
 .sidenav-logo {
@@ -34,6 +34,9 @@ footer .social-media-icon {
 }
 nav .nav-wrapper {
     height: 100px;
+}
+nav ul a {
+    padding: 17px 15px;
 }
 /*background image welcome page*/
 .welcome-bg-image {
@@ -66,3 +69,7 @@ nav .nav-wrapper {
 .input-field label {
      color: #fff;
    }
+/*flash message*/
+.flash-message {
+    padding-top: 36px;
+}

@@ -42,6 +42,15 @@
             <li><a href="#">Log Out</a></li>
         </ul>
     </header>
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message deep-orange lighten-2 center-align">{{message}}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
     {% block content %}
 
     {% endblock %}
