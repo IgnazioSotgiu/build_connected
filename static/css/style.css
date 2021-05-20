@@ -7,7 +7,7 @@ body{
     min-height: 100vh;
     position: relative;
 }
-.reg-section {
+section {
     padding-top: 36px;
     min-height: 80vh;
 }
@@ -47,7 +47,6 @@ nav ul a {
     background-size: cover;
     max-height: 100%;
     max-width: 100%;
-    overflow-x: hidden;
 }
 .hr-welcome-page {
     background-color: #007d70;
@@ -69,7 +68,19 @@ nav ul a {
 .input-field label {
      color: #fff;
    }
+.card {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
 /*flash message*/
 .flash-message {
     padding-top: 36px;
+}
+/*login page*/
+.login-bg-image {
+    background: url("../docs/images/login-bg.jpg") no-repeat bottom right; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

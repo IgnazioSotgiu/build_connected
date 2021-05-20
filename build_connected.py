@@ -54,8 +54,30 @@ def register():
         mongo.db.users.insert_one(new_user)
 
         session["user"] = request.form.get("username").lower()
-        flash("Welcome {{username}}. Registration Succesful")
+        flash("Welcome {}. Registration Succesful".format(
+            request.form.get("username")))
+
     return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        check_username = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        if check_username:
+            if check_password_hash(
+                    check_username["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Hello {}, you were successfully logged in".format(
+                        request.form.get("username")))
+
+        else:
+            flash("Incorrect username and/or password.")
+            flash("Please try again.")
+            return render_template('login.html')
+
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
