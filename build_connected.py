@@ -84,9 +84,15 @@ def login():
 
 @app.route("/homepage/<username>", methods=["GET", "POST"])
 def homepage(username):
+    jobs = get_latest_jobs()
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("homepage.html", username=username)
+    return render_template("homepage.html", username=username, jobs=jobs)
+
+
+def get_latest_jobs():
+    latest_jobs = mongo.db.jobs.find()
+    return latest_jobs
 
 
 if __name__ == "__main__":
