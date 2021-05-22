@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
-import webbrowser
+import datetime
 
 app = Flask(__name__)
 
@@ -105,7 +105,26 @@ def get_latest_jobs():
 
 @app.route("/add_job", methods=['GET', 'POST'])
 def add_job():
-    return render_template("add_job.html")
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    if request.method == "POST":
+        new_job = {
+            "job_title": request.form.get("job_title").lower(),
+            "category": request.form.get("job_category").lower(),
+            "employer": mongo.db.users.find_one(
+                {"username": session["user"]})["company_name"].lower(),
+            "contact_phone_number": request.form.get("phone"),
+            "contact_email": mongo.db.users.find_one(
+                {"username": session["user"]})["email"],
+            "county": request.form.get("county").lower(),
+            "starting_date": request.form.get("starting_date"),
+            "is_urgent": request.form.get("is_urgent"),
+            "date_job_created": datetime.date.today().strftime("%d/%m/%Y")
+        }
+        mongo.db.jobs.insert_one(new_job)
+        flash("New job successfully added")
+        return redirect(url_for("homepage", username=username))
+    return render_template("add-job.html")
 
 
 if __name__ == "__main__":
