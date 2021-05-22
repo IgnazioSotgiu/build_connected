@@ -119,12 +119,24 @@ def add_job():
             "county": request.form.get("county").lower(),
             "starting_date": request.form.get("starting_date"),
             "is_urgent": request.form.get("is_urgent"),
-            "date_job_created": datetime.date.today().strftime("%d/%m/%Y")
+            "date_job_created": datetime.date.today().strftime("%d/%m/%Y"),
+            "created_by": mongo.db.users.find_one(
+                {"username": session["user"]})["username"]
         }
         mongo.db.jobs.insert_one(new_job)
         flash("New job successfully added")
         return redirect(url_for("homepage", username=username))
+
     return render_template("add-job.html")
+
+
+@app.route("/my_jobs/<username>")
+def my_jobs(username):
+    my_jobs_list = mongo.db.jobs.find({"created_by": session["user"]})
+    print(my_jobs_list)
+
+    return render_template(
+        "my-jobs.html", my_jobs_list=my_jobs_list, username=username)
 
 
 if __name__ == "__main__":
