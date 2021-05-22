@@ -68,6 +68,9 @@ nav ul a {
 .input-field label {
      color: #fff;
    }
+.input-field textarea {
+     color: #fff;
+   }
 .card {
     padding-top: 10px;
     padding-bottom: 20px;

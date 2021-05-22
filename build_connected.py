@@ -103,6 +103,11 @@ def get_latest_jobs():
     return latest_jobs
 
 
+@app.route("/add_job", methods=['GET', 'POST'])
+def add_job():
+    return render_template("add_job.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
