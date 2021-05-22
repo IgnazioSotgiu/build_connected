@@ -29,7 +29,7 @@
                         <li><a href="#">Add Job</a></li>
                         <li><a href="#">My Jobs</a></li>
                         <li><a href="#">My Profile</a></li>
-                        <li><a href="#">Log Out</a></li>
+                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -46,7 +46,7 @@
                 <li><a href="#">Add Job</a></li>
                 <li><a href="#">My Jobs</a></li>
                 <li><a href="#">My Profile</a></li>
-                <li><a href="#">Log Out</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% endif %}
         </ul>
     </header>

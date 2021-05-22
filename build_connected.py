@@ -82,6 +82,13 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    flash("You have logged out")
+    return redirect(url_for("welcome_page"))
+
+
 @app.route("/homepage/<username>", methods=["GET", "POST"])
 def homepage(username):
     jobs = get_latest_jobs()
@@ -90,8 +97,9 @@ def homepage(username):
     return render_template("homepage.html", username=username, jobs=jobs)
 
 
+# get the last 10 jobs entered
 def get_latest_jobs():
-    latest_jobs = mongo.db.jobs.find()
+    latest_jobs = mongo.db.jobs.find().sort("date_job_created", -1).limit(10)
     return latest_jobs
 
 
