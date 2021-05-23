@@ -28,7 +28,7 @@
                         <li><a href="{{ url_for('homepage', username=session['user'])}}">Home</a></li>
                         <li><a href="{{ url_for('add_job') }}">Add Job</a></li>
                         <li><a href="{{ url_for('my_jobs', username=session['user']) }}">My Jobs</a></li>
-                        <li><a href="#">My Profile</a></li>
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% endif %}
                 </ul>
@@ -45,7 +45,7 @@
                 <li><a href="{{ url_for('homepage', username=session['user'])}}">Home</a></li>
                 <li><a href="{{ url_for('add_job') }}">Add Job</a></li>
                 <li><a href="{{ url_for('my_jobs', username=session['user']) }}">My Jobs</a></li>
-                <li><a href="#">My Profile</a></li>
+                <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% endif %}
         </ul>

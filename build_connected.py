@@ -132,11 +132,22 @@ def add_job():
 
 @app.route("/my_jobs/<username>")
 def my_jobs(username):
-    my_jobs_list = mongo.db.jobs.find({"created_by": session["user"]})
-    print(my_jobs_list)
+    my_jobs_list = mongo.db.jobs.find(
+        {"created_by": session["user"]}).sort("date_job_created", -1)
 
     return render_template(
         "my-jobs.html", my_jobs_list=my_jobs_list, username=username)
+
+
+@app.route("/profile/<username>")
+def profile(username):
+    my_profile = {
+        "username": username,
+        "company_name": mongo.db.users.find_one(
+            {"username": username})["company_name"]
+    }
+    return render_template(
+        "profile-page.html", username=username, my_profile=my_profile)
 
 
 if __name__ == "__main__":
