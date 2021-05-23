@@ -141,13 +141,56 @@ def my_jobs(username):
 
 @app.route("/profile/<username>")
 def profile(username):
+    my_profile = get_profile(username)
+    return render_template(
+        "profile-page.html", username=username, my_profile=my_profile)
+
+
+def get_profile(username):
     my_profile = {
         "username": username,
         "company_name": mongo.db.users.find_one(
-            {"username": username})["company_name"]
+            {"username": username})["company_name"],
+        "contractor_type": mongo.db.users.find_one(
+            {"username": username})["contractor_type"],
+        "categories": mongo.db.users.find_one(
+            {"username": username})["categories"],
+        "county": mongo.db.users.find_one(
+            {"username": username})["county"],
+        "country": mongo.db.users.find_one(
+            {"username": username})["country"],
+        "email": mongo.db.users.find_one(
+            {"username": username})["email"],
+        "phone_number": mongo.db.users.find_one(
+            {"username": username})["phone_number"],
+        "password": mongo.db.users.find_one({"username": username})["password"]
     }
+    return my_profile
+
+
+@app.route("/edit_profile/<username>", methods=["GET", "POST"])
+def edit_profile(username):
+    my_profile = get_profile(username)
+    if request.method == "POST":
+        update_user = {
+            "username": username,
+            "company_name": request.form.get("company_name").lower(),
+            "contractor_type": request.form.get("contractor_type").lower(),
+            "categories": request.form.get("categories").lower(),
+            "county": request.form.get("county").lower(),
+            "country": request.form.get("country").lower(),
+            "email": request.form.get("email"),
+            "phone_number": request.form.get("phone_number"),
+            "password": my_profile["password"]
+        }
+        mongo.db.users.update({"username": username}, update_user)
+        flash("Profile Successfully Updated")
+        my_profile = get_profile(username)
+        return render_template(
+            'profile-page.html', username=username, my_profile=my_profile)
+
     return render_template(
-        "profile-page.html", username=username, my_profile=my_profile)
+        "edit-profile.html", username=username, my_profile=my_profile)
 
 
 if __name__ == "__main__":
