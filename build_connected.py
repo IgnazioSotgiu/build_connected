@@ -119,6 +119,7 @@ def add_job():
             "county": request.form.get("county").lower(),
             "starting_date": request.form.get("starting_date"),
             "is_urgent": request.form.get("is_urgent"),
+            "description": request.form.get("description"),
             "date_job_created": datetime.date.today().strftime("%d/%m/%Y"),
             "created_by": mongo.db.users.find_one(
                 {"username": session["user"]})["username"]
@@ -205,14 +206,44 @@ def edit_password(username):
             check_confirm_password = request.form.get("confirm_new_password")
             if check_password == check_confirm_password:
                 new_password = generate_password_hash(check_password)
-                mongo.db.users.update({"username": username},
-                {"$set": {"password": new_password}})
+                mongo.db.users.update(
+                    {"username": username},
+                    {"$set": {"password": new_password}})
+
                 flash("Password Successfully Changed")
                 return render_template(
                     'profile-page.html',
-                    username=username, my_profile=my_profile) 
+                    username=username, my_profile=my_profile)
 
     return render_template("edit-password.html", username=username)
+
+
+@app.route("/edit_job/<job_id>", methods=["GET", "POST"])
+def edit_job(job_id):
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+    username = session["user"]
+    if request.method == "POST":
+        edit_job = {
+            "job_title": request.form.get("job_title").lower(),
+            "category": request.form.get("job_category").lower(),
+            "employer": mongo.db.users.find_one(
+                {"username": session["user"]})["company_name"].lower(),
+            "contact_phone_number": request.form.get("phone"),
+            "contact_email": mongo.db.users.find_one(
+                {"username": session["user"]})["email"],
+            "county": request.form.get("county").lower(),
+            "starting_date": request.form.get("starting_date"),
+            "is_urgent": request.form.get("is_urgent"),
+            "description": request.form.get("description"),
+            "date_job_created": datetime.date.today().strftime("%d/%m/%Y"),
+            "created_by": mongo.db.users.find_one(
+                {"username": session["user"]})["username"]
+        }
+        mongo.db.jobs.update({"_id": ObjectId(job_id)}, edit_job)
+        flash("Job successfully edited")
+        return redirect(url_for("my_jobs", username=username))
+
+    return render_template("edit-job.html", job=job)
 
 
 if __name__ == "__main__":
