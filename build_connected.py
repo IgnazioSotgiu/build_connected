@@ -193,6 +193,28 @@ def edit_profile(username):
         "edit-profile.html", username=username, my_profile=my_profile)
 
 
+@app.route("/edit_password/<username>", methods=["GET", "POST"])
+def edit_password(username):
+    my_profile = get_profile(username)
+    if request.method == "POST":
+        # check old password match with the existing password
+        old_password = mongo.db.users.find_one(
+            {"username": username})["password"]
+        if check_password_hash(old_password, request.form.get("password")):
+            check_password = request.form.get("new_password")
+            check_confirm_password = request.form.get("confirm_new_password")
+            if check_password == check_confirm_password:
+                new_password = generate_password_hash(check_password)
+                mongo.db.users.update({"username": username},
+                {"$set": {"password": new_password}})
+                flash("Password Successfully Changed")
+                return render_template(
+                    'profile-page.html',
+                    username=username, my_profile=my_profile) 
+
+    return render_template("edit-password.html", username=username)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
