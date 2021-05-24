@@ -246,6 +246,15 @@ def edit_job(job_id):
     return render_template("edit-job.html", job=job)
 
 
+@app.route("/delete_job/<job_id>")
+def delete_job(job_id):
+    username = session["user"]
+    mongo.db.jobs.remove({"_id": ObjectId(job_id)})
+    flash("The job was successfully deleted")
+
+    return redirect(url_for("my_jobs", username=username))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
