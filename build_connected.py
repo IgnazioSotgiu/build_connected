@@ -255,6 +255,13 @@ def delete_job(job_id):
     return redirect(url_for("my_jobs", username=username))
 
 
+@app.route("/info/<job_id>")
+def info(job_id):
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+    username = session["user"]
+    return render_template("job-info-page.html", username=username, job=job)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
