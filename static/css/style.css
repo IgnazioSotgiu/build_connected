@@ -87,3 +87,20 @@ nav ul a {
     -o-background-size: cover;
     background-size: cover;
 }
+/*homepage*/
+.popular-src-links {
+    margin: 10px;
+}
+.popular-src-header {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.hr-home {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 80%;
+    height: 2px;
+    background-color: #007d70;
+}

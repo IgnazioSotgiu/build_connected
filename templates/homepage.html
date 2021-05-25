@@ -5,30 +5,48 @@
         <h4 class="col s10 offset-s1 m8 offset-m2 text-black">Welcome {{username}},</h4>
     </div>
     <div class="row">
-        <h5 class="col s12 center-align text-black">Latest jobs added:</h5>
-    </div>
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <table class="striped centered">
-                <thead>
-                <tr>
-                    <th>Job Title</th>
-                    <th>Employer</th>
-                    <th>Date Entered</th>
-                </tr>
-                </thead>
-                <tbody>
-                    {% for job in jobs %}
-                        <tr>
-                            <td>{{ job.job_title.capitalize() }}</td>
-                            <td>{{ job.employer.capitalize() }}</td>
-                            <td>{{ job.date_job_created }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="col s8">
+            <div class="row">
+                <h5 class="col s12 center-align text-black">Latest jobs added:</h5>
+            </div>
+            <div class="row">
+                <div class="col s12 m10 offset-m1">
+                    <table class="striped centered">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Employer</th>
+                                <th>Date Entered</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for job in jobs %}
+                            <tr>
+                                <td>{{ job.job_title.capitalize() }}</td>
+                                <td>{{ job.employer.capitalize() }}</td>
+                                <td>{{ job.date_job_created }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <h5>Popular Searches:</h5>
+            <hr class="hr-home">
+            <h6 class="popular-src-header">Search Sub Contractor<h6>
+            <div class="popular-src-links"><a href="#">By Name</a></div>
+            <div class="popular-src-links"><a href="#">By Category</a></div>
+            <div class="popular-src-links"><a href="#">By County</a></div>
+            <hr class="hr-home">
+            <h6 class="popular-src-header">Search Jobs<h6>
+            <div class="popular-src-links"><a href="#">By Employer</a></div>
+            <div class="popular-src-links"><a href="#">By Category</a></div>
+            <div class="popular-src-links"><a href="#">By County</a></div>
         </div>
     </div>
+
 </section>
 
 
