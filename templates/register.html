@@ -10,7 +10,7 @@
             <div class="card blue-grey darken-1">
                 <div class="row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2 center">
-                        <input id="username"  name="username" type="text" class="validate" required>
+                        <input id="username"  name="username" type="text" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
                         <label for="username">Username</label>
                     </div>
                     <div class="input-field col s8 offset-s2 m4">
@@ -20,22 +20,41 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2">
-                        <input id="contractor_type"  name="contractor_type" type="text" class="validate" required>
+                        <select  id="contractor_type"  name="contractor_type"  class="validate" required>
+                            <option value="" disabled selected>Select Contractor Type</option>
+                            <option value="main contractor">Main Contractor</option>
+                            <option value="sub contractor">Sub Contractor</option>
+                        </select>
                         <label for="contractor_type">Contractor Type</label>
                     </div>
                     <div class="input-field col s8 offset-s2 m4">
-                        <input id="category"  name="category" type="text" class="validate" required>
+                        <select  id="category"  name="category"  class="validate" required>
+                            <option value="" disabled selected>Select Category</option>
+                                {% for job_title in job_titles %}
+                                    <option value="{{ job_title }}">
+                                        {{- job_title.capitalize() -}}
+                                    </option>
+                                {% endfor %}
+                        </select>
                         <label for="category">Category</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2">
-                        <input id="county"  name="county" type="text" class="validate" required>
+                        <select id="county"  name="county" type="text" class="validate" required>
+                            <option value="" disabled selected>Select a County</option>
+                            {% for county in COUNTIES %}
+                                <option value="{{ county }}">{{ county.capitalize() }}</option>
+                            {% endfor %}
+                        </select>
                         <label for="county">County</label>
                     </div>
                     <div class="input-field col s8 offset-s2 m4">
-                        <input id="country"  name="country" type="text" class="validate" required>
-                        <label for="country">Country</label>
+                        <select id="country"  name="country" class="validate" required>
+                            <option value="" disabled selected>Select Country</option>
+                            <option value="republic of ireland">Republic of Ireland</option>
+                        </select>
+                        <label for="country"></label>
                     </div>
                 </div>
                 <div class="row">
@@ -50,11 +69,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2">
-                        <input id="password"  name="password" type="password" class="validate" required>
+                        <input id="password"  name="password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
                         <label for="password">Password</label>
                     </div>
                     <div class="input-field col s8 offset-s2 m4">
-                        <input id="confirm_password"  name="confirm_password" type="password" class="validate" required>
+                        <input id="confirm_password"  name="confirm_password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
                         <label for="confirm_password">Confirm Password</label>
                     </div>
                 </div>

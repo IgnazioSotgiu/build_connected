@@ -23,16 +23,51 @@ def welcome_page():
     return render_template("welcome-page.html")
 
 
+def get_job_titles():
+    job_titles = ["electrician", "plumber", "carpenter", "surveyor",
+                  "architect", "bathroom fitter", "bedroom fitter",
+                  "bricklayer", "building surveyor", "building technician",
+                  "carpenter", "carpet fitter", "crane operator",
+                  "floor layer", "interior designer", "joiner",
+                  "kitchen fitter", "painter and decorator", "risk manager",
+                  "project manager", "scaffolder", "roofing operative",
+                  "site manager", "stonemason", "wall and floor tyler",
+                  "welder engineer", "technical coordinator"]
+    job_titles.sort()
+
+    return job_titles
+
+
+def get_counties():
+    COUNTIES = ["carlow", "cavan", "clare", "cork", "donegal", "dublin",
+                "galway", "kerry", "kildare", "kilkenny", "laois",
+                "leitrim", "limerick", "longford", "louth", "mayo",
+                "meath", "monaghan", "offaly", "roscommon", "sligo",
+                "tipperary", "waterford", "westmeath", "wexford",
+                "wicklow"]
+    COUNTIES.sort()
+    return COUNTIES
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    job_titles = get_job_titles()
+    COUNTIES = get_counties()
+
     if request.method == "POST":
         check_username = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
+        check_county = request.form.get("county").lower()
         check_password = request.form.get("password")
         check_confirm_password = request.form.get("confirm_password")
 
         if check_username:
             flash("Username already exists")
+            return redirect(url_for('register'))
+
+        elif check_county not in COUNTIES:
+            flash("You heve entered an invalid County name")
+            flash("Please enter a valid County")
             return redirect(url_for('register'))
 
         elif check_password != check_confirm_password:
@@ -58,7 +93,7 @@ def register():
             request.form.get("username")))
         return redirect(url_for("homepage", username=session["user"]))
 
-    return render_template("register.html")
+    return render_template("register.html", job_titles=job_titles, COUNTIES=COUNTIES)
 
 
 @app.route("/login", methods=["GET", "POST"])
