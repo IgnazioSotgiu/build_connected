@@ -93,7 +93,8 @@ def register():
             request.form.get("username")))
         return redirect(url_for("homepage", username=session["user"]))
 
-    return render_template("register.html", job_titles=job_titles, COUNTIES=COUNTIES)
+    return render_template(
+        "register.html", job_titles=job_titles, COUNTIES=COUNTIES)
 
 
 @app.route("/login", methods=["GET", "POST"])

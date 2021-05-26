@@ -12,44 +12,46 @@
     {% endblock %}
 </head>
 <body>
-    <header>
-        <!-- navbar -->
-        <nav>
-            <div class="nav-wrapper logo-color">
-                <a href="{{ url_for('welcome_page')}}" class="brand-logo"><img class="logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down">
-                    {% if not session.user %}
-                        <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('register')}}">Register</a></li>
-                        <li><a href="#">Info</a></li>
-                    {% endif %}
-                    {% if session.user %}
-                        <li><a href="{{ url_for('homepage', username=session['user'])}}">Home</a></li>
-                        <li><a href="{{ url_for('add_job') }}">Add Job</a></li>
-                        <li><a href="{{ url_for('my_jobs', username=session['user']) }}">My Jobs</a></li>
-                        <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
-                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-        <ul class="sidenav center" id="mobile-demo">
-            <li><img class="sidenav-logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a></li>
-            {% if not session.user %}
-                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('register')}}">Register</a></li>
-                <li><a href="#">Info</a></li>
-            {% endif %}
-            {% if session.user %}
-                <li><a href="{{ url_for('homepage', username=session['user'])}}">Home</a></li>
-                <li><a href="{{ url_for('add_job') }}">Add Job</a></li>
-                <li><a href="{{ url_for('my_jobs', username=session['user']) }}">My Jobs</a></li>
-                <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-            {% endif %}
-        </ul>
-    </header>
+    <div class="top-page-section">
+        <header>
+            <!-- navbar -->
+            <nav>
+                <div class="nav-wrapper logo-color">
+                    <a href="{{ url_for('welcome_page')}}" class="brand-logo"><img class="logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                    <ul class="right hide-on-med-and-down">
+                        {% if not session.user %}
+                            <li><a href="{{ url_for('login') }}">Log In</a></li>
+                            <li><a href="{{ url_for('register')}}">Register</a></li>
+                            <li><a href="#">Info</a></li>
+                        {% endif %}
+                        {% if session.user %}
+                            <li><a href="{{ url_for('homepage', username=session['user'])}}">Home</a></li>
+                            <li><a href="{{ url_for('add_job') }}">Add Job</a></li>
+                            <li><a href="{{ url_for('my_jobs', username=session['user']) }}">My Jobs</a></li>
+                            <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+            <ul class="sidenav center" id="mobile-demo">
+                <li><img class="sidenav-logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a></li>
+                {% if not session.user %}
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>
+                    <li><a href="{{ url_for('register')}}">Register</a></li>
+                    <li><a href="#">Info</a></li>
+                {% endif %}
+                {% if session.user %}
+                    <li><a href="{{ url_for('homepage', username=session['user'])}}">Home</a></li>
+                    <li><a href="{{ url_for('add_job') }}">Add Job</a></li>
+                    <li><a href="{{ url_for('my_jobs', username=session['user']) }}">My Jobs</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% endif %}
+            </ul>
+        </header>
+    </div>
     <div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}

@@ -7,8 +7,10 @@ body{
     min-height: 100vh;
     position: relative;
 }
+.top-page-section {
+    min-height: 100px;
+}
 section {
-    padding-top: 36px;
     min-height: 80vh;
 }
 .sidenav-logo {
@@ -61,9 +63,24 @@ nav ul a {
     -o-background-size: cover;
     background-size: cover;
 }
-.form-row {
+.main-form {
     margin-bottom: 0;
     padding-bottom: 40px;
+}
+.form-row {
+    margin-bottom: 0;
+}
+.select-wrapper input.select-dropdown {
+    color: white;
+}
+.dropdown-content li>a, .dropdown-content li>span {
+    color: white;
+}
+.select-dropdown li.disabled, .select-dropdown li.disabled>span, .select-dropdown li.optgroup {
+    color: wheat;
+}
+.dropdown-content {
+    background-color: teal;
 }
 .input-field label {
      color: #fff;
@@ -74,10 +91,6 @@ nav ul a {
 .card {
     padding-top: 10px;
     padding-bottom: 20px;
-}
-/*flash message*/
-.flash-message {
-    padding-top: 36px;
 }
 /*login page*/
 .login-bg-image {
