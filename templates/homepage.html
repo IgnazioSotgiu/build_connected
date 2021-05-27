@@ -25,8 +25,14 @@
                                 <td>{{ job.job_title.capitalize() }}</td>
                                 <td>{{ job.employer.capitalize() }}</td>
                                 <td>{{ job.date_job_created }}</td>
+                                {% if job.is_urgent.lower() == "urgent" %}
+                                    <td class="red">{{ job.is_urgent.title() }}</td>
+                                {% elif job.is_urgent.lower() == "not_urgent" %}
+                                    <td class="green">{{ job.is_urgent.title() }}</td>%}
+                                {% endif %}
                             </tr>
                             {% endfor %}
+
                         </tbody>
                     </table>
                 </div>

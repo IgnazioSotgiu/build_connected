@@ -57,17 +57,11 @@ def register():
     if request.method == "POST":
         check_username = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        check_county = request.form.get("county").lower()
         check_password = request.form.get("password")
         check_confirm_password = request.form.get("confirm_password")
 
         if check_username:
             flash("Username already exists")
-            return redirect(url_for('register'))
-
-        elif check_county not in COUNTIES:
-            flash("You heve entered an invalid County name")
-            flash("Please enter a valid County")
             return redirect(url_for('register'))
 
         elif check_password != check_confirm_password:
@@ -143,6 +137,8 @@ def get_latest_jobs():
 def add_job():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    job_titles = get_job_titles()
+    COUNTIES = get_counties()
     if request.method == "POST":
         new_job = {
             "job_title": request.form.get("job_title").lower(),
@@ -164,7 +160,8 @@ def add_job():
         flash("New job successfully added")
         return redirect(url_for("homepage", username=username))
 
-    return render_template("add-job.html")
+    return render_template(
+        "add-job.html", job_titles=job_titles, COUNTIES=COUNTIES)
 
 
 @app.route("/my_jobs/<username>")
