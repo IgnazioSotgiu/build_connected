@@ -23,19 +23,21 @@ def welcome_page():
     return render_template("welcome-page.html")
 
 
-def get_job_titles():
-    job_titles = ["electrician", "plumber", "carpenter", "surveyor",
-                  "architect", "bathroom fitter", "bedroom fitter",
-                  "bricklayer", "building surveyor", "building technician",
-                  "carpenter", "carpet fitter", "crane operator",
-                  "floor layer", "interior designer", "joiner",
-                  "kitchen fitter", "painter and decorator", "risk manager",
-                  "project manager", "scaffolder", "roofing operative",
-                  "site manager", "stonemason", "wall and floor tyler",
-                  "welder engineer", "technical coordinator"]
-    job_titles.sort()
+def get_construction_categories():
+    CONSTRUCTION_CATEGORIES = ["electrician", "plumber", "carpenter",
+                               "surveyor", "architect", "bathroom fitter",
+                               "bedroom fitter", "bricklayer",
+                               "building surveyor", "building technician",
+                               "carpenter", "carpet fitter", "crane operator",
+                               "floor layer", "interior designer", "joiner", 
+                               "kitchen fitter", "painter and decorator",
+                               "risk manager", "project manager", "scaffolder",
+                               "roofing operative", "site manager",
+                               "stonemason", "wall and floor tyler",
+                               "welder engineer", "technical coordinator"]
+    CONSTRUCTION_CATEGORIES.sort()
 
-    return job_titles
+    return CONSTRUCTION_CATEGORIES
 
 
 def get_counties():
@@ -51,7 +53,7 @@ def get_counties():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    job_titles = get_job_titles()
+    construction_categories = get_construction_categories()
     COUNTIES = get_counties()
 
     if request.method == "POST":
@@ -87,8 +89,9 @@ def register():
             request.form.get("username")))
         return redirect(url_for("homepage", username=session["user"]))
 
-    return render_template(
-        "register.html", job_titles=job_titles, COUNTIES=COUNTIES)
+    return render_template("register.html",
+                           construction_categories=construction_categories,
+                           COUNTIES=COUNTIES)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -137,12 +140,12 @@ def get_latest_jobs():
 def add_job():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    job_titles = get_job_titles()
+    construction_categories = get_construction_categories()
     COUNTIES = get_counties()
     if request.method == "POST":
         new_job = {
             "job_title": request.form.get("job_title").lower(),
-            "category": request.form.get("job_category").lower(),
+            "category": request.form.getlist("job_category"),
             "employer": mongo.db.users.find_one(
                 {"username": session["user"]})["company_name"].lower(),
             "contact_phone_number": request.form.get("phone"),
@@ -160,8 +163,9 @@ def add_job():
         flash("New job successfully added")
         return redirect(url_for("homepage", username=username))
 
-    return render_template(
-        "add-job.html", job_titles=job_titles, COUNTIES=COUNTIES)
+    return render_template("add-job.html",
+                           construction_categories=construction_categories,
+                           COUNTIES=COUNTIES)
 
 
 @app.route("/my_jobs/<username>")
@@ -210,7 +214,7 @@ def edit_profile(username):
             "username": username,
             "company_name": request.form.get("company_name").lower(),
             "contractor_type": request.form.get("contractor_type").lower(),
-            "categories": request.form.get("categories").lower(),
+            "categories": request.form.get("categories"),
             "county": request.form.get("county").lower(),
             "country": request.form.get("country").lower(),
             "email": request.form.get("email"),
@@ -255,10 +259,12 @@ def edit_password(username):
 def edit_job(job_id):
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     username = session["user"]
+    construction_categories = get_construction_categories()
+    COUNTIES = get_counties()
     if request.method == "POST":
         edit_job = {
             "job_title": request.form.get("job_title").lower(),
-            "category": request.form.get("job_category").lower(),
+            "category": request.form.getlist("edit_job_category"),
             "employer": mongo.db.users.find_one(
                 {"username": session["user"]})["company_name"].lower(),
             "contact_phone_number": request.form.get("phone"),
@@ -276,7 +282,9 @@ def edit_job(job_id):
         flash("Job successfully edited")
         return redirect(url_for("my_jobs", username=username))
 
-    return render_template("edit-job.html", job=job)
+    return render_template("edit-job.html", job=job,
+                           construction_categories=construction_categories,
+                           COUNTIES=COUNTIES)
 
 
 @app.route("/delete_job/<job_id>")

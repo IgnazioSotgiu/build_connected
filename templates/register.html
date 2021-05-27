@@ -30,9 +30,9 @@
                     <div class="input-field col s8 offset-s2 m4">
                         <select  id="category"  name="category"  class="validate" multiple required>
                             <option value="" disabled selected>Select Job Categories</option>
-                                {% for job_title in job_titles %}
-                                    <option value="{{ job_title }}">
-                                        {{- job_title.capitalize() -}}
+                                {% for category in construction_categories %}
+                                    <option value="{{ category }}">
+                                        {{- category.capitalize() -}}
                                     </option>
                                 {% endfor %}
                         </select>

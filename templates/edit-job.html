@@ -13,13 +13,27 @@
                         <label for="job_title">Job Title</label>
                     </div>
                     <div class="input-field col s8 offset-s2 m4">
-                        <input id="job_category"  name="job_category" type="text" class="validate" value="{{ job.category.title() }}" required>
-                        <label for="job_category">Job Category</label>
+                        <select  id="edit_job_category"  name="edit_job_category"  class="validate" type="text" multiple required>
+                            <option 
+                            value="{%- for job_name in job.category -%}
+                                    {{- job_name.title() -}},
+                                {%- endfor -%}" selected>
+                                {%- for job_name in job.category -%}
+                                    {{- job_name.capitalize() -}},
+                                {%- endfor -%}
+                            </option>
+                            {% for construction_category in construction_categories %}
+                                <option value="{{ construction_category }}">
+                                        {{- construction_category.capitalize() -}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <label for="edit_job_category">Looking For</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2">
-                        <input id="starting_date"  name="starting_date" type="text" class="validate" value="{{ job.starting_date.title() }}" required>
+                        <input id="starting_date"  name="starting_date" type="text" class="datepicker validate" value="{{ job.starting_date.title() }}" required>
                         <label for="starting_date">Starting Date</label>
                     </div>
                     <div class="input-field col s8 offset-s2 m4">
@@ -29,10 +43,14 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2">
-                        <input id="county"  name="county" type="text" class="validate" value="{{ job.county.title() }}" required>
-                        <label for="county">County</label>
+                        <select id="county"  name="county" type="text" class="validate" required>
+                            <option value="{{ job.county }}" selected>{{ job.county.capitalize() }}</option>
+                            {% for county in COUNTIES %}
+                                <option value="{{ county.lower() }}">{{ county.capitalize() }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="county"></label>
                     </div>
-                    
                 </div>
                 <div class="row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2">

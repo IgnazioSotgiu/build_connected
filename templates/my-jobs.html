@@ -21,7 +21,12 @@
                     {% for job in my_jobs_list %}
                         <tr>
                             <td>{{ job.job_title.capitalize() }}</td>
-                            <td>{{ job.category.capitalize() }}</td>
+                            <td>
+                                {% for job_name in job.category %}
+                                <span>{{ job_name.title() }}</span>
+                                <br>
+                                {% endfor %}
+                            </td>
                             <td>{{ job.date_job_created }}</td>
                             <td><a href="{{ url_for('info', job_id=job._id) }}" class="btn btn-small blue lighten-1">Info</a></td>
                             <td><a href="{{ url_for('edit_job', job_id=job._id) }}" class="btn btn-small teal">Edit</a></td>
