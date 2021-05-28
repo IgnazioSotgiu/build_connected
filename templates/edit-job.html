@@ -37,8 +37,12 @@
                         <label for="starting_date">Starting Date</label>
                     </div>
                     <div class="input-field col s8 offset-s2 m4">
-                        <input id="is_urgent" name="is_urgent" type="text" class="validate"  value="{{ job.is_urgent.title() }}" required>
-                        <label for="is_urgent">Urgent</label>
+                        <select id="is_urgent" name="is_urgent" type="text" class="validate" required>
+                            <option value="{{ job.is_urgent.title() }}" selected>{{ job.is_urgent.title() }}</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="not_urgent">Not Urgent</option>
+                        </select>
+                        <label for="is_urgent"></label>
                     </div>
                 </div>
                 <div class="row">
