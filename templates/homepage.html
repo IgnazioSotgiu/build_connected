@@ -2,7 +2,11 @@
 {% block content %}
 <section class="home-bg-image">
     <div class="row">
-        <h4 class="col s10 offset-s1 m8 offset-m2 text-black">Welcome {{username}},</h4>
+        <a href="{{ url_for('profile', username=session['user']) }}">
+            <h4 class="col s10 offset-s1 m8 offset-m2">
+                Welcome {{ username }},
+            </h4>
+        </a>
     </div>
     <div class="row">
         <div class="col s8">
@@ -27,9 +31,7 @@
                                     <td>{{ job.date_job_created }}</td>
                                     <td><a href="{{ url_for('info', job_id=job._id) }}" class="btn btn-small blue lighten-1">Info</a></td>
                                     {% if job.is_urgent.lower() == "urgent" %}
-                                        <td class="red">{{ job.is_urgent.title() }}</td>
-                                    {% elif job.is_urgent.lower() == "not_urgent" %}
-                                        <td class="green">{{ job.is_urgent.title() }}</td>
+                                        <td class="fas fa-exclamation-triangle red-text tooltipped" data-position="right" data-tooltip="Urgent!"></td>
                                     {% endif %}
                                 </tr>
                             {% endfor %}

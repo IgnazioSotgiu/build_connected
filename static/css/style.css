@@ -7,6 +7,9 @@ body{
     min-height: 100vh;
     position: relative;
 }
+h4 {
+    color: black;
+}
 .top-page-section {
     min-height: 100px;
 }
@@ -101,6 +104,9 @@ nav ul a {
     background-size: cover;
 }
 /*homepage*/
+.fa-exclamation-triangle:before {
+    font-size: 25px;
+}
 .popular-src-links {
     margin: 10px;
 }

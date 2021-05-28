@@ -2,7 +2,11 @@
 {% block content %}
 <section class="-bg-image">
     <div class="row">
-        <h4 class="col s10 offset-s1 m8 offset-m2 text-black">{{username}}, </h4>
+        <a href="{{ url_for('profile', username=session['user']) }}">
+            <h4 class="col s10 offset-s1 m8 offset-m2">
+                {{ username }},
+            </h4>
+        </a>
     </div>
     <div class="row">
         <h5 class="col s12 center-align text-black">List of jobs you advertise:</h5>

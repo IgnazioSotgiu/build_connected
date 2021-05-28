@@ -2,7 +2,7 @@
 {% block content %}
 <section class="-bg-image">
     <div class="row">
-        <h3 class="col s12 center">Add Job</h3>
+        <h4 class="col s12 center">Add Job</h4>
     </div>
     <div class="row main-form">
         <form action="{{ url_for('add_job') }}" method="POST" class="col s10 offset-s1 l8 offset-l2 add-job-form center">
@@ -14,13 +14,14 @@
                     </div>
                     <div class="input-field col s8 offset-s2 m4">
                         <select  id="job_category"  name="job_category"  class="validate" multiple required>
+                            <option value="" disabled>Categories</option>
                                 {% for construction_category in construction_categories %}
                                     <option value="{{ construction_category }}">
                                         {{- construction_category.capitalize() -}}
                                     </option>
                                 {% endfor %}
                         </select>
-                        <label for="job_category">Looking For</label>
+                        <label for="job_category"></label>
                     </div>
                 </div>
                 <div class="row form-row">
@@ -30,7 +31,7 @@
                     </div>
                     <div class="input-field col s2 offset-s1">
                         <select id="county"  name="county" type="text" class="validate" required>
-                            <option value="" disabled selected>Select a County</option>
+                            <option value="" disabled selected>County</option>
                             {% for county in COUNTIES %}
                                 <option value="{{ county }}">{{ county.capitalize() }}</option>
                             {% endfor %}
