@@ -14,7 +14,13 @@
                 <div class="profile-detail-name">Username: <span class="profile-detail-value">{{ username }}</span></div>
                 <div class="profile-detail-name">Company Name: <span class="profile-detail-value">{{ my_profile.company_name.title() }}</span></div>
                 <div class="profile-detail-name">Contractor Type: <span class="profile-detail-value">{{ my_profile.contractor_type.title() }}</span></div>
-                <div class="profile-detail-name">Category: <span class="profile-detail-value">{{ my_profile.categories.title() }}</span></div>
+                <div class="profile-detail-name">Category: 
+                    <span class="profile-detail-value">
+                        {% for category in my_profile.categories %}
+                            <span>{{ category.title() }}</span><br>
+                        {% endfor %}
+                    </span>
+                </div>
                 <div class="profile-detail-name">County: <span class="profile-detail-value">{{ my_profile.county.title() }}</span></div>
                 <div class="profile-detail-name">Country: <span class="profile-detail-value">{{ my_profile.country.title() }}</span></div>
                 <div class="profile-detail-name">Email: <span class="profile-detail-value">{{ my_profile.email }}</span></div>

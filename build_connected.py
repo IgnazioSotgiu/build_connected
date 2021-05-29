@@ -29,7 +29,7 @@ def get_construction_categories():
                                "bedroom fitter", "bricklayer",
                                "building surveyor", "building technician",
                                "carpenter", "carpet fitter", "crane operator",
-                               "floor layer", "interior designer", "joiner", 
+                               "floor layer", "interior designer", "joiner",
                                "kitchen fitter", "painter and decorator",
                                "risk manager", "project manager", "scaffolder",
                                "roofing operative", "site manager",
@@ -209,14 +209,16 @@ def get_profile(username):
 @app.route("/edit_profile/<username>", methods=["GET", "POST"])
 def edit_profile(username):
     my_profile = get_profile(username)
+    construction_categories = get_construction_categories()
+    COUNTIES = get_counties()
     if request.method == "POST":
         update_user = {
             "username": username,
             "company_name": request.form.get("company_name").lower(),
             "contractor_type": request.form.get("contractor_type").lower(),
-            "categories": request.form.get("categories"),
-            "county": request.form.get("county").lower(),
-            "country": request.form.get("country").lower(),
+            "categories": request.form.getlist("user_job_categories"),
+            "county": request.form.get("user_county").lower(),
+            "country": request.form.get("user_country").lower(),
             "email": request.form.get("email"),
             "phone_number": request.form.get("phone_number"),
             "password": my_profile["password"]
@@ -228,7 +230,8 @@ def edit_profile(username):
             'profile-page.html', username=username, my_profile=my_profile)
 
     return render_template(
-        "edit-profile.html", username=username, my_profile=my_profile)
+        "edit-profile.html", username=username, my_profile=my_profile,
+        construction_categories=construction_categories, COUNTIES=COUNTIES)
 
 
 @app.route("/edit_password/<username>", methods=["GET", "POST"])
@@ -274,7 +277,8 @@ def edit_job(job_id):
             "starting_date": request.form.get("starting_date"),
             "is_urgent": request.form.get("is_urgent"),
             "description": request.form.get("description"),
-            "date_job_created": datetime.date.today().strftime("%d/%m/%Y"),
+            "date_job_created": mongo.db.jobs.find_one(
+                {"_id": ObjectId(job_id)})["date_job_created"],
             "created_by": mongo.db.users.find_one(
                 {"username": session["user"]})["username"]
         }

@@ -66,6 +66,9 @@ nav ul a {
     -o-background-size: cover;
     background-size: cover;
 }
+input {
+    color: white;
+}
 .main-form {
     margin-bottom: 0;
     padding-bottom: 40px;
