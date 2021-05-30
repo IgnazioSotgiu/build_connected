@@ -44,14 +44,80 @@
             <h5 class="main-popular-src-header">Popular Searches:</h5>
             <hr class="hr-home">
             <h6 class="popular-src-header">Search Sub Contractor<h6>
-            <div class="popular-src-links"><a href="#">By Name</a></div>
-            <div class="popular-src-links"><a href="#">By Category</a></div>
-            <div class="popular-src-links"><a href="#">By County</a></div>
+            <div class="popular-src-links">
+                <a href="#">By Name</a>
+                <input id="src_company_by_name"  name="src_company_by_name" type="text" class="validate" required>
+                <label for="src_company_by_name"></label>
+            </div>
+            <div>
+                <a class="btn btn-small teal" href="">search</a>
+            </div>
+            <div class="popular-src-links">
+                <a href="#">By Category</a>
+                <select  id="src_user_by_category"  name="src_user_by_category"  class="validate" required>
+                    <option value="" disabled selected>Select category</option>
+                        {% for category in construction_categories %}
+                            <option value="{{ category }}">
+                                {{- category.capitalize() -}}
+                            </option>
+                        {% endfor %}
+                </select>
+                <label for="src_user_by_category"></label>
+            </div>
+            <div>
+                <a class="btn btn-small teal" href="">search</a>
+            </div>
+            <div class="popular-src-links">
+                <a href="#">By County</a>
+                <select id="src_user_by_county" name="src_user_by_county" type="text" class="validate" required>
+                    <option value="" disabled selected>Select a County</option>
+                    {% for county in COUNTIES %}
+                    <option value="{{ county }}">{{ county.capitalize() }}</option>
+                    {% endfor %}
+                </select>
+                <label for="src_user_by_county"></label>
+            </div>
+            <div>
+                <a class="btn btn-small teal" href="">search</a>
+            </div>
             <hr class="hr-home">
             <h6 class="popular-src-header">Search Jobs<h6>
-            <div class="popular-src-links"><a href="#">By Employer</a></div>
-            <div class="popular-src-links"><a href="#">By Category</a></div>
-            <div class="popular-src-links"><a href="#">By County</a></div>
+            <div class="popular-src-links">
+                <a href="#">By Employer</a>
+                <input id="src_job_by_company"  name="src_job_by_company" type="text" class="validate" required>
+                <label for="src_job_by_company"></label>
+            </div>
+            <div>
+                <a class="btn btn-small teal" href="">search</a>
+            </div>
+            <div class="popular-src-links">
+                <a href="#">By Category</a>
+                <select  id="src_job_by_category"  name="src_job_by_category"  class="validate" required>
+                    <option value="" disabled selected>Select category</option>
+                        {% for category in construction_categories %}
+                            <option value="{{ category }}">
+                                {{- category.capitalize() -}}
+                            </option>
+                        {% endfor %}
+                </select>
+                <label for="src_job_by_category"></label>
+            </div>
+            <div>
+                <a class="btn btn-small teal" href="">search</a>
+            </div>
+            <div class="popular-src-links">
+                <a href="#">By County</a>
+                <select id="src_job_by_county" name="src_job_by_county" type="text" class="validate" required>
+                    <option value="" disabled selected>Select a County</option>
+                    {% for county in COUNTIES %}
+                    <option value="{{ county }}">{{ county.capitalize() }}</option>
+                    {% endfor %}
+                </select>
+                <label for="src_job_by_county"></label>
+            </div>
+            <div>
+                <a class="btn btn-small teal" href="">search</a>
+            </div>
         </div>
     </div>
 

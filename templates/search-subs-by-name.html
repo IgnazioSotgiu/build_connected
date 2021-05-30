@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="home-bg-image">
+    <div class="row">
+        <a href="{{ url_for('get_subs_by_name', username=session['user']) }}">
+            <h4 class="col s10 offset-s1 m8 offset-m2">
+                Welcome {{ username }},
+            </h4>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col s8">
+            <div class="row">
+                <h5 class="col s12 center-align text-black">Latest jobs added:</h5>
+            </div>
+            <div class="row">
+                <div class="col s12 m10 offset-m1">
+                    <table class="striped centered">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Employer</th>
+                                <th>Date Entered</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for job in jobs %}
+                                <tr>
+                                    <td>{{ job.job_title.capitalize() }}</td>
+                                    <td>{{ job.employer.capitalize() }}</td>
+                                    <td>{{ job.date_job_created }}</td>
+                                    <td><a href="{{ url_for('info', job_id=job._id) }}" class="btn btn-small blue lighten-1">Info</a></td>
+                                    {% if job.is_urgent.lower() == "urgent" %}
+                                        <td class="fas fa-exclamation-triangle red-text tooltipped" data-position="right" data-tooltip="Urgent!"></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <h5 class="main-popular-src-header">Popular Searches:</h5>
+            <hr class="hr-home">
+            <h6 class="popular-src-header">Search Sub Contractor<h6>
+            <div class="popular-src-links"><a href="#">By Name</a></div>
+            <div class="popular-src-links"><a href="#">By Category</a></div>
+            <div class="popular-src-links"><a href="#">By County</a></div>
+            <hr class="hr-home">
+            <h6 class="popular-src-header">Search Jobs<h6>
+            <div class="popular-src-links"><a href="#">By Employer</a></div>
+            <div class="popular-src-links"><a href="#">By Category</a></div>
+            <div class="popular-src-links"><a href="#">By County</a></div>
+        </div>
+    </div>
+
+</section>
+
+
+{% endblock %}

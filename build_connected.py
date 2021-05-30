@@ -125,9 +125,14 @@ def logout():
 @app.route("/homepage/<username>", methods=["GET", "POST"])
 def homepage(username):
     jobs = get_latest_jobs()
+    construction_categories = get_construction_categories()
+    COUNTIES = get_counties()
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("homepage.html", username=username, jobs=jobs)
+    return render_template(
+        "homepage.html", username=username, jobs=jobs,
+        construction_categories=construction_categories,
+        COUNTIES=COUNTIES)
 
 
 # get the last 10 jobs entered
@@ -220,7 +225,7 @@ def edit_profile(username):
             "county": request.form.get("user_county").lower(),
             "country": request.form.get("user_country").lower(),
             "email": request.form.get("email"),
-            "phone_number": request.form.get("phone_number"),
+            "phone_number": request.form.get("user_phone"),
             "password": my_profile["password"]
         }
         mongo.db.users.update({"username": username}, update_user)
