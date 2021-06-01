@@ -318,15 +318,31 @@ def info(job_id):
     return render_template("job-info-page.html", username=username, job=job)
 
 
-@app.route("/get_subs_by_name", methods=["GET", "POST"])
-def get_subs_by_name():
+@app.route("/search_users", methods=["GET", "POST"])
+def search_users():
     username = session["user"]
-    query = request.form.get("src_company_by_name")
-    src_result = list(mongo.db.users.find(
-        {"company_name": query}))
+    query_users_by_name = request.form.get("src_company_by_name")
+    query_users_by_category = request.form.get("src_company_by_category")
+    query_users_by_county = request.form.get("src_company_by_county")
+    if query_users_by_name:
+        query = query_users_by_name
+        src_result = list(
+            mongo.db.users.find({"company_name": query}))
+    elif query_users_by_category:
+        query = query_users_by_category
+        src_result = list(
+            mongo.db.users.find({"categories": query}))
+    elif query_users_by_county:
+        query = query_users_by_county
+        src_result = list(
+            mongo.db.users.find({"county": query}))
+    else:
+        flash("Search parameters error")
+        return redirect(url_for('homepage', username=username))
+
     if src_result:
         return render_template(
-            'search-subs-by-name.html', username=username,
+            'search-users.html', username=username,
             src_result=src_result)
     else:
         flash("Company not found.{}".format(src_result))

@@ -48,7 +48,7 @@
                 <li class="popular-src-links">
                     <div class="collapsible-header">By Name</div>
                     <div class="collapsible-body">
-                        <form action="{{ url_for('get_subs_by_name') }}" method="POST">
+                        <form action="{{ url_for('search_users') }}" method="POST">
                             <select  id="src_company_by_name"  name="src_company_by_name"  class="validate" required>
                                 {% for company in company_names %}
                                     <option value="{{ company.lower() }}">
@@ -59,7 +59,6 @@
                             <label for="src_company_by_name"></label>
                             <div>
                                 <button type="submit" class="btn btn-small teal">Search</button>
-                                <a class="btn btn-small teal" href="{{ url_for('get_subs_by_name') }}">Search</a>
                             </div>
                         </form>
                     </div>
@@ -67,33 +66,35 @@
                 <li class="popular-src-links">
                     <div class="collapsible-header">By Category</div>
                     <div class="collapsible-body">
-                        <select  id="src_user_by_category"  name="src_user_by_category"  class="validate" required>
-                            <option value="" disabled selected>Select category</option>
+                        <form action="{{ url_for('search_users') }}" method="POST">
+                            <select  id="src_company_by_category"  name="src_company_by_category"  class="validate" required>
                                 {% for category in construction_categories %}
                                     <option value="{{ category }}">
                                         {{- category.capitalize() -}}
                                     </option>
                                 {% endfor %}
-                        </select>
-                        <label for="src_user_by_category"></label>
-                        <div>
-                            <a class="btn btn-small teal" href="">search</a>
-                        </div>
+                            </select>
+                            <label for="src_company_by_category"></label>
+                            <div>
+                                <button type="submit" class="btn btn-small teal">Search</button>
+                            </div>
+                        </form>
                     </div>
                 </li>
                 <li class="popular-src-links">
                     <div class="collapsible-header">By County</div>
                     <div class="collapsible-body">
-                        <select id="src_user_by_county" name="src_user_by_county" type="text" class="validate" required>
-                            <option value="" disabled selected>Select a County</option>
+                        <form action="{{ url_for('search_users') }}" method="POST">
+                            <select id="src_company_by_county" name="src_company_by_county" type="text" class="validate" required>
                             {% for county in COUNTIES %}
                                 <option value="{{ county }}">{{ county.capitalize() }}</option>
                             {% endfor %}
-                        </select>
-                        <label for="src_user_by_county"></label>
-                        <div>
-                            <a class="btn btn-small teal" href="">search</a>
-                        </div>
+                            </select>
+                            <label for="src_company_by_county"></label>
+                            <div>
+                                <button type="submit" class="btn btn-small teal">Search</button>
+                            </div>
+                        </form>
                     </div>
                 </li>
             </ul>
