@@ -6,4 +6,5 @@ $(document).ready(function(){
         format: "dd mmmm, yyyy"
     });
     $('.tooltipped').tooltip();
+    $('.collapsible').collapsible();
   });

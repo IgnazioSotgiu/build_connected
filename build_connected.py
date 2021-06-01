@@ -51,6 +51,11 @@ def get_counties():
     return COUNTIES
 
 
+def get_users_company_names():
+    company_names = mongo.db.users.distinct("company_name")
+    return company_names
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     construction_categories = get_construction_categories()
@@ -125,6 +130,7 @@ def logout():
 @app.route("/homepage/<username>", methods=["GET", "POST"])
 def homepage(username):
     jobs = get_latest_jobs()
+    company_names = get_users_company_names()
     construction_categories = get_construction_categories()
     COUNTIES = get_counties()
     username = mongo.db.users.find_one(
@@ -132,7 +138,7 @@ def homepage(username):
     return render_template(
         "homepage.html", username=username, jobs=jobs,
         construction_categories=construction_categories,
-        COUNTIES=COUNTIES)
+        COUNTIES=COUNTIES, company_names=company_names)
 
 
 # get the last 10 jobs entered
@@ -310,6 +316,21 @@ def info(job_id):
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     username = session["user"]
     return render_template("job-info-page.html", username=username, job=job)
+
+
+@app.route("/get_subs_by_name", methods=["GET", "POST"])
+def get_subs_by_name():
+    username = session["user"]
+    query = request.form.get("src_company_by_name")
+    src_result = list(mongo.db.users.find(
+        {"company_name": query}))
+    if src_result:
+        return render_template(
+            'search-subs-by-name.html', username=username,
+            src_result=src_result)
+    else:
+        flash("Company not found.{}".format(src_result))
+        return redirect(url_for('homepage', username=username))
 
 
 if __name__ == "__main__":
