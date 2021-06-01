@@ -56,6 +56,16 @@ def get_users_company_names():
     return company_names
 
 
+def get_users_categories():
+    users_categories = mongo.db.users.distinct("categories")
+    return users_categories
+
+
+def get_users_counties():
+    users_counties = mongo.db.users.distinct("county")
+    return users_counties
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     construction_categories = get_construction_categories()
@@ -131,14 +141,14 @@ def logout():
 def homepage(username):
     jobs = get_latest_jobs()
     company_names = get_users_company_names()
-    construction_categories = get_construction_categories()
-    COUNTIES = get_counties()
+    users_categories = get_users_categories()
+    users_counties = get_users_counties()
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     return render_template(
         "homepage.html", username=username, jobs=jobs,
-        construction_categories=construction_categories,
-        COUNTIES=COUNTIES, company_names=company_names)
+        users_categories=users_categories,
+        users_counties=users_counties, company_names=company_names)
 
 
 # get the last 10 jobs entered
