@@ -99,6 +99,63 @@
                 </li>
             </ul>
             <hr class="hr-home">
+            <h6 class="popular-src-header">Search Jobs<h6>
+            <ul class="collapsible">
+                <li class="popular-src-links">
+                    <div class="collapsible-header">By Employer</div>
+                    <div class="collapsible-body">
+                        <form action="{{ url_for('search_jobs') }}" method="POST">
+                            <select  id="src_job_by_company"  name="src_job_by_company"  class="validate" required>
+                                {% for company in jobs_company_names %}
+                                    <option value="{{ company.lower() }}">
+                                        {{- company.title() -}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <label for="src_job_by_company"></label>
+                            <div>
+                                <button type="submit" class="btn btn-small teal">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li class="popular-src-links">
+                    <div class="collapsible-header">By Category</div>
+                    <div class="collapsible-body">
+                        <form action="{{ url_for('search_jobs') }}" method="POST">
+                            <select  id="src_job_by_category"  name="src_job_by_category"  class="validate" required>
+                                <option value="" disabled selected>Select category</option>
+                                    {% for category in jobs_categories %}
+                                        <option value="{{ category }}">
+                                            {{- category.capitalize() -}}
+                                        </option>
+                                    {% endfor %}
+                            </select>
+                            <label for="src_job_by_category"></label>
+                        </form>
+                        <div>
+                            <button type="submit" class="btn btn-small teal">Search</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="popular-src-links">
+                    <div class="collapsible-header">By County</div>
+                    <div class="collapsible-body">
+                        <form action="{{ url_for('search_jobs') }}" method="POST">
+                            <select id="src_job_by_county" name="src_job_by_county" type="text" class="validate" required>
+                                <option value="" disabled selected>Select a County</option>
+                                {% for county in jobs_counties %}
+                                    <option value="{{ county }}">{{ county.capitalize() }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="src_job_by_county"></label>
+                            <div>
+                                <button type="submit" class="btn btn-small teal">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
             
         </div>
     </div>
