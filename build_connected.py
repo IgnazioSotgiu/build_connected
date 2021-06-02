@@ -382,9 +382,9 @@ def search_users():
 @app.route("/search_jobs", methods=["GET", "POST"])
 def search_jobs():
     username = session["user"]
-    query_jobs_by_name = request.form.get("src_jobs_by_company")
-    query_jobs_by_category = request.form.get("src_jobs_by_category")
-    query_jobs_by_county = request.form.get("src_jobs_by_county")
+    query_jobs_by_name = request.form.get("src_job_by_company")
+    query_jobs_by_category = request.form.get("src_job_by_category")
+    query_jobs_by_county = request.form.get("src_job_by_county")
     if query_jobs_by_name:
         query = query_jobs_by_name
         src_result = list(
