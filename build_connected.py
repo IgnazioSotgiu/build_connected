@@ -117,7 +117,8 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Welcome {}. Registration Successful".format(
             request.form.get("username")))
-        return redirect(url_for("homepage", username=session["user"]))
+        return redirect(url_for(
+            "homepage_latest_jobs", username=session["user"]))
 
     return render_template("register.html",
                            construction_categories=construction_categories,
@@ -135,7 +136,8 @@ def login():
                 session["user"] = request.form.get("username").lower()
                 flash("Hello {}, you were successfully logged in".format(
                         request.form.get("username")))
-                return redirect(url_for("homepage", username=session["user"]))
+                return redirect(url_for(
+                    "homepage_latest_jobs", username=session["user"]))
 
         else:
             flash("Incorrect username and/or password.")
@@ -152,8 +154,8 @@ def logout():
     return redirect(url_for("welcome_page"))
 
 
-@app.route("/homepage/<username>", methods=["GET", "POST"])
-def homepage(username):
+@app.route("/homepage_latest_jobs/<username>", methods=["GET", "POST"])
+def homepage_latest_jobs(username):
     jobs = get_latest_jobs()
     company_names = get_users_company_names()
     users_categories = get_users_categories()
@@ -164,7 +166,7 @@ def homepage(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     return render_template(
-        "homepage.html", username=username, jobs=jobs,
+        "homepage_latest_jobs.html", username=username, jobs=jobs,
         users_categories=users_categories,
         users_counties=users_counties, company_names=company_names,
         jobs_company_names=jobs_company_names, jobs_categories=jobs_categories,
@@ -202,7 +204,7 @@ def add_job():
         }
         mongo.db.jobs.insert_one(new_job)
         flash("New job successfully added")
-        return redirect(url_for("homepage", username=username))
+        return redirect(url_for("homepage_latest_jobs", username=username))
 
     return render_template("add-job.html",
                            construction_categories=construction_categories,
@@ -351,6 +353,12 @@ def info(job_id):
 @app.route("/search_users", methods=["GET", "POST"])
 def search_users():
     username = session["user"]
+    company_names = get_users_company_names()
+    users_categories = get_users_categories()
+    users_counties = get_users_counties()
+    jobs_company_names = get_jobs_company_names()
+    jobs_categories = get_jobs_categories()
+    jobs_counties = get_jobs_counties()
     query_users_by_name = request.form.get("src_company_by_name")
     query_users_by_category = request.form.get("src_company_by_category")
     query_users_by_county = request.form.get("src_company_by_county")
@@ -368,20 +376,28 @@ def search_users():
             mongo.db.users.find({"county": query}))
     else:
         flash("Search parameters error")
-        return redirect(url_for('homepage', username=username))
+        return redirect(url_for('homepage_latest_jobs', username=username))
 
     if src_result:
         return render_template(
-            'search-users.html', username=username,
-            src_result=src_result)
+            'search-users.html', username=username, src_result=src_result,
+            users_categories=users_categories, users_counties=users_counties,
+            company_names=company_names, jobs_company_names=jobs_company_names,
+            jobs_categories=jobs_categories, jobs_counties=jobs_counties)
     else:
         flash("Company not found.{}".format(src_result))
-        return redirect(url_for('homepage', username=username))
+        return redirect(url_for('homepage_latest_jobs', username=username))
 
 
 @app.route("/search_jobs", methods=["GET", "POST"])
 def search_jobs():
     username = session["user"]
+    company_names = get_users_company_names()
+    users_categories = get_users_categories()
+    users_counties = get_users_counties()
+    jobs_company_names = get_jobs_company_names()
+    jobs_categories = get_jobs_categories()
+    jobs_counties = get_jobs_counties()
     query_jobs_by_name = request.form.get("src_job_by_company")
     query_jobs_by_category = request.form.get("src_job_by_category")
     query_jobs_by_county = request.form.get("src_job_by_county")
@@ -399,15 +415,17 @@ def search_jobs():
             mongo.db.jobs.find({"county": query}))
     else:
         flash("Search parameters error")
-        return redirect(url_for('homepage', username=username))
+        return redirect(url_for('homepage_latest_jobs', username=username))
 
     if src_result:
         return render_template(
-            'search-jobs.html', username=username,
-            src_result=src_result)
+            'search-jobs.html', username=username, src_result=src_result,
+            users_categories=users_categories, users_counties=users_counties,
+            company_names=company_names, jobs_company_names=jobs_company_names,
+            jobs_categories=jobs_categories, jobs_counties=jobs_counties)
     else:
         flash("Company not found.{}".format(src_result))
-        return redirect(url_for('homepage', username=username))
+        return redirect(url_for('homepage_latest_jobs', username=username))
 
 
 if __name__ == "__main__":
