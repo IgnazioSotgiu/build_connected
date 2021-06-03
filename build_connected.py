@@ -334,6 +334,15 @@ def edit_job(job_id):
                            COUNTIES=COUNTIES)
 
 
+@app.route("/delete_job_check/<job_id>")
+def delete_job_check(job_id):
+    username = session["user"]
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+
+    return render_template(
+        "job-delete-page.html", job=job, job_id=job_id, username=username)
+
+
 @app.route("/delete_job/<job_id>")
 def delete_job(job_id):
     username = session["user"]
