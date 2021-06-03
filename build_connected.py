@@ -4,7 +4,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-if os.path.exists("env.py"):
+if os.path.exists("lib/env.py"):
     import env
 import datetime
 
