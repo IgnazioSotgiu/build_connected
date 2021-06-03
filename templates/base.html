@@ -80,6 +80,26 @@
             </div>
         </div>
     </footer>
+    <!--displays flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash-message-container" id="flash-message-container">
+                    <div class="flash-box">
+                        <div class="flash-message">
+                            <div class="message-img"></div>
+                            <div class="flash-message deep-orange lighten-2 center-align">{{message}}
+                            </div>
+                            <div class="flash-buttons">
+                                <a href="{{ url_for('my_jobs', username=session['user']) }}" type="button" value="" class="btn btn-large teal" id="flash-close-btn">Ok</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+                
     <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

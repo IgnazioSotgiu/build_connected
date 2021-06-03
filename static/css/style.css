@@ -132,3 +132,44 @@ input {
 .popular-src-header, .popular-src-links, .main-popular-src-header {
     padding-left: 50px;
 }
+/*flash message*/
+.message-img {
+    background: url("../docs/images/worker-square.jpg") no-repeat bottom right; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.flash-message-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000000d4;
+    z-index: 2;
+}
+.flash-box {
+    position: absolute;
+    height: auto;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+    border: 2px solid #fafafa;
+    border-radius: 20px;
+    text-align: center;
+}
+.flash-buttons {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.flash-close-btn {
+    margin: 0 20px;
+}
