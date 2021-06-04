@@ -7,4 +7,9 @@ $(document).ready(function(){
     });
     $('.tooltipped').tooltip();
     $('.collapsible').collapsible();
-    });
+
+})
+
+function delete_flash(flash){
+        $(flash).parent().remove()
+    }

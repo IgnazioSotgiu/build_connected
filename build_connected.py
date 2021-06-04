@@ -4,9 +4,9 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
 if os.path.exists("env.py"):
     import env
-import datetime
 
 app = Flask(__name__)
 
@@ -23,32 +23,27 @@ def welcome_page():
     return render_template("welcome-page.html")
 
 
-def get_construction_categories():
-    CONSTRUCTION_CATEGORIES = ["electrician", "plumber", "carpenter",
-                               "surveyor", "architect", "bathroom fitter",
-                               "bedroom fitter", "bricklayer",
-                               "building surveyor", "building technician",
-                               "carpenter", "carpet fitter", "crane operator",
-                               "floor layer", "interior designer", "joiner",
-                               "kitchen fitter", "painter and decorator",
-                               "risk manager", "project manager", "scaffolder",
-                               "roofing operative", "site manager",
-                               "stonemason", "wall and floor tyler",
-                               "welder engineer", "technical coordinator"]
-    CONSTRUCTION_CATEGORIES.sort()
-
-    return CONSTRUCTION_CATEGORIES
+construction_categories = ["electrician", "plumber", "carpenter",
+                           "surveyor", "architect", "bathroom fitter",
+                           "bedroom fitter", "bricklayer",
+                           "building surveyor", "building technician",
+                           "carpenter", "carpet fitter", "crane operator",
+                           "floor layer", "interior designer", "joiner",
+                           "kitchen fitter", "painter and decorator",
+                           "risk manager", "project manager", "scaffolder",
+                           "roofing operative", "site manager",
+                           "stonemason", "wall and floor tyler",
+                           "welder engineer", "technical coordinator"]
+construction_categories.sort()
 
 
-def get_counties():
-    COUNTIES = ["carlow", "cavan", "clare", "cork", "donegal", "dublin",
-                "galway", "kerry", "kildare", "kilkenny", "laois",
-                "leitrim", "limerick", "longford", "louth", "mayo",
-                "meath", "monaghan", "offaly", "roscommon", "sligo",
-                "tipperary", "waterford", "westmeath", "wexford",
-                "wicklow"]
-    COUNTIES.sort()
-    return COUNTIES
+COUNTIES = ["carlow", "cavan", "clare", "cork", "donegal", "dublin",
+            "galway", "kerry", "kildare", "kilkenny", "laois",
+            "leitrim", "limerick", "longford", "louth", "mayo",
+            "meath", "monaghan", "offaly", "roscommon", "sligo",
+            "tipperary", "waterford", "westmeath", "wexford",
+            "wicklow"]
+COUNTIES.sort()
 
 
 def get_users_company_names():
@@ -83,8 +78,6 @@ def get_jobs_counties():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    construction_categories = get_construction_categories()
-    COUNTIES = get_counties()
 
     if request.method == "POST":
         check_username = mongo.db.users.find_one(
@@ -183,8 +176,6 @@ def get_latest_jobs():
 def add_job():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    construction_categories = get_construction_categories()
-    COUNTIES = get_counties()
     if request.method == "POST":
         new_job = {
             "job_title": request.form.get("job_title").lower(),
@@ -252,8 +243,6 @@ def get_profile(username):
 @app.route("/edit_profile/<username>", methods=["GET", "POST"])
 def edit_profile(username):
     my_profile = get_profile(username)
-    construction_categories = get_construction_categories()
-    COUNTIES = get_counties()
     if request.method == "POST":
         update_user = {
             "username": username,
@@ -305,8 +294,6 @@ def edit_password(username):
 def edit_job(job_id):
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     username = session["user"]
-    construction_categories = get_construction_categories()
-    COUNTIES = get_counties()
     if request.method == "POST":
         edit_job = {
             "job_title": request.form.get("job_title").lower(),

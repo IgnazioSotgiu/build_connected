@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build Connected</title>
-    <link rel="icon" href="{{ url_for('static',filename='docs/images/favicon.png') }}" sizes="16x16" type="image">
+    <link rel="icon" href="{{ url_for('static', filename='docs/images/favicon.png') }}" sizes="16x16" type="image">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
@@ -52,15 +52,6 @@
             </ul>
         </header>
     </div>
-    <div>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="flash-message deep-orange lighten-2 center-align">{{message}}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </div>
     {% block content %}
 
     {% endblock %}
@@ -85,13 +76,13 @@
         {% if messages %}
             {% for message in messages %}
                 <div class="flash-message-container" id="flash-message-container">
-                    <div class="flash-box">
+                    <div class="flash-box" onclick=delete_flash(this)>
                         <div class="flash-message">
                             <div class="message-img"></div>
                             <div class="flash-message deep-orange lighten-2 center-align">{{message}}
                             </div>
                             <div class="flash-buttons">
-                                <a href="{{ url_for('my_jobs', username=session['user']) }}" type="button" value="" class="btn btn-large teal" id="flash-close-btn">Ok</a>
+                                <button type="button" value="" class="btn btn-large teal" id="flash-close-btn">Ok</button>
                             </div>
                         </div>
                     </div>
@@ -99,7 +90,6 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-                
     <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
