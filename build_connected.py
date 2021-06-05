@@ -33,7 +33,8 @@ construction_categories = ["electrician", "plumber", "carpenter",
                            "risk manager", "project manager", "scaffolder",
                            "roofing operative", "site manager",
                            "stonemason", "wall and floor tyler",
-                           "welder engineer", "technical coordinator"]
+                           "welder engineer", "technical coordinator",
+                           "general contractor"]
 construction_categories.sort()
 
 
@@ -74,6 +75,12 @@ def get_jobs_categories():
 def get_jobs_counties():
     job_counties = mongo.db.jobs.distinct("county")
     return job_counties
+
+
+# get the last 10 jobs entered
+def get_latest_jobs():
+    latest_jobs = mongo.db.jobs.find().sort([['_id', -1]]).limit(10)
+    return latest_jobs
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -164,12 +171,6 @@ def homepage_latest_jobs(username):
         users_counties=users_counties, company_names=company_names,
         jobs_company_names=jobs_company_names, jobs_categories=jobs_categories,
         jobs_counties=jobs_counties)
-
-
-# get the last 10 jobs entered
-def get_latest_jobs():
-    latest_jobs = mongo.db.jobs.find().sort("date_job_created", -1).limit(10)
-    return latest_jobs
 
 
 @app.route("/add_job", methods=['GET', 'POST'])
@@ -344,6 +345,13 @@ def info(job_id):
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     username = session["user"]
     return render_template("job-info-page.html", username=username, job=job)
+
+
+@app.route("/my_job_info/<job_id>")
+def my_job_info(job_id):
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+    username = session["user"]
+    return render_template("my-job-info-page.html", username=username, job=job)
 
 
 @app.route("/search_users", methods=["GET", "POST"])

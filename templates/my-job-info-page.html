@@ -10,7 +10,7 @@
                 <h4 class="center">{{ job.job_title.title() }}</h4>
             </div>
             <div class="card-panel teal white-text">
-                <a href="{{ url_for('homepage_latest_jobs', username=session['user']) }}" class="fas fa-times close-icon white-text right"></a>
+                <a href="{{ url_for('my_jobs', username=session['user']) }}" class="fas fa-times close-icon white-text right"></a>
                 <div class="row">
                     <span class="col s2 offset-s1">Employer:</span>
                     <span class="col s5 offset-s1"><a class="white-text" href="#">{{ job.employer.title() }}</a></span>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="row">
                     <span class="col s2 offset-s1">Description:</span>
-                    <span class="col s7 offset-s1">{{ job.description.capitalize() }}</span>
+                    <span class="col s7 offset-s1">{{ job.description }}</span>
                 </div>
                 <div class="row">
                     <div class="col s12 center-align">

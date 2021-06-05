@@ -32,7 +32,7 @@
                                 {% endfor %}
                             </td>
                             <td>{{ job.date_job_created }}</td>
-                            <td><a href="{{ url_for('info', job_id=job._id) }}" class="btn btn-small blue lighten-1">Info</a></td>
+                            <td><a href="{{ url_for('my_job_info', job_id=job._id) }}" class="btn btn-small blue lighten-1">Info</a></td>
                             <td><a href="{{ url_for('edit_job', job_id=job._id) }}" class="btn btn-small teal">Edit</a></td>
                             <td><a href="{{ url_for('delete_job_check', job_id=job._id) }}" class="btn btn-small red">Delete</a></td>
                         </tr>

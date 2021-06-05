@@ -8,7 +8,7 @@ body{
     position: relative;
 }
 h4 {
-    color: black;
+    color: #fff;
 }
 .top-page-section {
     min-height: 100px;
@@ -45,18 +45,69 @@ nav ul a {
 }
 /*background image welcome page*/
 .welcome-bg-image {
-    background: url("../docs/images/construction-5.jpg") no-repeat bottom right; 
+    background: url("../docs/images/landing-bg.jpg") no-repeat bottom right; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    max-height: 100%;
-    max-width: 100%;
+    min-height: 90%;
+    width: 100%;
+}
+.big-logo-img {
+    background: url("../docs/images/logo-big.png") no-repeat bottom right; 
+    height: 118px;
+    width: 118px;
+    margin-top: 50px;
+
 }
 .hr-welcome-page {
     background-color: #007d70;
     height: 5px;
     width: 60%;
+}
+.hr-mobile {
+        display: none;
+    }
+.title-container {
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+}
+.main-title {
+    position: relative;
+    height: 120px;
+    width: 400px;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+.build-word {
+    position: absolute;
+    top: 0px;
+    font-size: 50px;
+    left: 125px;
+}
+.connected-word {
+    position: absolute;
+    top: 50px;
+    font-size: 50px;
+    left: 125px;
+}
+.main-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.join-message {
+    color: #000;
+    width: fit-content;
+    border: 1px solid #ffe600;
+    background-color: #ffe600;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-left: 50%;
+    transform: translate(-50%);
 }
 /*registration form*/
 .reg-bg-image {
@@ -172,4 +223,39 @@ input {
 }
 .flash-close-btn {
     margin: 0 20px;
+}
+@media screen and (max-width: 650px) {
+    .join-message {
+        display: none;
+    }
+    .hr-mobile {
+        display: block;
+    }
+    .join-button {
+        margin-top: 50px;
+    }
+    .main-title {
+        position: relative;
+        height: 80px;
+        width: 250px;
+        margin-left: 50%;
+        transform: translate(-50%);
+    }
+    .build-word {
+        position: absolute;
+        top: 0px;
+        font-size: 30px;
+        left: 125px;
+    }
+    .connected-word {
+        position: absolute;
+        top: 30px;
+        font-size: 30px;
+        left: 125px;
+    }
+    .main-logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }

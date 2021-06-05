@@ -18,7 +18,7 @@
                         {% for job in jobs %}
                             <tr>
                                 <td>{{ job.job_title.capitalize() }}</td>
-                                <td>{{ job.employer.capitalize() }}</td>
+                                <td>{{ job.employer.title() }}</td>
                                 <td>{{ job.date_job_created }}</td>
                                 <td><a href="{{ url_for('info', job_id=job._id) }}" class="btn btn-small blue lighten-1">Info</a></td>
                                 {% if job.is_urgent.lower() == "urgent" %}

@@ -14,7 +14,7 @@
         <div class="col s4">
             <h5 class="main-popular-src-header">Popular Searches:</h5>
             <hr class="hr-home">
-            <h6 class="popular-src-header">Search Sub Contractor<h6>
+            <h6 class="popular-src-header">Search Contractor<h6>
             <ul class="collapsible">
                 <li class="popular-src-links">
                     <div class="collapsible-header">By Name</div>
@@ -58,7 +58,7 @@
                         <form action="{{ url_for('search_users') }}" method="POST">
                             <select id="src_company_by_county" name="src_company_by_county" type="text" class="validate" required>
                             {% for county in users_counties %}
-                                <option value="{{ county }}">{{ county.capitalize() }}</option>
+                                <option value="{{ county.lower() }}">{{ county.title() }}</option>
                             {% endfor %}
                             </select>
                             <label for="src_company_by_county"></label>
@@ -97,8 +97,8 @@
                             <select  id="src_job_by_category"  name="src_job_by_category"  class="validate" required>
                                 <option value="" disabled selected>Select category</option>
                                     {% for category in jobs_categories %}
-                                        <option value="{{ category }}">
-                                            {{- category.capitalize() -}}
+                                        <option value="{{ category.lower() }}">
+                                            {{- category.title() -}}
                                         </option>
                                     {% endfor %}
                             </select>
@@ -116,7 +116,7 @@
                             <select id="src_job_by_county" name="src_job_by_county" type="text" class="validate" required>
                                 <option value="" disabled selected>Select a County</option>
                                 {% for county in jobs_counties %}
-                                    <option value="{{ county }}">{{ county.capitalize() }}</option>
+                                    <option value="{{ county.lower() }}">{{ county.title() }}</option>
                                 {% endfor %}
                             </select>
                             <label for="src_job_by_county"></label>
