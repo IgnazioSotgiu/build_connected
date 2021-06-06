@@ -158,8 +158,18 @@ input {
     background-size: cover;
 }
 /*homepage*/
+.home-bg-image {
+    background: url("../docs/images/home-bg-img.jpg") no-repeat bottom right; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 .fa-exclamation-triangle:before {
     font-size: 25px;
+}
+.popular-src-col {
+    background-color: #007d70;
 }
 .popular-src-links {
     margin: 10px;
@@ -179,9 +189,6 @@ input {
 }
 .main-popular-src-header {
     margin-bottom: 60px;
-}
-.popular-src-header, .popular-src-links, .main-popular-src-header {
-    padding-left: 50px;
 }
 /*flash message*/
 .message-img {
@@ -246,12 +253,14 @@ input {
         top: 0px;
         font-size: 30px;
         left: 125px;
+        color: #007d70;
     }
     .connected-word {
         position: absolute;
         top: 30px;
         font-size: 30px;
         left: 125px;
+        color: #007d70;
     }
     .main-logo {
         position: absolute;

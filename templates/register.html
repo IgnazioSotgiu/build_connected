@@ -21,9 +21,12 @@
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2">
                         <select  id="contractor_type"  name="contractor_type"  class="validate" required>
-                            <option value="" disabled selected>Select Contractor Category</option>
-                            <option value="main contractor">Main Contractor</option>
-                            <option value="sub contractor">Sub Contractor</option>
+                            <option value="" disabled>Select Contractor Type</option>
+                            {% for contractor in contractor_type %}
+                                <option value="{{ contractor.lower() }}">
+                                    {{ contractor.title() }}
+                                </option>
+                            {% endfor %}
                         </select>
                         <label for="contractor_type"></label>
                     </div>

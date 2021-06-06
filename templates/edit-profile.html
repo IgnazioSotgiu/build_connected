@@ -17,12 +17,11 @@
                                 <option value="{{ my_profile.contractor_type.title() }}"selected>
                                     {{- my_profile.contractor_type.title() -}}
                                 </option>
-                                <option value="main contractor">
-                                    Main Contractor
-                                </option>
-                                <option value="sub contractor">
-                                    Sub Contractor
-                                </option>
+                                {% for contractor in contractor_type %}
+                                    <option value="{{ contractor.lower() }}">
+                                        {{ contractor.title() }}
+                                    </option>
+                                {% endfor %}
                             </select>
                             <label for="contractor_type"></label>
                         </div>

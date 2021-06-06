@@ -23,6 +23,10 @@ def welcome_page():
     return render_template("welcome-page.html")
 
 
+contractor_type = ["main contractor", "sub contractor", "architect"]
+contractor_type.sort()
+
+
 construction_categories = ["electrician", "plumber", "carpenter",
                            "surveyor", "architect", "bathroom fitter",
                            "bedroom fitter", "bricklayer",
@@ -122,7 +126,7 @@ def register():
 
     return render_template("register.html",
                            construction_categories=construction_categories,
-                           COUNTIES=COUNTIES)
+                           COUNTIES=COUNTIES, contractor_type=contractor_type)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -264,7 +268,8 @@ def edit_profile(username):
 
     return render_template(
         "edit-profile.html", username=username, my_profile=my_profile,
-        construction_categories=construction_categories, COUNTIES=COUNTIES)
+        construction_categories=construction_categories, COUNTIES=COUNTIES,
+        contractor_type=contractor_type)
 
 
 @app.route("/edit_password/<username>", methods=["GET", "POST"])
