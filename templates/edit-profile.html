@@ -19,7 +19,7 @@
                                 </option>
                                 {% for contractor in contractor_type %}
                                     <option value="{{ contractor.lower() }}">
-                                        {{ contractor.title() }}
+                                        {{- contractor.title() -}}
                                     </option>
                                 {% endfor %}
                             </select>
@@ -38,19 +38,13 @@
                     </div>
                     <div class="row form-row">
                         <div class="input-field col s8 offset-s2  center">
-                            <select  id="user_job_categories"  name="user_job_categories"  class="validate" type="text" multiple required>
-                                <option 
-                                value="{%- for job_name in my_profile.categories -%}
-                                        {{- job_name.title() -}}, 
-                                    {%- endfor -%}" selected>
-                                    {%- for job_name in my_profile.categories -%}
-                                        {{- job_name.title() -}},
-                                    {%- endfor -%}
-                                </option>
-                                {% for construction_category in construction_categories %}
-                                    <option value="{{ construction_category }}">
-                                            {{- construction_category.capitalize() -}}
-                                    </option>
+                            <select id="user_job_categories"  name="user_job_categories"  class="validate" multiple required>
+                                {%- for construction_category in construction_categories -%}
+                                    {%- if construction_category in my_profile.categories -%}
+                                        <option value="{{- construction_category -}}" selected>{{- construction_category.capitalize() -}}</option>
+                                    {% else %}
+                                        <option value="{{- construction_category -}}">{{- construction_category.capitalize() -}}</option>
+                                    {% endif %}
                                 {% endfor %}
                             </select>
                             <label for="user_job_categories">Categories</label>

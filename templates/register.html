@@ -21,10 +21,10 @@
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2 m4 offset-m2">
                         <select  id="contractor_type"  name="contractor_type"  class="validate" required>
-                            <option value="" disabled>Select Contractor Type</option>
+                            <option value="" disabled selected>Select Contractor Type</option>
                             {% for contractor in contractor_type %}
                                 <option value="{{ contractor.lower() }}">
-                                    {{ contractor.title() }}
+                                    {{- contractor.title() -}}
                                 </option>
                             {% endfor %}
                         </select>
@@ -33,9 +33,9 @@
                     <div class="input-field col s8 offset-s2 m4">
                         <select  id="category"  name="category"  class="validate" multiple required>
                             <option value="" disabled>Select Job Categories</option>
-                                {% for category in construction_categories %}
-                                    <option value="{{ category.lower() }}">
-                                        {{- category.title() -}}
+                                {% for construction_category in construction_categories %}
+                                    <option value="{{ construction_category }}">
+                                            {{- construction_category.capitalize() -}}
                                     </option>
                                 {% endfor %}
                         </select>

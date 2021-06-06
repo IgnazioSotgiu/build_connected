@@ -27,7 +27,7 @@ contractor_type = ["main contractor", "sub contractor", "architect"]
 contractor_type.sort()
 
 
-construction_categories = ["electrician", "plumber", "carpenter",
+construction_categories = ["electrician", "plumber",
                            "surveyor", "architect", "bathroom fitter",
                            "bedroom fitter", "bricklayer",
                            "building surveyor", "building technician",
@@ -109,7 +109,7 @@ def register():
             "username": request.form.get("username").lower(),
             "company_name": request.form.get("company_name").lower(),
             "contractor_type": request.form.get("contractor_type").lower(),
-            "categories": request.form.get("category").lower(),
+            "categories": request.form.getlist("category"),
             "county": request.form.get("county").lower(),
             "country": request.form.get("country").lower(),
             "email": request.form.get("email"),
