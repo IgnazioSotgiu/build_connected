@@ -36,7 +36,7 @@
                 </div>
             </nav>
             <ul class="sidenav center" id="mobile-demo">
-                <li><img class="sidenav-logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a></li>
+                <li><img class="sidenav-logo" src="{{url_for('static', filename='docs/images/navbar-logo-small.png') }}" alt="Build connected logo"></a></li>
                 {% if not session.user %}
                     <li><a href="{{ url_for('login') }}">Log In</a></li>
                     <li><a href="{{ url_for('register')}}">Register</a></li>

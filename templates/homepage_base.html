@@ -21,6 +21,7 @@
                     <div class="collapsible-body">
                         <form action="{{ url_for('search_users') }}" method="POST">
                             <select  id="src_company_by_name"  name="src_company_by_name"  class="validate" required>
+                                <option value="" disabled selected>Select a Name</option>
                                 {% for company in company_names %}
                                     <option value="{{ company.lower() }}">
                                         {{- company.title() -}}
@@ -39,6 +40,7 @@
                     <div class="collapsible-body">
                         <form action="{{ url_for('search_users') }}" method="POST">
                             <select  id="src_company_by_category"  name="src_company_by_category"  class="validate" required>
+                                <option value="" disabled selected>Select a Category</option>
                                 {% for category in users_categories %}
                                     <option value="{{ category }}">
                                         {{- category -}}
@@ -57,9 +59,10 @@
                     <div class="collapsible-body">
                         <form action="{{ url_for('search_users') }}" method="POST">
                             <select id="src_company_by_county" name="src_company_by_county" type="text" class="validate" required>
-                            {% for county in users_counties %}
-                                <option value="{{ county.lower() }}">{{ county.title() }}</option>
-                            {% endfor %}
+                                <option value="" disabled selected>Select a County</option>
+                                {% for county in users_counties %}
+                                    <option value="{{ county.lower() }}">{{ county.title() }}</option>
+                                {% endfor %}
                             </select>
                             <label for="src_company_by_county"></label>
                             <div>
@@ -77,6 +80,7 @@
                     <div class="collapsible-body">
                         <form action="{{ url_for('search_jobs') }}" method="POST">
                             <select  id="src_job_by_company"  name="src_job_by_company"  class="validate" required>
+                                <option value="" disabled selected>Select a Company</option>
                                 {% for company in jobs_company_names %}
                                     <option value="{{ company.lower() }}">
                                         {{- company.title() -}}
@@ -95,7 +99,7 @@
                     <div class="collapsible-body">
                         <form action="{{ url_for('search_jobs') }}" method="POST">
                             <select  id="src_job_by_category"  name="src_job_by_category"  class="validate" required>
-                                <option value="" disabled selected>Select category</option>
+                                <option value="" disabled selected>Select a Category</option>
                                     {% for category in jobs_categories %}
                                         <option value="{{ category.lower() }}">
                                             {{- category.title() -}}

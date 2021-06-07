@@ -41,9 +41,9 @@
                             <select id="user_job_categories"  name="user_job_categories"  class="validate" multiple required>
                                 {%- for construction_category in construction_categories -%}
                                     {%- if construction_category in my_profile.categories -%}
-                                        <option value="{{- construction_category -}}" selected>{{- construction_category.capitalize() -}}</option>
+                                        <option value="{{- construction_category -}}" selected>{{- construction_category.title() -}}</option>
                                     {% else %}
-                                        <option value="{{- construction_category -}}">{{- construction_category.capitalize() -}}</option>
+                                        <option value="{{- construction_category -}}">{{- construction_category.title() -}}</option>
                                     {% endif %}
                                 {% endfor %}
                             </select>
