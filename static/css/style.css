@@ -16,6 +16,15 @@ h4 {
 .top-page-section {
     min-height: 100px;
 }
+.bottom-row {
+    padding: 0;
+    margin-bottom: 0;
+}
+.back-to-top-btn {
+    background-color: #ffe600;
+    color: #000;
+    font-size: 20px;
+}
 footer {
     width: 100%;
     height: 100px;
@@ -192,6 +201,13 @@ input.select-dropdown.dropdown-trigger:focus {
 .popular-src-btn {
     display: none;
 }
+.popular-src-img {
+    display: none;
+}
+.src-result-header {
+    background-color: #ffe600;
+    border-radius: 5px;
+}
 .fa-info-circle {
     font-size: 25px;
     background-color: #fff;
@@ -284,7 +300,7 @@ table {
     margin: 0 20px;
 }
 /*responsive style*/
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 992px) {
     .popular-src-btn {
         position: relative;
         display: block;
@@ -294,8 +310,12 @@ table {
         margin-left: 50%;
         transform: translate(-50%);
     }
+    .popular-src-img {
+        display: flex;
+        margin-top: 30%;
+    }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 600px) {
     .join-message {
         display: none;
     }
@@ -336,6 +356,9 @@ table {
         background-color: #ffe600;
     }
     .employer {
+        display: none;
+    }
+    .popular-src-img {
         display: none;
     }
 }

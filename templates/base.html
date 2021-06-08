@@ -12,7 +12,7 @@
     {% endblock %}
 </head>
 <body>
-    <div class="top-page-section">
+    <div class="top-page-section" id="top-page">
         <header>
             <!-- navbar -->
             <nav>
@@ -55,6 +55,9 @@
     {% block content %}
 
     {% endblock %}
+    <div class="row bottom-row">
+        <a href="#top-page" class="col s12 btn btn-small back-to-top-btn">Back to Top</a>
+    </div>
     <footer class="logo-color white-text">
         <div class="row">
             <div class="col s6 center social-media-icon">
