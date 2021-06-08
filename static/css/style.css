@@ -1,23 +1,20 @@
-html, body{
-        width:100%;
-        overflow-x:hidden;
-        height: 100%;
-        }
-body{
+html, body {
+    width:100%;
+    overflow-x:hidden;
+    height: 100%;
+    }
+body {
     min-height: 100vh;
     position: relative;
+}
+section {
+    min-height: 80vh;
 }
 h4 {
     color: #fff;
 }
 .top-page-section {
     min-height: 100px;
-}
-section {
-    min-height: 80vh;
-}
-.sidenav-logo {
-    width: 205px;
 }
 footer {
     width: 100%;
@@ -37,6 +34,10 @@ footer .social-media-icon {
 .logo {
     height: 100px; 
 }
+/*navigation*/
+.sidenav-logo {
+    width: 205px;
+}
 nav .nav-wrapper {
     height: 100px;
 }
@@ -44,7 +45,7 @@ nav ul a {
     padding: 17px 15px;
 }
 .sidenav.right-aligned {
-    right: 10px;
+    right: 0px;
     width: 205px;
     top: 80px;
     height: auto;
@@ -123,10 +124,11 @@ nav ul a {
     -o-background-size: cover;
     background-size: cover;
 }
-input {
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
     color: white;
+    border-bottom: 2px solid #9e9e9e;
 }
-.main-form {
+.main-row {
     margin-bottom: 0;
     padding-bottom: 40px;
 }
@@ -135,6 +137,10 @@ input {
 }
 .select-wrapper input.select-dropdown {
     color: white;
+    border-bottom: 2px solid #9e9e9e;
+}
+input.select-dropdown.dropdown-trigger:focus {
+    border-bottom: 2px solid #9e9e9e;
 }
 .dropdown-content li>a, .dropdown-content li>span {
     color: white;
@@ -165,14 +171,41 @@ input {
 }
 /*homepage*/
 .home-bg-image {
-    background: url("../docs/images/home-bg-img.jpg") no-repeat bottom right; 
+    background: url("../docs/images/concrete.jpg") no-repeat bottom right; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+.username-salutation {
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: 3px;
+    color: #000;
+}
+.username-salutation i {
+    color: #ffe600;
+}
+.src-btn-container {
+    width: 100%;
+}
+.popular-src-btn {
+    display: none;
+}
+.fa-info-circle {
+    font-size: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
 .fa-exclamation-triangle:before {
     font-size: 25px;
+}
+td {
+    min-width: 100px;
+}
+td.symbol {
+    min-width: 50px;
 }
 .popular-src-col {
     background-color: #007d70;
@@ -185,16 +218,29 @@ input {
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 500;
+    text-align: center;
 }
 .hr-home {
-    margin-top: 50px;
-    margin-bottom: 20px;
     width: 80%;
     height: 2px;
-    background-color: #007d70;
+    background-color: #000;
+    border: 0;
 }
 .main-popular-src-header {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+}
+.collapsible {
+    border: 1px solid #ddd;
+    padding-bottom: 1px;
+    margin-bottom: 40px;
+}
+/*jobs search result*/
+table {
+    background-color: #042922;
+}
+.src-result-header {
+    font-weight: 600;
+    font-size: 30px;
 }
 /*flash message*/
 .message-img {
@@ -238,6 +284,17 @@ input {
     margin: 0 20px;
 }
 /*responsive style*/
+@media screen and (max-width: 1000px) {
+    .popular-src-btn {
+        position: relative;
+        display: block;
+        background-color: #042922;
+        color: #fff;
+        margin-bottom: 50px;
+        margin-left: 50%;
+        transform: translate(-50%);
+    }
+}
 @media screen and (max-width: 650px) {
     .join-message {
         display: none;
@@ -273,5 +330,12 @@ input {
         position: absolute;
         top: 0;
         left: 0;
+    }
+    .src-result-header {
+        font-size: 20px;
+        background-color: #ffe600;
+    }
+    .employer {
+        display: none;
     }
 }

@@ -3,15 +3,18 @@
 <section class="home-bg-image">
     <div class="row">
         <a href="{{ url_for('profile', username=session['user']) }}">
-            <h4 class="col s10 offset-s1 m8 offset-m2">
-                Welcome {{ username }},
+            <h4 class="col s10 offset-s1 m8 offset-m2 username-salutation"><i class="fas fa-user-circle"></i>
+                {{ username }},
             </h4>
         </a>
     </div>
-    <div class="row">
+    <div class="src-btn-container">
+        <button type="button" class="btn btn-small popular-src-btn center" id="popular-src-btn">Popular Searches</button>
+    </div>
+    <div class="row main-row">
         {% block search_result %}
         {% endblock %}
-        <div class="col s3 popular-src-col">
+        <div class="col s8 offset-s2 l3 popular-src-col">
             <h5 class="main-popular-src-header white-text center">Popular Searches:</h5>
             <hr class="hr-home">
             <h6 class="popular-src-header">Search Contractor<h6>
