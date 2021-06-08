@@ -314,6 +314,10 @@ table {
         display: flex;
         margin-top: 30%;
     }
+    .src-img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 @media screen and (max-width: 600px) {
     .join-message {
