@@ -250,6 +250,24 @@ td.symbol {
     padding-bottom: 1px;
     margin-bottom: 40px;
 }
+/*add job page*/
+.add-job-bg-image {
+    background: url("../docs/images/add-job-bg.jpg") no-repeat bottom right; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.add-job-bg-image {
+    max-width: 100%;
+}
+.side-img {
+    max-width: 100%;
+    width: auto;
+    border: 2px solid #042922;
+    border-radius: 10px;
+    margin-top: 10%;
+}
 /*jobs search result*/
 table {
     background-color: #042922;
