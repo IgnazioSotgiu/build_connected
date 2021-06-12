@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="welcome-bg-image">
+<section class="flex-container welcome-bg-image">
     <div class="title-container">
         <div class="main-title">
             <span class="main-logo"><img src="./static/docs/images/logo-big.png" alt="logo"></span>
@@ -20,7 +20,7 @@
     <h5 class="join-message">Join Now the Construction<br>Online Community</h5>
     </a>
     <div class="row ">
-    <a href="{{ url_for('register')}}" class="col m2 offset-m5 s4 offset-s4 btn btn-large center join-button">Join Now
+    <a href="{{ url_for('register')}}" class="col btn btn-large center join-button">Join Now
     </a>
 
     </div>
