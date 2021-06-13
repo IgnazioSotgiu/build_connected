@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="home-bg-image">
+    <div class="row">
+        <a href="{{ url_for('profile', username=session['user']) }}">
+            <h4 class="col s10 offset-s1 m8 offset-m2 username-salutation">
+                <i class="fas fa-user-circle"></i>
+                {{ username }},
+            </h4>
+        </a>
+    </div>
+    <div class="src-btn-container">
+        <a href="#popular-searches">
+            <button type="button" class="btn btn-small popular-src-btn center" id="popular-src-btn">Popular Searches</button>
+        </a>
+    </div>
+    <div class="row main-row">
+        <div class="col s10 offset-s1 m10 offset-m1 l6 offset-l1 center">
+            {% block search_result %}
+            {% endblock %}
+        </div>
+        <div class="col s10 offset-s1 l3 offset-l1 popular-src-col" id="popular-searches">
+            <div class="col s12">
+                <h5 class="main-popular-src-header white-text center">Popular Searches:</h5>
+                <hr class="hr-home">
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m4 offset-m1 l12 center">
+                        <h6 class="popular-src-header">Search Contractor<h6>
+                        <ul class="collapsible">
+                            <li class="popular-src-links">
+                                <div class="collapsible-header">By Name</div>
+                                <div class="collapsible-body">
+                                    <form action="{{ url_for('search_users') }}" method="POST">
+                                        <select id="src_company_by_name" name="src_company_by_name" class="validate" required>
+                                            <option value="" disabled selected>Select a Name</option>
+                                            {% for company in company_names %}
+                                                <option value="{{ company.lower() }}">
+                                                    {{- company.title() -}}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                        <label for="src_company_by_name"></label>
+                                        <div>
+                                            <button type="submit" class="btn btn-small teal">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="popular-src-links">
+                                <div class="collapsible-header">By Category</div>
+                                <div class="collapsible-body">
+                                    <form action="{{ url_for('search_users') }}" method="POST">
+                                        <select id="src_company_by_category" name="src_company_by_category" class="validate" required>
+                                            <option value="" disabled selected>Select a Category</option>
+                                            {% for category in users_categories %}
+                                                <option value="{{ category }}">
+                                                    {{- category -}}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                        <label for="src_company_by_category"></label>
+                                        <div>
+                                            <button type="submit" class="btn btn-small teal">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="popular-src-links">
+                                <div class="collapsible-header">By County</div>
+                                <div class="collapsible-body">
+                                    <form action="{{ url_for('search_users') }}" method="POST">
+                                        <select id="src_company_by_county" name="src_company_by_county" type="text"
+                                            class="validate" required>
+                                            <option value="" disabled selected>Select a County</option>
+                                            {% for county in users_counties %}
+                                                <option value="{{ county.lower() }}">
+                                                    {{ county.title() }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                        <label for="src_company_by_county"></label>
+                                        <div>
+                                            <button type="submit" class="btn btn-small teal">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col s10 offset-s1 m4 offset-m2 l12 center">
+                        <h6 class="popular-src-header">Search Jobs<h6>
+                        <ul class="collapsible">
+                        <li class="popular-src-links">
+                            <div class="collapsible-header">By Employer</div>
+                            <div class="collapsible-body">
+                                <form action="{{ url_for('search_jobs') }}" method="POST">
+                                    <select id="src_job_by_company" name="src_job_by_company" class="validate" required>
+                                        <option value="" disabled selected>Select a Company</option>
+                                        {% for company in jobs_company_names %}
+                                            <option value="{{ company.lower() }}">
+                                                {{- company.title() -}}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                    <label for="src_job_by_company"></label>
+                                    <div>
+                                        <button type="submit" class="btn btn-small teal">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="popular-src-links">
+                            <div class="collapsible-header">By Category</div>
+                            <div class="collapsible-body">
+                                <form action="{{ url_for('search_jobs') }}" method="POST">
+                                    <select id="src_job_by_category" name="src_job_by_category" class="validate" required>
+                                        <option value="" disabled selected>Select a Category</option>
+                                        {% for category in jobs_categories %}
+                                            <option value="{{ category.lower() }}">
+                                                {{- category.title() -}}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                    <label for="src_job_by_category"></label>
+                                    <div>
+                                        <button type="submit" class="btn btn-small teal">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="popular-src-links">
+                            <div class="collapsible-header">By County</div>
+                            <div class="collapsible-body">
+                                <form action="{{ url_for('search_jobs') }}" method="POST">
+                                    <select id="src_job_by_county" name="src_job_by_county" type="text" class="validate" required>
+                                        <option value="" disabled selected>Select a County</option>
+                                        {% for county in jobs_counties %}
+                                            <option>{{ county.title() }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <label for="src_job_by_county"></label>
+                                    <div>
+                                        <button type="submit" class="btn btn-small teal">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="row bottom-row">
+    <a href="#top-page" class="col s12 btn btn-small back-to-top-btn">Back to Top</a>
+</div>
+
+
+{% endblock %}

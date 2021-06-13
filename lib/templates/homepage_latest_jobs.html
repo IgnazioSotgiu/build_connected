@@ -1,34 +1,32 @@
-{% extends "homepage_base.html" %}
+{% extends "homepage-popular-searches.html" %}
 {% block search_result %}
-<div class="col s12 l8">
-        <div class="row">
-            <h5 class="col s10 offset-s1 m6 offset-m3 center-align src-result-header">Latest jobs added:</h5>
-        </div>
-        <div class="row white-text">
-            <div class="col s12 m10 offset-m1">
-                <table class="striped centered">
-                    <thead>
-                        <tr>
-                            <th>Job Title</th>
-                            <th class="employer">Employer</th>
-                            <th>Date Entered</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for job in jobs %}
-                            <tr>
-                                <td>{{ job.job_title.capitalize() }}</td>
-                                <td class="employer">{{ job.employer.title() }}</td>
-                                <td>{{ job.date_job_created }}</td>
-                                <td class="symbol"><a href="{{ url_for('info', job_id=job._id) }}"><i class="fas fa-info-circle"></i></a></td>
-                                {% if job.is_urgent.lower() == "urgent" %}
-                                    <td class="symbol fas fa-exclamation-triangle red-text tooltipped urgent" data-position="right" data-tooltip="Urgent!"></td>
-                                {% endif %}
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="row">
+    <h5 class="col s10 offset-s1 center-align src-result-header">Latest jobs added:</h5>
+</div>
+<div class="row white-text">
+    <div class="col s12">
+        <table class="striped centered">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th class="employer">Employer</th>
+                    <th>Date Entered</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                    <tr>
+                        <td>{{ job.job_title.capitalize() }}</td>
+                        <td class="employer">{{ job.employer.title() }}</td>
+                        <td>{{ job.date_job_created }}</td>
+                        <td class="symbol"><a href="{{ url_for('info', job_id=job._id) }}"><i class="fas fa-info-circle"></i></a></td>
+                        {% if job.is_urgent.lower() == "urgent" %}
+                            <td class="symbol fas fa-exclamation-triangle red-text tooltipped urgent" data-position="right" data-tooltip="Urgent!"></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

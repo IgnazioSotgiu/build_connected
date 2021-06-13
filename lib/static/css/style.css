@@ -148,6 +148,16 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     margin-bottom: 0;
     padding-bottom: 40px;
 }
+.login-link {
+    color: #ffe600;
+}
+.hr-register-form{
+    background-color: #fff;
+    height: 1px;
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
 .form-row {
     margin: 0;
     margin-bottom: 0;
@@ -356,6 +366,10 @@ table {
     .src-img {
         max-width: 100%;
         height: auto;
+    }
+    /*add job page*/
+    .add-job-img {
+        display: none;
     }
 }
 @media screen and (max-width: 600px) {
