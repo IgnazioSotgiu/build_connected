@@ -249,6 +249,19 @@ input.select-dropdown.dropdown-trigger:focus {
     border-radius: 50%;
     border: 1px solid #fff;
 }
+.fa-times-circle {
+    font-size: 25px;
+    color: red;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.fa-edit {
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    color: rgb(18, 214, 18);
+    background-color: transparent;
+}
 .fa-exclamation-triangle:before {
     font-size: 25px;
 }
@@ -308,6 +321,7 @@ td.symbol {
 table {
     background-color: #042922;
     border-radius: 10px;
+    overflow: hidden
 }
 .src-result-header {
     font-weight: 600;
@@ -339,6 +353,8 @@ table {
     height: 0.5px;
     width: 90%;
 }
+/*my jobs page */
+
 /*flash message*/
 .message-img {
     background: url("../docs/images/worker-square.jpg") no-repeat bottom right; 
@@ -405,6 +421,9 @@ table {
     }
 }
 @media screen and (max-width: 600px) {
+    .row .col {
+        padding: 0;
+    }
     .join-message {
         display: none;
     }
@@ -448,6 +467,9 @@ table {
         display: none;
     }
     .popular-src-img {
+        display: none;
+    }
+    .my-jobs-category {
         display: none;
     }
 }
