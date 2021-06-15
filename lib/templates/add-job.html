@@ -20,7 +20,7 @@
                                 <option value="" disabled>Select Category</option>
                                     {% for construction_category in construction_categories %}
                                         <option value="{{ construction_category }}">
-                                            {{- construction_category.capitalize() -}}
+                                            {{- construction_category.title() -}}
                                         </option>
                                     {% endfor %}
                             </select>
@@ -68,8 +68,8 @@
                     </div>
                     <div class="row form-row">
                         <div class="col s12 center-align">
-                            <a href="{{ url_for('homepage_latest_jobs', username= session['user']) }}" class="btn btn-large red">Cancel</a>
-                            <button type="submit" class="btn btn-large s12 center">Add Job</button>
+                            <a href="{{ url_for('homepage_latest_jobs', username= session['user']) }}" class="btn btn-small red">Cancel</a>
+                            <button type="submit" class="btn btn-small s12 center">Add Job</button>
                         </div>
                     </div>
                 </div>

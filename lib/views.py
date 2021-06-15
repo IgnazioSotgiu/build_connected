@@ -88,12 +88,11 @@ def register():
         check_confirm_password = request.form.get("confirm_password")
 
         if check_username:
-            flash("Username already exists")
+            flash("Username already exists", "error")
             return redirect(url_for('register'))
 
         elif check_password != check_confirm_password:
-            flash("Passwords don't match.")
-            flash("Please re-enter passwords")
+            flash("Passwords don't match. Please re-enter passwords", "error")
             return redirect(url_for('register'))
 
         new_user = {
@@ -111,7 +110,7 @@ def register():
 
         session["user"] = request.form.get("username").lower()
         flash("Welcome {}. Registration Successful".format(
-            request.form.get("username")))
+            request.form.get("username")), "success")
         return redirect(url_for(
             "homepage_latest_jobs", username=session["user"]))
 
@@ -130,13 +129,13 @@ def login():
                     check_username["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Hello {}, you were successfully logged in".format(
-                        request.form.get("username")))
+                        request.form.get("username")), "success")
                 return redirect(url_for(
                     "homepage_latest_jobs", username=session["user"]))
 
         else:
-            flash("Incorrect username and/or password.")
-            flash("Please try again.")
+            flash("Incorrect username and/or password. Please try again.",
+                  "error")
             return render_template('login.html')
 
     return render_template("login.html")
@@ -145,7 +144,7 @@ def login():
 @app.route("/logout")
 def logout():
     session.clear()
-    flash("You have logged out")
+    flash("You have logged out", "success")
     return redirect(url_for("welcome_page"))
 
 
@@ -190,7 +189,7 @@ def add_job():
                 {"username": session["user"]})["username"]
         }
         mongo.db.jobs.insert_one(new_job)
-        flash("New job successfully added")
+        flash("New job successfully added", "success")
         return redirect(url_for("homepage_latest_jobs", username=username))
 
     return render_template("add-job.html",
@@ -201,7 +200,7 @@ def add_job():
 @app.route("/my_jobs/<username>")
 def my_jobs(username):
     my_jobs_list = mongo.db.jobs.find(
-        {"created_by": session["user"]}).sort("date_job_created", -1)
+        {"created_by": session["user"]}).sort([['_id', -1]])
 
     return render_template(
         "my-jobs.html", my_jobs_list=my_jobs_list, username=username)
@@ -252,7 +251,7 @@ def edit_profile(username):
             "password": my_profile["password"]
         }
         mongo.db.users.update({"username": username}, update_user)
-        flash("Profile Successfully Updated")
+        flash("Profile Successfully Updated", "success")
         my_profile = get_profile(username)
         return render_template(
             'profile-page.html', username=username, my_profile=my_profile)
@@ -279,7 +278,7 @@ def edit_password(username):
                     {"username": username},
                     {"$set": {"password": new_password}})
 
-                flash("Password Successfully Changed")
+                flash("Password Successfully Changed", "success")
                 return render_template(
                     'profile-page.html',
                     username=username, my_profile=my_profile)
@@ -310,7 +309,7 @@ def edit_job(job_id):
                 {"username": session["user"]})["username"]
         }
         mongo.db.jobs.update({"_id": ObjectId(job_id)}, edit_job)
-        flash("Job successfully edited")
+        flash("Job successfully edited", "success")
         return redirect(url_for("my_jobs", username=username))
 
     return render_template("edit-job.html", job=job,
@@ -331,7 +330,7 @@ def delete_job_check(job_id):
 def delete_job(job_id):
     username = session["user"]
     mongo.db.jobs.remove({"_id": ObjectId(job_id)})
-    flash("The job was successfully deleted")
+    flash("The job was successfully deleted", "success")
 
     return redirect(url_for("my_jobs", username=username))
 
@@ -375,7 +374,7 @@ def search_users():
         src_result = list(
             mongo.db.users.find({"county": query}))
     else:
-        flash("Search parameters error")
+        flash("Search parameters error", "error")
         return redirect(url_for('homepage_latest_jobs', username=username))
 
     if src_result:
@@ -385,7 +384,7 @@ def search_users():
             company_names=company_names, jobs_company_names=jobs_company_names,
             jobs_categories=jobs_categories, jobs_counties=jobs_counties)
     else:
-        flash("Company not found.{}".format(src_result))
+        flash("Company not found.{}".format(src_result), "error")
         return redirect(url_for('homepage_latest_jobs', username=username))
 
 
@@ -414,7 +413,7 @@ def search_jobs():
         src_result = list(
             mongo.db.jobs.find({"county": query}))
     else:
-        flash("Search parameters error")
+        flash("Search parameters error", "error")
         return redirect(url_for('homepage_latest_jobs', username=username))
 
     if src_result:
@@ -424,5 +423,5 @@ def search_jobs():
             company_names=company_names, jobs_company_names=jobs_company_names,
             jobs_categories=jobs_categories, jobs_counties=jobs_counties)
     else:
-        flash("Company not found.{}".format(src_result))
+        flash("Company not found.{}".format(src_result), "error")
         return redirect(url_for('homepage_latest_jobs', username=username))

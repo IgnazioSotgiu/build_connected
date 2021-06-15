@@ -5,9 +5,9 @@
 </div>
 <div class="row white-text">
     <div class="col s12">
-        <table class="striped centered">
+        <table class="latest-jobs-tb striped centered">
             <thead>
-                <tr>
+                <tr class="latest-job-tr">
                     <th>Job Title</th>
                     <th class="employer">Employer</th>
                     <th>Date Entered</th>
@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 {% for job in jobs %}
-                    <tr>
+                    <tr class="latest-job-tr">
                         <td>{{ job.job_title.capitalize() }}</td>
                         <td class="employer">{{ job.employer.title() }}</td>
                         <td>{{ job.date_job_created }}</td>
