@@ -10,6 +10,7 @@ body {
 }
 section {
     min-height: 80vh;
+    padding: 10px;
 }
 .top-page-section {
     min-height: 100px;
@@ -131,14 +132,54 @@ nav ul a {
     text-align: center;
     margin-bottom: 50px;
 }
-/*registration form*/
-.reg-bg-image {
-    background: url("../docs/images/reg-bg.jpg") no-repeat bottom right; 
+/*background images*/
+.concrete-wall-bg-image {
+    background: url("../docs/images/concrete-wall-bg.jpg") no-repeat bottom left; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+.brick-bg-image {
+    background: url("../docs/images/brick-bg.jpg") no-repeat bottom right; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.concrete-bg-image {
+    background: url("../docs/images/concrete.jpg") no-repeat bottom left; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.blue-bg-image {
+    background: url("../docs/images/blue-structure.png") no-repeat bottom left; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.desk-top-bg-image {
+    background: url("../docs/images/desk-bg.jpg") no-repeat bottom left; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+}
+.profile-bg-image {
+    background: url("../docs/images/profile-bg-img.jpg") no-repeat bottom left; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+}
+/*registration form*/
 .multiple-select-dropdown {
     background-color: teal;
 }
@@ -195,14 +236,10 @@ input.select-dropdown.dropdown-trigger:focus {
     padding-bottom: 20px;
     border-radius: 10px;
 }
-/*login page*/
-.login-bg-image {
-    background: url("../docs/images/login-bg.jpg") no-repeat bottom right; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.card-color {
+    background-color: rgba(84, 110, 122, 0.9);
 }
+/*login page*/
 .form-container {
     padding-top: 80px;
 }
@@ -217,13 +254,6 @@ input.select-dropdown.dropdown-trigger:focus {
     margin-bottom: 50px;
 }
 /*homepage*/
-.home-bg-image {
-    background: url("../docs/images/concrete.jpg") no-repeat bottom right; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 .username-salutation {
     font-weight: 500;
     font-size: 30px;
@@ -309,28 +339,12 @@ td.symbol {
     margin-bottom: 40px;
 }
 /*add job page*/
-.add-job-bg-image {
-    background: url("../docs/images/add-job-bg.jpg") no-repeat bottom right; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.add-job-bg-image {
-    max-width: 100%;
-}
-.side-img {
-    max-width: 100%;
-    width: auto;
-    border: 2px solid #042922;
-    border-radius: 10px;
-    margin-top: 10%;
-}
+
 /*jobs search result*/
 .latest-jobs-tb {
     background-color: #042922;
     border-radius: 10px;
-    overflow: hidden
+    overflow: hidden;
 }
 .src-result-header {
     font-weight: 600;
@@ -431,34 +445,7 @@ td.symbol {
 .flash-close-btn {
     margin: 0 20px;
 }
-/*responsive style*/
-@media screen and (max-width: 992px) {
-    .popular-src-btn {
-        position: relative;
-        display: block;
-        background-color: #042922;
-        color: #fff;
-        margin-bottom: 50px;
-        margin-left: 50%;
-        transform: translate(-50%);
-    }
-    .popular-src-img {
-        display: flex;
-        margin-top: 30%;
-    }
-    .src-img {
-        max-width: 100%;
-        height: auto;
-    }
-    /*add job page*/
-    .add-job-img {
-        display: none;
-    }
-}
 @media screen and (max-width: 600px) {
-    .row .col {
-        padding: 0;
-    }
     .join-message {
         display: none;
     }
