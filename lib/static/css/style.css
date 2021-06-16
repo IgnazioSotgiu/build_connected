@@ -238,6 +238,7 @@ input.select-dropdown.dropdown-trigger:focus {
 }
 .card-color {
     background-color: rgba(84, 110, 122, 0.9);
+    border-radius: 10px;
 }
 /*login page*/
 .form-container {
@@ -389,7 +390,16 @@ td.symbol {
 .profile-buttons {
     padding: 50px;
 }
-
+/*jobs info*/
+.urgent-msg-container {
+   background-color: #fafafa;
+   border-radius: 5px; 
+}
+.urgent-msg {
+    font-size: 30px;
+    font-weight: 500;
+    color: red;
+}
 /*flash message*/
 .flash-img-container {
     max-width: 100%;
