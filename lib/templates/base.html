@@ -72,13 +72,15 @@
         </div>
     </footer>
     <!--displays flash messages -->
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            {% for message in messages %}
+            {% for category, message in messages %}
                 <div class="flash-message-container" id="flash-message-container">
                     <div class="flash-box" onclick=delete_flash(this)>
                         <div class="flash-message">
-                            <div class="message-img"></div>
+                            <div class="flash-img-container">
+                                <div class="{{ category }} center"></div>
+                            </div>
                             <div class="flash-message deep-orange lighten-2 center-align">{{message}}
                             </div>
                             <div class="flash-buttons">

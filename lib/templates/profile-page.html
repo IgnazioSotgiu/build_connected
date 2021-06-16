@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="desk-bg-image">
+    <div class="row">
+        <a href="{{ url_for('profile', username=session['user']) }}">
+            <h4 class="col s10 offset-s1 m8 offset-m1 username-salutation">
+                <i class="fas fa-user-circle"></i>
+                {{ username }},
+            </h4>
+        </a>
+    </div>
+    <div class="row form-row">
+        <div class="col s10 offset-s1 l6 offset-l5 center">
+            <div class="card card-color">
+                <h4 class="center white-text my-profile-header">My Profile</h4>
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-title">
+                            Username:
+                        </h5>
+                    </div>
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-result">
+                            {{ username }}
+                        </h5>
+                    </div> 
+                </div>
+                <hr class="hr-src">
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-title">
+                            Company Name:
+                        </h5>
+                    </div>
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-result">
+                            {{ my_profile.company_name.title() }}
+                        </h5>
+                    </div> 
+                </div>
+                <hr class="hr-src">
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-title">
+                            Contractor Type:
+                        </h5>
+                    </div>
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-result">
+                            {{ my_profile.contractor_type.title() }}
+                        </h5>
+                    </div> 
+                </div>
+                <hr class="hr-src">
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-title">
+                            Category:
+                        </h5>
+                    </div>
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <div>
+                            {% for category in my_profile.categories %}
+                                <h5 class="left search-detail-result">
+                                    {{ category.title() }}
+                                </h5>
+                                <br>
+                            {% endfor %}
+                        </div>
+                    </div> 
+                </div>
+                <hr class="hr-src">
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-title">
+                            County:
+                        </h5>
+                    </div>
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-result">
+                            {{ my_profile.county.title() }}
+                        </h5>
+                    </div> 
+                </div>
+                <hr class="hr-src">
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-title">
+                            Country:
+                        </h5>
+                    </div>
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-result">
+                            {{ my_profile.country.title() }}
+                        </h5>
+                    </div> 
+                </div>
+                <hr class="hr-src">
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-title">
+                            Email:
+                        </h5>
+                    </div>
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-result">
+                            {{ my_profile.email }}
+                        </h5>
+                    </div> 
+                </div>
+                <hr class="hr-src">
+                <div class="row form-row">
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-title">
+                            Phone Number:
+                        </h5>
+                    </div>
+                    <div class="col s10 offset-s1 m5 offset-m1">
+                        <h5 class="left search-detail-result">
+                            {{ my_profile.phone_number }}
+                        </h5>
+                    </div> 
+                </div>
+                <hr class="hr-src">
+                <div class="profile-buttons">
+                    <a href="{{ url_for('edit_profile', username= session['user']) }}">
+                        <button type="submit" class="btn btn-small teal">Edit Profile</button>
+                    </a>
+                    <a href="{{ url_for('edit_password', username= session['user']) }}">
+                        <button type="submit" class="btn btn-small teal">Change Password</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

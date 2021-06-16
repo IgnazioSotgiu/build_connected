@@ -1,0 +1,32 @@
+{% extends "homepage-popular-searches.html" %}
+{% block search_result %}
+<div class="row">
+    <h5 class="col s8 offset-s2 center-align src-result-header">Latest jobs added:</h5>
+</div>
+<div class="row white-text">
+    <div class="col s12">
+        <table class="latest-jobs-tb striped centered">
+            <thead>
+                <tr class="latest-job-tr">
+                    <th>Job Title</th>
+                    <th class="employer">Employer</th>
+                    <th>Date Entered</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                    <tr class="latest-job-tr">
+                        <td>{{ job.job_title.capitalize() }}</td>
+                        <td class="employer">{{ job.employer.title() }}</td>
+                        <td>{{ job.date_job_created }}</td>
+                        <td class="symbol"><a href="{{ url_for('info', job_id=job._id) }}"><i class="fas fa-info-circle"></i></a></td>
+                        {% if job.is_urgent.lower() == "urgent" %}
+                            <td class="symbol fas fa-exclamation-triangle red-text tooltipped urgent" data-position="right" data-tooltip="Urgent!"></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

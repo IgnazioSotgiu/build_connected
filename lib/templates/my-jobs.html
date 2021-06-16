@@ -1,23 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="-bg-image">
+<section class="blue-bg-image">
     <div class="row">
         <a href="{{ url_for('profile', username=session['user']) }}">
-            <h4 class="col s10 offset-s1 m8 offset-m2">
+            <h4 class="col s10 offset-s1 m8 offset-m2 username-salutation white-text">
+                <i class="fas fa-user-circle"></i>
                 {{ username }},
             </h4>
         </a>
     </div>
     <div class="row">
-        <h5 class="col s12 center-align text-black">List of jobs you advertise:</h5>
+        <h5 class="col s6 offset-s3 center-align src-result-header">List of jobs you advertise:</h5>
     </div>
     <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <table class="striped centered">
+        <div class="col s12 m10 offset-m1 l8 offset-l2">
+            <table class="striped centered my-jobs-tb white-text">
                 <thead>
                 <tr>
                     <th>Job Title</th>
-                    <th>Category</th>
+                    <th class="my-jobs-category">Category</th>
                     <th>Date Entered</th>
                 </tr>
                 </thead>
@@ -25,16 +26,16 @@
                     {% for job in my_jobs_list %}
                         <tr>
                             <td>{{ job.job_title.capitalize() }}</td>
-                            <td>
+                            <td class="my-jobs-category">
                                 {% for job_name in job.category %}
                                 <span>{{ job_name.title() }}</span>
                                 <br>
                                 {% endfor %}
                             </td>
                             <td>{{ job.date_job_created }}</td>
-                            <td><a href="{{ url_for('my_job_info', job_id=job._id) }}" class="btn btn-small blue lighten-1">Info</a></td>
-                            <td><a href="{{ url_for('edit_job', job_id=job._id) }}" class="btn btn-small teal">Edit</a></td>
-                            <td><a href="{{ url_for('delete_job_check', job_id=job._id) }}" class="btn btn-small red">Delete</a></td>
+                            <td class="symbol"><a href="{{ url_for('my_job_info', job_id=job._id) }}"><i class="fas fa-info-circle"></i></a></td>
+                            <td class="symbol"><a href="{{ url_for('edit_job', job_id=job._id) }}"><i class="far fa-edit"></i></a></td>
+                            <td class="symbol"><a href="{{ url_for('delete_job_check', job_id=job._id) }}"><i class="fas fa-times-circle"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

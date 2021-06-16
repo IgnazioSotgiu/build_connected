@@ -62,14 +62,14 @@ For this project two database are created one for the users (contractors databas
 ## Wireframes
 The wireframes were done usin Balsamiq
 
-- [Landing page](./static/docs/wireframes/landing-page.png)
-- [Home page](./static/docs/wireframes/homepage.png)
-- [Profile page](./static/docs/wireframes/profile-page.png)
-- [Log In form](./static/docs/wireframes/log-in-form.png)  
-- [Register form](./static/docs/wireframes/register-form.png)  
-- [Add Job page](./static/docs/wireframes/add-job-page.png)  
-- [My Jobs Page](./static/docs/wireframes/my-jobs-page.png)
-- [Search form](./static/docs/wireframes/perform-search.png)
+- [Landing page](./lib/static/docs/wireframes/landing-page.png)
+- [Home page](./lib/static/docs/wireframes/homepage.png)
+- [Profile page](./lib/static/docs/wireframes/profile-page.png)
+- [Log In form](./lib/static/docs/wireframes/log-in-form.png)  
+- [Register form](./lib/static/docs/wireframes/register-form.png)  
+- [Add Job page](./lib/static/docs/wireframes/add-job-page.png)  
+- [My Jobs Page](./lib/static/docs/wireframes/my-jobs-page.png)
+- [Search form](./lib/static/docs/wireframes/perform-search.png)
 
 
 

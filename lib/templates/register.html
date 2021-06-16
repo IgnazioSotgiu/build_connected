@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="brick-bg-image">
+    <div class="form-container">
+        <div class="row main-row">
+            <form action="{{ url_for('register') }}" method="POST" class="col s10 offset-s1 l8 offset-l2 registration-form center">
+                <div class="card blue-grey darken-1">
+                    <div class="row">
+                        <h3 class="col s12 white-text center">Register</h3>
+                    </div>
+                    <h6 class="white-text center">Already registerd?
+                        <a href="{{ url_for('login') }}" class="login-link">Log In</a>
+                    </h6>
+                    <hr class="hr-register-form center">
+                    <div class="row form-row">
+                        <div class="input-field col s8 offset-s2 m4 offset-m2 center">
+                            <input id="username"  name="username" type="text" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="input-field col s8 offset-s2 m4">
+                            <input id="company_name"  name="company_name" type="text" class="validate" required>
+                            <label for="company_name">Company Name</label>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="input-field col s8 offset-s2 m4 offset-m2">
+                            <select  id="contractor_type"  name="contractor_type"  class="validate" required>
+                                <option class="" value="" disabled selected>Select</option>
+                                {% for contractor in contractor_type %}
+                                    <option value="{{ contractor.lower() }}">
+                                        {{- contractor.title() -}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <label for="contractor_type">Contractor Type</label>
+                        </div>
+                        <div class="input-field col s8 offset-s2 m4">
+                            <select  id="category"  name="category"  class="validate" multiple required>
+                                <option value="" disabled>Select</option>
+                                    {% for construction_category in construction_categories %}
+                                        <option value="{{ construction_category }}">
+                                            {{- construction_category.capitalize() -}}
+                                        </option>
+                                    {% endfor %}
+                            </select>
+                            <label for="category">Construction Category</label>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="input-field col s8 offset-s2 m4 offset-m2">
+                            <select id="county"  name="county" type="text" class="validate" required>
+                                <option value="" disabled selected>Select</option>
+                                {% for county in COUNTIES %}
+                                    <option value="{{ county }}">{{ county.capitalize() }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="county">County</label>
+                        </div>
+                        <div class="input-field col s8 offset-s2 m4 text-white">
+                            <select id="country"  name="country" class="validate" required>
+                                <option  value="" disabled selected>Select</option>
+                                <option value="republic of ireland">Republic of Ireland</option>
+                            </select>
+                            <label for="country">Country</label>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="input-field col s8 offset-s2 m4 offset-m2">
+                            <input id="email"  name="email" type="email" class="validate" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field col s8 offset-s2 m4">
+                            <input id="phone"  name="phone" type="text" class="validate" required>
+                            <label for="phone">Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="input-field col s8 offset-s2 m4 offset-m2">
+                            <input id="password"  name="password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="input-field col s8 offset-s2 m4">
+                            <input id="confirm_password"  name="confirm_password" type="password" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" class="validate" required>
+                            <label for="confirm_password">Confirm Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <button type="submit" class="btn btn-large s12 center">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
