@@ -99,7 +99,7 @@ def register():
             "username": request.form.get("username").lower(),
             "company_name": request.form.get("company_name").lower(),
             "contractor_type": request.form.get("contractor_type").lower(),
-            "categories": request.form.getlist("category"),
+            "categories": list(request.form.getlist("category")),
             "county": request.form.get("county").lower(),
             "country": request.form.get("country").lower(),
             "email": request.form.get("email"),
@@ -174,7 +174,7 @@ def add_job():
     if request.method == "POST":
         new_job = {
             "job_title": request.form.get("job_title").lower(),
-            "category": request.form.getlist("job_category"),
+            "category": list(request.form.getlist("job_category")),
             "employer": mongo.db.users.find_one(
                 {"username": session["user"]})["company_name"].lower(),
             "contact_phone_number": request.form.get("phone"),
@@ -243,7 +243,7 @@ def edit_profile(username):
             "username": username,
             "company_name": request.form.get("company_name").lower(),
             "contractor_type": request.form.get("contractor_type").lower(),
-            "categories": request.form.getlist("user_job_categories"),
+            "categories": list(request.form.getlist("user_job_categories")),
             "county": request.form.get("user_county").lower(),
             "country": request.form.get("user_country").lower(),
             "email": request.form.get("email"),
@@ -293,7 +293,7 @@ def edit_job(job_id):
     if request.method == "POST":
         edit_job = {
             "job_title": request.form.get("job_title").lower(),
-            "category": request.form.getlist("edit_job_category"),
+            "category": list(request.form.getlist("edit_job_category")),
             "employer": mongo.db.users.find_one(
                 {"username": session["user"]})["company_name"].lower(),
             "contact_phone_number": request.form.get("phone"),
