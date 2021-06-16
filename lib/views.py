@@ -194,7 +194,7 @@ def add_job():
 
     return render_template("add-job.html",
                            construction_categories=construction_categories,
-                           COUNTIES=COUNTIES)
+                           COUNTIES=COUNTIES, username=username)
 
 
 @app.route("/my_jobs/<username>")
@@ -314,7 +314,7 @@ def edit_job(job_id):
 
     return render_template("edit-job.html", job=job,
                            construction_categories=construction_categories,
-                           COUNTIES=COUNTIES)
+                           COUNTIES=COUNTIES, username=username)
 
 
 @app.route("/delete_job_check/<job_id>")

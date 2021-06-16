@@ -170,8 +170,8 @@ nav ul a {
     max-width: 100%;
     height: auto;
 }
-.profile-bg-image {
-    background: url("../docs/images/profile-bg-img.jpg") no-repeat bottom left; 
+.desk-bg-image {
+    background: url("../docs/images/desk-bg-img.jpg") no-repeat bottom left; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -340,7 +340,17 @@ td.symbol {
     margin-bottom: 40px;
 }
 /*add job page*/
+/*delete job page*/
+.warning-sign {
+    background: url("../docs/images/warning-sign.png") no-repeat bottom right; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 150px;
+    height: 150px;
 
+}
 /*jobs search result*/
 .latest-jobs-tb {
     background-color: #042922;
