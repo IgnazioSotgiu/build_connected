@@ -18,7 +18,7 @@
             <div class="card-panel card-color white-text">
                 <a href="{{ url_for('my_jobs', username=session['user']) }}" class="fas fa-times close-icon white-text right"></a>
                 <h4 class="center">{{ job.job_title.title() }}</h4>
-                <div class="row-form-row">
+                <div class="row form-row">
                     <div class="col s6 offset-s3 urgent-msg-container center">
                         {% if job.is_urgent == "urgent" %}
                             <span class="text-red urgent-msg">
@@ -118,9 +118,9 @@
                             Short Description:
                         </h5>
                     </div>
-                    <span class="col s10 offset-s1">{{ job.description }}</span>
+                    <span class="col s10 offset-s1 description-text">{{ job.description }}</span>
                 </div>
-                <div class="row">
+                <div class="row button-row">
                     <div class="col s12 center-align">
                         <a href="{{ url_for('delete_job', job_id=job._id) }}" class="btn btn-large red">Delete</a>
                         <a href="{{ url_for('my_jobs', username=session['user']) }}" class="btn btn-large green">Cancel</a>

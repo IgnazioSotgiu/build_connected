@@ -283,6 +283,13 @@ def edit_password(username):
                     'profile-page.html',
                     username=username, my_profile=my_profile)
 
+            flash(
+                "Old Password incorrect or new password doesn't match", "error")
+            return render_template("edit-password.html", username=username)
+
+        flash("Old Password incorrect or new password doesn't match", "error")
+        return render_template("edit-password.html", username=username)
+
     return render_template("edit-password.html", username=username)
 
 

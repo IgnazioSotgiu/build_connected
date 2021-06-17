@@ -276,9 +276,6 @@ input.select-dropdown.dropdown-trigger:focus {
 .popular-src-btn {
     display: none;
 }
-.popular-src-img {
-    display: none;
-}
 .src-result-header {
     background-color: #ffe600;
     border-radius: 5px;
@@ -349,7 +346,13 @@ td.symbol {
     background-size: cover;
     width: 150px;
     height: 150px;
-
+}
+.button-row {
+    padding: 30px;
+    margin-top: 30px;
+}
+.description-text {
+    margin-top: 20px;
 }
 /*jobs search result*/
 .latest-jobs-tb {
@@ -465,6 +468,15 @@ td.symbol {
 .flash-close-btn {
     margin: 0 20px;
 }
+@media screen and (max-width: 990px) {
+    .popular-src-btn {
+        position: relative;
+        display: block;
+        background-color: #042922;
+        color: #fff;
+        margin: 30px auto;
+    }
+}
 @media screen and (max-width: 600px) {
     .join-message {
         display: none;
@@ -506,9 +518,6 @@ td.symbol {
         background-color: #ffe600;
     }
     .employer {
-        display: none;
-    }
-    .popular-src-img {
         display: none;
     }
     .my-jobs-category {
