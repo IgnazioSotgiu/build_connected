@@ -99,7 +99,12 @@
                         <h5 class="left search-detail-result">
                             {{ result.contact_phone_number }}
                         </h5>
-                    </div> 
+                    </div>
+                </div>
+                <div class="row button-row">
+                    <div class="col s12 center-align">
+                        <a href="{{ url_for('contact', job_id=result._id)}}" class="btn btn-small green">Apply</a>
+                    </div>
                 </div>
             </div>
         {% endfor %}

@@ -118,9 +118,9 @@
                     </div>
                     <span class="col s10 offset-s1">{{ job.description }}</span>
                 </div>
-                <div class="row">
+                <div class="row button-row">
                     <div class="col s12 center-align">
-                        <a href="#" class="btn btn-large green">Apply</a>
+                        <a href="{{ url_for('my_jobs', username=session['user']) }}" class="btn btn-small green">Back</a>
                     </div>
                 </div>
             </div>

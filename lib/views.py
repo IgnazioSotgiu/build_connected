@@ -284,7 +284,8 @@ def edit_password(username):
                     username=username, my_profile=my_profile)
 
             flash(
-                "Old Password incorrect or new password doesn't match", "error")
+                "Old Password incorrect or new password doesn't match",
+                "error")
             return render_template("edit-password.html", username=username)
 
         flash("Old Password incorrect or new password doesn't match", "error")
@@ -410,15 +411,15 @@ def search_jobs():
     if query_jobs_by_name:
         query = query_jobs_by_name
         src_result = list(
-            mongo.db.jobs.find({"employer": query}))
+            mongo.db.jobs.find({"employer": query.lower()}))
     elif query_jobs_by_category:
         query = query_jobs_by_category
         src_result = list(
-            mongo.db.jobs.find({"category": query}))
+            mongo.db.jobs.find({"category": query.lower()}))
     elif query_jobs_by_county:
         query = query_jobs_by_county
         src_result = list(
-            mongo.db.jobs.find({"county": query}))
+            mongo.db.jobs.find({"county": query.lower()}))
     else:
         flash("Search parameters error", "error")
         return redirect(url_for('homepage_latest_jobs', username=username))
@@ -430,5 +431,48 @@ def search_jobs():
             company_names=company_names, jobs_company_names=jobs_company_names,
             jobs_categories=jobs_categories, jobs_counties=jobs_counties)
     else:
-        flash("Company not found.{}".format(src_result), "error")
+        flash("Jobs not found.{}".format(src_result), "error")
         return redirect(url_for('homepage_latest_jobs', username=username))
+
+
+@app.route("/contact/<job_id>", methods=["GET", "POST"])
+def contact(job_id):
+    username = session["user"]
+    company_name = mongo.db.users.find_one(
+            {"username": username})["company_name"]
+    email_from = mongo.db.users.find_one(
+            {"username": username})["email"]
+    email_to = mongo.db.jobs.find_one(
+            {"_id": ObjectId(job_id)})['contact_email']
+    if request.method == "POST":
+        if email_from == email_to:
+            flash("You Cannot Apply For Your Own Jobs", "error")
+            return redirect(url_for('homepage_latest_jobs',
+                            username=username))
+
+    return render_template("contact.html", job_id=job_id,
+                           username=username, company_name=company_name,
+                           email_from=email_from, email_to=email_to)
+
+
+@app.route("/contact_company/<company_id>", methods=["GET", "POST"])
+def contact_company(company_id):
+    username = session["user"]
+    company_name = mongo.db.users.find_one(
+            {"username": username})["company_name"]
+    email_from = mongo.db.users.find_one(
+            {"username": username})["email"]
+    company_to = mongo.db.users.find_one(
+            {"_id": ObjectId(company_id)})['company_name']
+    email_to = mongo.db.users.find_one(
+            {"_id": ObjectId(company_id)})['email']
+    if request.method == "POST":
+        if email_from == email_to:
+            flash("You Cannot Contact Yourself", "error")
+            return redirect(url_for('homepage_latest_jobs',
+                            username=username))
+
+    return render_template("contact_company.html", company_id=company_id,
+                           username=username, company_name=company_name,
+                           email_from=email_from, email_to=email_to,
+                           company_to=company_to)
