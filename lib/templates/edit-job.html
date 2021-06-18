@@ -70,13 +70,13 @@
                 </div>
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2">
-                        <input id="email"  name="email" type="email" class="validate" value="{{ job.contact_email }}" required>
+                        <input id="email"  name="email" type="email" class="validate" value="{{ defoult_email }}" required>
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2">
-                        <input id="phone"  name="phone" type="text" class="validate" value="{{ job.contact_phone_number }}" required>
+                        <input id="phone"  name="phone" type="text" class="validate" pattern="[0-9]{2,20}" value="{{ job.contact_phone_number }}" required>
                         <label for="phone">Phone Number</label>
                     </div>
                 </div>

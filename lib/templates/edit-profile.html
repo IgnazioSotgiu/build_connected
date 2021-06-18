@@ -58,7 +58,7 @@
                 </div>    
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2">
-                        <input id="user_phone"  name="user_phone" type="text" class="validate" value="{{ my_profile.phone_number}}" required>
+                        <input id="user_phone"  name="user_phone" type="text" class="validate" pattern="[0-9]{2,20}" value="{{ my_profile.phone_number}}" required>
                         <label for="user_phone">Phone Number</label>
                     </div>
                 </div>

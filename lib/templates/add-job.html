@@ -64,13 +64,13 @@
                     </div>
                     <div class="row form-row">
                         <div class="input-field col s8 offset-s2">
-                            <input id="email"  name="email" type="email" class="validate" required>
+                            <input id="email"  name="email" type="email" class="validate" value="{{ defoult_email }}" required>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row form-row">
                         <div class="input-field col s8 offset-s2">
-                            <input id="phone"  name="phone" type="text" class="validate" required>
+                            <input id="phone"  name="phone" type="text" class="validate" pattern="[0-9]{2,20}" required>
                             <label for="phone">Phone Number</label>
                         </div>
                     </div>

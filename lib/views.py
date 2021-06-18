@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
+import re
 
 mongo = PyMongo(app)
 
@@ -35,6 +36,17 @@ COUNTIES = ["carlow", "cavan", "clare", "cork", "donegal", "dublin",
             "wicklow"]
 COUNTIES.sort()
 
+regex = '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b'
+
+
+# validate email address function (stack overflow)
+def check(email):
+    if(re.search(regex, email)):
+        return True
+
+    else:
+        return False
+
 
 @app.route("/")
 @app.route("/welcome_page")
@@ -43,39 +55,32 @@ def welcome_page():
 
 
 def get_users_company_names():
-    users_company_names = mongo.db.users.distinct("company_name")
-    return users_company_names
+    return mongo.db.users.distinct("company_name")
 
 
 def get_users_categories():
-    users_categories = mongo.db.users.distinct("categories")
-    return users_categories
+    return mongo.db.users.distinct("categories")
 
 
 def get_users_counties():
-    users_counties = mongo.db.users.distinct("county")
-    return users_counties
+    return mongo.db.users.distinct("county")
 
 
 def get_jobs_company_names():
-    jobs_company_names = mongo.db.jobs.distinct("employer")
-    return jobs_company_names
+    return mongo.db.jobs.distinct("employer")
 
 
 def get_jobs_categories():
-    job_categories = mongo.db.jobs.distinct("category")
-    return job_categories
+    return mongo.db.jobs.distinct("category")
 
 
 def get_jobs_counties():
-    job_counties = mongo.db.jobs.distinct("county")
-    return job_counties
+    return mongo.db.jobs.distinct("county")
 
 
 # get the last 10 jobs entered
 def get_latest_jobs():
-    latest_jobs = mongo.db.jobs.find().sort([['_id', -1]]).limit(10)
-    return latest_jobs
+    return mongo.db.jobs.find().sort([['_id', -1]]).limit(10)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -86,13 +91,24 @@ def register():
             {"username": request.form.get("username").lower()})
         check_password = request.form.get("password")
         check_confirm_password = request.form.get("confirm_password")
+        valid_email = check(request.form.get("email"))
 
         if check_username:
-            flash("Username already exists", "error")
+            flash(
+                "Username already exists. Choose a different username",
+                "error")
             return redirect(url_for('register'))
 
         elif check_password != check_confirm_password:
-            flash("Passwords don't match. Please re-enter passwords", "error")
+            flash(
+                "Passwords don't match. Please re-enter passwords",
+                "error")
+            return redirect(url_for('register'))
+
+        elif not valid_email:
+            flash(
+                "Invalid email address. Please enter a valid email address",
+                "error")
             return redirect(url_for('register'))
 
         new_user = {
@@ -171,7 +187,16 @@ def homepage_latest_jobs(username):
 def add_job():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    defoult_email = mongo.db.users.find_one(
+        {"username": session["user"]})["email"]
     if request.method == "POST":
+        valid_email = check(request.form.get("email"))
+        if not valid_email:
+            flash(
+                "Invalid email address. Please enter a valid email address",
+                "error")
+            return redirect('add_job')
+
         new_job = {
             "job_title": request.form.get("job_title").lower(),
             "category": list(request.form.getlist("job_category")),
@@ -194,7 +219,8 @@ def add_job():
 
     return render_template("add-job.html",
                            construction_categories=construction_categories,
-                           COUNTIES=COUNTIES, username=username)
+                           COUNTIES=COUNTIES, username=username,
+                           defoult_email=defoult_email)
 
 
 @app.route("/my_jobs/<username>")
@@ -297,16 +323,24 @@ def edit_password(username):
 @app.route("/edit_job/<job_id>", methods=["GET", "POST"])
 def edit_job(job_id):
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+    defoult_email = mongo.db.users.find_one(
+        {"username": session["user"]})["email"]
     username = session["user"]
     if request.method == "POST":
+        valid_email = check(request.form.get("email"))
+        if not valid_email:
+            flash(
+                "Invalid email address. Please enter a valid email address",
+                "error")
+            return render_template(url_for('edit_job', job_id=job_id))
+
         edit_job = {
             "job_title": request.form.get("job_title").lower(),
             "category": list(request.form.getlist("edit_job_category")),
             "employer": mongo.db.users.find_one(
                 {"username": session["user"]})["company_name"].lower(),
             "contact_phone_number": request.form.get("phone"),
-            "contact_email": mongo.db.users.find_one(
-                {"username": session["user"]})["email"],
+            "contact_email": request.form.get("email"),
             "county": request.form.get("county").lower(),
             "starting_date": request.form.get("starting_date"),
             "is_urgent": request.form.get("is_urgent"),
@@ -322,7 +356,8 @@ def edit_job(job_id):
 
     return render_template("edit-job.html", job=job,
                            construction_categories=construction_categories,
-                           COUNTIES=COUNTIES, username=username)
+                           COUNTIES=COUNTIES, username=username,
+                           defoult_email=defoult_email)
 
 
 @app.route("/delete_job_check/<job_id>")
@@ -372,15 +407,15 @@ def search_users():
     if query_users_by_name:
         query = query_users_by_name
         src_result = list(
-            mongo.db.users.find({"company_name": query}))
+            mongo.db.users.find({"company_name": query.lower()}))
     elif query_users_by_category:
         query = query_users_by_category
         src_result = list(
-            mongo.db.users.find({"categories": query}))
+            mongo.db.users.find({"categories": query.lower()}))
     elif query_users_by_county:
         query = query_users_by_county
         src_result = list(
-            mongo.db.users.find({"county": query}))
+            mongo.db.users.find({"county": query.lower()}))
     else:
         flash("Search parameters error", "error")
         return redirect(url_for('homepage_latest_jobs', username=username))
@@ -440,19 +475,29 @@ def contact(job_id):
     username = session["user"]
     company_name = mongo.db.users.find_one(
             {"username": username})["company_name"]
-    email_from = mongo.db.users.find_one(
+    defoult_email_from = mongo.db.users.find_one(
             {"username": username})["email"]
-    email_to = mongo.db.jobs.find_one(
+    defoult_email_to = mongo.db.jobs.find_one(
             {"_id": ObjectId(job_id)})['contact_email']
     if request.method == "POST":
-        if email_from == email_to:
+        email_from = request.form.get("email_from")
+        email_to = request.form.get("email_to")
+        valid_email_from = check(email_from)
+        valid_email_to = check(email_to)
+        if not (valid_email_from or valid_email_to):
+            flash("Invalid email address. Please enter a valid email address",
+                  "error")
+            return redirect(url_for('homepage_latest_jobs',
+                            username=username))
+        elif email_from == email_to:
             flash("You Cannot Apply For Your Own Jobs", "error")
             return redirect(url_for('homepage_latest_jobs',
                             username=username))
 
     return render_template("contact.html", job_id=job_id,
                            username=username, company_name=company_name,
-                           email_from=email_from, email_to=email_to)
+                           defoult_email_from=defoult_email_from,
+                           defoult_email_to=defoult_email_to)
 
 
 @app.route("/contact_company/<company_id>", methods=["GET", "POST"])
@@ -460,19 +505,29 @@ def contact_company(company_id):
     username = session["user"]
     company_name = mongo.db.users.find_one(
             {"username": username})["company_name"]
-    email_from = mongo.db.users.find_one(
+    defoult_email_from = mongo.db.users.find_one(
             {"username": username})["email"]
     company_to = mongo.db.users.find_one(
             {"_id": ObjectId(company_id)})['company_name']
-    email_to = mongo.db.users.find_one(
+    defoult_email_to = mongo.db.users.find_one(
             {"_id": ObjectId(company_id)})['email']
     if request.method == "POST":
-        if email_from == email_to:
+        email_from = request.form.get("company_email_from")
+        email_to = request.form.get("company_email_to")
+        valid_email_from = check(email_from)
+        valid_email_to = check(email_to)
+        if not (valid_email_from or valid_email_to):
+            flash("Invalid email address. Please enter a valid email address",
+                  "error")
+            return redirect(url_for('homepage_latest_jobs',
+                            username=username))
+        elif email_from == email_to:
             flash("You Cannot Contact Yourself", "error")
             return redirect(url_for('homepage_latest_jobs',
                             username=username))
 
     return render_template("contact_company.html", company_id=company_id,
                            username=username, company_name=company_name,
-                           email_from=email_from, email_to=email_to,
+                           defoult_email_from=defoult_email_from,
+                           defoult_email_to=defoult_email_to,
                            company_to=company_to)
