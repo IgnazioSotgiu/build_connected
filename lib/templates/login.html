@@ -14,19 +14,19 @@
                         <hr class="hr-login-form center">
                         <div class="row">
                             <div class="input-field col s8 offset-s2 center">
-                                <input id="username"  name="username" type="text" class="validate" required>
+                                <input id="username"  name="username" type="text" class="validate" pattern="^[a-zA-Z0-9]{5,20}$" required>
                                 <label for="username">Username</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s8 offset-s2">
-                                <input id="password"  name="password" type="password" class="validate" required>
+                                <input id="password"  name="password" type="password" class="validate" pattern="^[a-zA-Z0-9]{5,20}$" required>
                                 <label for="password">Password</label>
                             </div>
                         </div>
                         <div class="row button-row">
                             <div class="col s12 center-align">
-                                <button type="submit" class="btn btn-large s12 center">Log In</button>
+                                <button type="submit" class="btn btn-small s12 center">Log In</button>
                             </div>
                         </div>
                     </div>

@@ -36,14 +36,13 @@ COUNTIES = ["carlow", "cavan", "clare", "cork", "donegal", "dublin",
             "wicklow"]
 COUNTIES.sort()
 
-regex = '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b'
+regex = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 
 
 # validate email address function (stack overflow)
 def check(email):
     if(re.search(regex, email)):
         return True
-
     else:
         return False
 
@@ -78,9 +77,9 @@ def get_jobs_counties():
     return mongo.db.jobs.distinct("county")
 
 
-# get the last 10 jobs entered
+# get the last 20 jobs entered
 def get_latest_jobs():
-    return mongo.db.jobs.find().sort([['_id', -1]]).limit(10)
+    return mongo.db.jobs.find().sort([['_id', -1]]).limit(20)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -105,7 +104,7 @@ def register():
                 "error")
             return redirect(url_for('register'))
 
-        elif not valid_email:
+        elif valid_email is False:
             flash(
                 "Invalid email address. Please enter a valid email address",
                 "error")
@@ -148,6 +147,11 @@ def login():
                         request.form.get("username")), "success")
                 return redirect(url_for(
                     "homepage_latest_jobs", username=session["user"]))
+            else:
+                flash(
+                    "Incorrect username and/or password. Please try again.",
+                    "error")
+                return render_template('login.html')
 
         else:
             flash("Incorrect username and/or password. Please try again.",
@@ -176,7 +180,7 @@ def homepage_latest_jobs(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     return render_template(
-        "homepage_latest_jobs.html", username=username, jobs=jobs,
+        "homepage-latest-jobs.html", username=username, jobs=jobs,
         users_categories=users_categories,
         users_counties=users_counties, company_names=company_names,
         jobs_company_names=jobs_company_names, jobs_categories=jobs_categories,
@@ -191,7 +195,7 @@ def add_job():
         {"username": session["user"]})["email"]
     if request.method == "POST":
         valid_email = check(request.form.get("email"))
-        if not valid_email:
+        if valid_email is False:
             flash(
                 "Invalid email address. Please enter a valid email address",
                 "error")
@@ -203,8 +207,7 @@ def add_job():
             "employer": mongo.db.users.find_one(
                 {"username": session["user"]})["company_name"].lower(),
             "contact_phone_number": request.form.get("phone"),
-            "contact_email": mongo.db.users.find_one(
-                {"username": session["user"]})["email"],
+            "contact_email": request.form.get("email"),
             "county": request.form.get("county").lower(),
             "starting_date": request.form.get("starting_date"),
             "is_urgent": request.form.get("is_urgent"),
@@ -265,6 +268,13 @@ def get_profile(username):
 def edit_profile(username):
     my_profile = get_profile(username)
     if request.method == "POST":
+        valid_email = check(request.form.get("email"))
+        if valid_email is False:
+            flash(
+                "Invalid email address. Please enter a valid email address",
+                "error")
+            return redirect(url_for('edit_profile', username=username))
+
         update_user = {
             "username": username,
             "company_name": request.form.get("company_name").lower(),
@@ -312,7 +322,7 @@ def edit_password(username):
             flash(
                 "Old Password incorrect or new password doesn't match",
                 "error")
-            return render_template("edit-password.html", username=username)
+            return redirect(url_for("edit-password.html", username=username))
 
         flash("Old Password incorrect or new password doesn't match", "error")
         return render_template("edit-password.html", username=username)
@@ -328,11 +338,11 @@ def edit_job(job_id):
     username = session["user"]
     if request.method == "POST":
         valid_email = check(request.form.get("email"))
-        if not valid_email:
+        if valid_email is False:
             flash(
                 "Invalid email address. Please enter a valid email address",
                 "error")
-            return render_template(url_for('edit_job', job_id=job_id))
+            return redirect(url_for('edit_job', job_id=job_id))
 
         edit_job = {
             "job_title": request.form.get("job_title").lower(),
@@ -467,7 +477,7 @@ def search_jobs():
             jobs_categories=jobs_categories, jobs_counties=jobs_counties)
     else:
         flash("Jobs not found.{}".format(src_result), "error")
-        return redirect(url_for('homepage_latest_jobs', username=username))
+        return render_template('homepage-latest-jobs.html', username=username)
 
 
 @app.route("/contact/<job_id>", methods=["GET", "POST"])
@@ -516,7 +526,7 @@ def contact_company(company_id):
         email_to = request.form.get("company_email_to")
         valid_email_from = check(email_from)
         valid_email_to = check(email_to)
-        if not (valid_email_from or valid_email_to):
+        if (valid_email_from or valid_email_to) is False:
             flash("Invalid email address. Please enter a valid email address",
                   "error")
             return redirect(url_for('homepage_latest_jobs',

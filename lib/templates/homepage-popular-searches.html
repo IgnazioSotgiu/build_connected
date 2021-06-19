@@ -74,7 +74,7 @@
                                             <option value="" disabled selected>County</option>
                                             {% for county in users_counties %}
                                                 <option value="{{ county.lower() }}">
-                                                    {{ county.title() }}
+                                                    {{- county.title() -}}
                                                 </option>
                                             {% endfor %}
                                         </select>
