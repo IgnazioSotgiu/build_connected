@@ -11,7 +11,7 @@
         </a>
     </div>
     <div class="row form-row">
-        <form action="#" method="POST" class="col s10 offset-s1 m6 offset-m4 l5 offset-l5">
+        <form id="contact-form"action="#" method="POST" class="col s10 offset-s1 m6 offset-m4 l5 offset-l5">
             <div class="card card-color">
                 <div class="row">
                     <h4 class="col s12 white-text center">Contact</h4>
@@ -19,18 +19,24 @@
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2 center">
                         <input id="company_name"  name="company_name" type="text" class="validate" value="{{ company_name.title() }}" required>
-                        <label class="active" for="company_name">Company Name</label>
+                        <label class="active" for="company_name">From</label>
                     </div>
                 </div>
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2 center">
-                        <input id="email_from"  name="email_from" type="email" class="validate" value="{{ email_from }}" required>
+                        <input id="email_from"  name="email_from" type="email" class="validate" value="{{ defoult_email_from }}" required>
                         <label class="active" for="email_from">Email From</label>
                     </div>
                 </div>
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2 center">
-                        <input id="email_to"  name="email_to" type="email" class="validate" value="{{ email_to }}" required>
+                        <input id="company_name_to"  name="company_name_to" type="text" class="validate" value="{{ defoult_company_to.title() }}" required>
+                        <label class="active" for="company_name_to">To</label>
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="input-field col s8 offset-s2 center">
+                        <input id="email_to"  name="email_to" type="email" class="validate" value="{{ defoult_email_to }}" required>
                         <label class="active" for="email_to">Email To</label>
                     </div>
                 </div>
@@ -42,14 +48,27 @@
                 </div>
                 <div class="row button-row">
                     <div class="col s12 center-align">      
-                        <a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}" class="btn btn-small red">Cancel</a>
-                        <button type="submit" class="btn btn-small teal">Send</button>
+                        <a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}" class="btn btn-small red">Back</a>
+                        <a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}">
+                            <button id="submit_email" type="submit" class="btn btn-small teal">Send</button>
+                        </a>
                     </div>
-                </div>
                 </div>
             </div>
         </form>
     </div>
 </section>
 
+{% endblock %}
+{% block scripts %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ url_for('static', filename='js/email.js') }}"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_TwqrcVu3UXELwEaku5gRA");
+   })();
+</script>
 {% endblock %}

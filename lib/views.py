@@ -455,16 +455,16 @@ def search_jobs():
     query_jobs_by_county = request.form.get("src_job_by_county")
     if query_jobs_by_name:
         query = query_jobs_by_name
-        src_result = list(
-            mongo.db.jobs.find({"employer": query.lower()}))
+        src_result = list(mongo.db.jobs.find(
+            {"employer": query.lower()}).sort([['_id', -1]]))
     elif query_jobs_by_category:
         query = query_jobs_by_category
-        src_result = list(
-            mongo.db.jobs.find({"category": query.lower()}))
+        src_result = list(mongo.db.jobs.find(
+            {"category": query.lower()}).sort([['_id', -1]]))
     elif query_jobs_by_county:
         query = query_jobs_by_county
-        src_result = list(
-            mongo.db.jobs.find({"county": query.lower()}))
+        src_result = list(mongo.db.jobs.find(
+            {"county": query.lower()}).sort([['_id', -1]]))
     else:
         flash("Search parameters error", "error")
         return redirect(url_for('homepage_latest_jobs', username=username))
@@ -487,6 +487,8 @@ def contact(job_id):
             {"username": username})["company_name"]
     defoult_email_from = mongo.db.users.find_one(
             {"username": username})["email"]
+    defoult_company_to = mongo.db.jobs.find_one(
+            {"_id": ObjectId(job_id)})['employer']
     defoult_email_to = mongo.db.jobs.find_one(
             {"_id": ObjectId(job_id)})['contact_email']
     if request.method == "POST":
@@ -503,11 +505,15 @@ def contact(job_id):
             flash("You Cannot Apply For Your Own Jobs", "error")
             return redirect(url_for('homepage_latest_jobs',
                             username=username))
+        else:
+            return redirect(url_for('homepage_latest_jobs',
+                            username=username))
 
     return render_template("contact.html", job_id=job_id,
                            username=username, company_name=company_name,
                            defoult_email_from=defoult_email_from,
-                           defoult_email_to=defoult_email_to)
+                           defoult_email_to=defoult_email_to,
+                           defoult_company_to=defoult_company_to)
 
 
 @app.route("/contact_company/<company_id>", methods=["GET", "POST"])
