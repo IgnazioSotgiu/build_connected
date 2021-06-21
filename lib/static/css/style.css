@@ -57,6 +57,12 @@ footer .social-media-icon {
 .sidenav-logo {
     width: 205px;
 }
+.sidenav li>a {
+    padding: 0;
+}
+.top-li-element {
+    margin-top: 15px;
+}
 nav .nav-wrapper {
     height: 100px;
 }

@@ -50,7 +50,7 @@ def check(email):
 @app.route("/")
 @app.route("/welcome_page")
 def welcome_page():
-    return render_template("welcome-page.html")
+    return render_template("welcome_page.html")
 
 
 def get_users_company_names():
@@ -180,7 +180,7 @@ def homepage_latest_jobs(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     return render_template(
-        "homepage-latest-jobs.html", username=username, jobs=jobs,
+        "homepage_latest_jobs.html", username=username, jobs=jobs,
         users_categories=users_categories,
         users_counties=users_counties, company_names=company_names,
         jobs_company_names=jobs_company_names, jobs_categories=jobs_categories,
@@ -220,7 +220,7 @@ def add_job():
         flash("New job successfully added", "success")
         return redirect(url_for("homepage_latest_jobs", username=username))
 
-    return render_template("add-job.html",
+    return render_template("add_job.html",
                            construction_categories=construction_categories,
                            COUNTIES=COUNTIES, username=username,
                            defoult_email=defoult_email)
@@ -232,14 +232,14 @@ def my_jobs(username):
         {"created_by": session["user"]}).sort([['_id', -1]])
 
     return render_template(
-        "my-jobs.html", my_jobs_list=my_jobs_list, username=username)
+        "my_jobs.html", my_jobs_list=my_jobs_list, username=username)
 
 
 @app.route("/profile/<username>")
 def profile(username):
     my_profile = get_profile(username)
     return render_template(
-        "profile-page.html", username=username, my_profile=my_profile)
+        "profile_page.html", username=username, my_profile=my_profile)
 
 
 def get_profile(username):
@@ -290,10 +290,10 @@ def edit_profile(username):
         flash("Profile Successfully Updated", "success")
         my_profile = get_profile(username)
         return render_template(
-            'profile-page.html', username=username, my_profile=my_profile)
+            'profile_page.html', username=username, my_profile=my_profile)
 
     return render_template(
-        "edit-profile.html", username=username, my_profile=my_profile,
+        "edit_profile.html", username=username, my_profile=my_profile,
         construction_categories=construction_categories, COUNTIES=COUNTIES,
         contractor_type=contractor_type)
 
@@ -316,18 +316,18 @@ def edit_password(username):
 
                 flash("Password Successfully Changed", "success")
                 return render_template(
-                    'profile-page.html',
+                    'profile_page.html',
                     username=username, my_profile=my_profile)
 
             flash(
                 "Old Password incorrect or new password doesn't match",
                 "error")
-            return redirect(url_for("edit-password.html", username=username))
+            return redirect(url_for("edit_password", username=username))
 
         flash("Old Password incorrect or new password doesn't match", "error")
-        return render_template("edit-password.html", username=username)
+        return redirect(url_for("edit_password", username=username))
 
-    return render_template("edit-password.html", username=username)
+    return render_template("edit_password.html", username=username)
 
 
 @app.route("/edit_job/<job_id>", methods=["GET", "POST"])
@@ -364,7 +364,7 @@ def edit_job(job_id):
         flash("Job successfully edited", "success")
         return redirect(url_for("my_jobs", username=username))
 
-    return render_template("edit-job.html", job=job,
+    return render_template("edit_job.html", job=job,
                            construction_categories=construction_categories,
                            COUNTIES=COUNTIES, username=username,
                            defoult_email=defoult_email)
@@ -376,7 +376,7 @@ def delete_job_check(job_id):
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
 
     return render_template(
-        "job-delete-page.html", job=job, job_id=job_id, username=username)
+        "job_delete_page.html", job=job, job_id=job_id, username=username)
 
 
 @app.route("/delete_job/<job_id>")
@@ -392,14 +392,14 @@ def delete_job(job_id):
 def info(job_id):
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     username = session["user"]
-    return render_template("job-info-page.html", username=username, job=job)
+    return render_template("job_info_page.html", username=username, job=job)
 
 
 @app.route("/my_job_info/<job_id>")
 def my_job_info(job_id):
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     username = session["user"]
-    return render_template("my-job-info-page.html", username=username, job=job)
+    return render_template("my_job_info_page.html", username=username, job=job)
 
 
 @app.route("/search_users", methods=["GET", "POST"])
@@ -432,7 +432,7 @@ def search_users():
 
     if src_result:
         return render_template(
-            'search-users.html', username=username, src_result=src_result,
+            'search_users.html', username=username, src_result=src_result,
             users_categories=users_categories, users_counties=users_counties,
             company_names=company_names, jobs_company_names=jobs_company_names,
             jobs_categories=jobs_categories, jobs_counties=jobs_counties)
@@ -471,13 +471,13 @@ def search_jobs():
 
     if src_result:
         return render_template(
-            'search-jobs.html', username=username, src_result=src_result,
+            'search_jobs.html', username=username, src_result=src_result,
             users_categories=users_categories, users_counties=users_counties,
             company_names=company_names, jobs_company_names=jobs_company_names,
             jobs_categories=jobs_categories, jobs_counties=jobs_counties)
     else:
         flash("Jobs not found.{}".format(src_result), "error")
-        return render_template('homepage-latest-jobs.html', username=username)
+        return render_template('homepage_latest_jobs.html', username=username)
 
 
 @app.route("/contact/<job_id>", methods=["GET", "POST"])

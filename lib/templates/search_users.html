@@ -1,5 +1,6 @@
-{% extends "homepage-popular-searches.html" %}
+{% extends "homepage_popular_searches.html" %}
 {% block search_result %}
+
 
 <div class="row">
     <h5 class="col s8 offset-s2 m8 offset-m2 center src-result-header">Search Results:</h5>
@@ -9,25 +10,15 @@
         {% for result in src_result %}
             <div class="card blue-grey darken-1">
                 <div class="pin-img"></div>
-                <br>
-                {% if result.is_urgent == "urgent" %}
-                <div class="row">
-                    <div class="col s6 offset-s3 urgent-msg-container center">
-                        <span class="text-red urgent-msg">
-                            {{ result.is_urgent }}
-                        </span>
-                    </div>
-                </div>
-                {% endif %} 
                 <div class="row form-row">
                     <div class="col s10 offset-s1 m4 offset-m1">
                         <h5 class="left search-detail-title">
-                            Employer:
+                            Company Name:
                         </h5>
                     </div>
                     <div class="col s10 offset-s1 m6">
                         <h5 class="left search-detail-result">
-                            {{ result.employer.title() }}
+                            {{ result.company_name.title() }}
                         </h5>
                     </div> 
                 </div>
@@ -35,12 +26,12 @@
                 <div class="row form-row">
                     <div class="col s10 offset-s1 m4 offset-m1">
                         <h5 class="left search-detail-title">
-                            Starting Date:
+                            Contractor Type:
                         </h5>
                     </div>
                     <div class="col s10 offset-s1 m6">
                         <h5 class="left search-detail-result">
-                            {{ result.starting_date }}
+                            {{ result.contractor_type.title() }}
                         </h5>
                     </div> 
                 </div>
@@ -52,13 +43,14 @@
                         </h5>
                     </div>
                     <div class="col s10 offset-s1 m6">
-                        <h5>
-                            {%- for category in result.category -%}
-                                <div class="left search-detail-result">
-                                    {{- category.title() -}}
-                                </div>
-                            {%- endfor -%}
-                        </h5>
+                        <div>
+                            {% for category in result.categories %}
+                                <h5 class="left search-detail-result">
+                                    {{ category.title() }}, 
+                                </h5>
+                                <br>
+                            {% endfor %}
+                        </div>
                     </div> 
                 </div>
                 <hr class="hr-src">
@@ -83,7 +75,7 @@
                     </div>
                     <div class="col s10 offset-s1 m6">
                         <h5 class="left search-detail-result">
-                            {{ result.contact_email }}
+                            {{ result.email }}
                         </h5>
                     </div> 
                 </div>
@@ -96,20 +88,18 @@
                     </div>
                     <div class="col s10 offset-s1 m6">
                         <h5 class="left search-detail-result">
-                            {{ result.contact_phone_number }}
+                            {{ result.phone_number }}
                         </h5>
+                    </div> 
+                </div>
+                <div class="row button-row">
+                    <div class="col s12 center-align">
+                        <a href="{{ url_for('contact_company', company_id=result._id)}}" class="btn btn-small green">Contact</a>
                     </div>
                 </div>
-                {% if result.created_by != username %}
-                    <div class="row button-row">
-                        <div class="col s12 center-align">
-                            <a href="{{ url_for('contact', job_id=result._id)}}" class="btn btn-small green">Apply</a>
-                        </div>
-                    </div>
-                {% endif %}
             </div>
         {% endfor %}
     </div>
-</div>  
-
+</div>
+        
 {% endblock %}

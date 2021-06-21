@@ -16,15 +16,15 @@
                 <div>
                     <h4 class="center">{{ job.job_title.title() }}</h4>
                 </div>
+                {% if job.is_urgent == "urgent" %}
                 <div class="row form-row">
                     <div class="col s6 offset-s3 urgent-msg-container center">
-                        {% if job.is_urgent == "urgent" %}
-                            <span class="text-red urgent-msg">
-                                {{ job.is_urgent }}
-                            </span>
-                        {% endif %}
+                        <span class="text-red urgent-msg">
+                            {{ job.is_urgent }}
+                        </span>
                     </div> 
                 </div>
+                {% endif %}
                 <hr class="hr-src">
                 <hr class="hr-src">
                 <div class="row form-row">

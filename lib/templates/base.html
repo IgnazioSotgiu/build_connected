@@ -42,14 +42,23 @@
                 </div>
             </nav>
             <ul class="sidenav center" id="mobile-demo">
-                <li><img class="sidenav-logo" src="{{url_for('static', filename='docs/images/navbar-logo-small.png') }}" alt="Build connected logo"></a></li>
+                <li>
+                    <a href="
+                    {% if not session.user %}
+                        {{ url_for('welcome_page') }}
+                    {% else %}
+                        {{ url_for('homepage_latest_jobs', username=session['user'])}}
+                    {% endif %}">
+                        <img class="sidenav-logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo">
+                    </a>
+                </li>
                 {% if not session.user %}
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
+                    <li class="top-li-element"><a href="{{ url_for('login') }}">Log In</a></li>
                     <li><a href="{{ url_for('register')}}">Register</a></li>
                     <li><a href="#">Info</a></li>
                 {% endif %}
                 {% if session.user %}
-                    <li><a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}">Home</a></li>
+                    <li  class="top-li-element"><a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}">Home</a></li>
                     <li><a href="{{ url_for('add_job') }}">Add Job</a></li>
                     <li><a href="{{ url_for('my_jobs', username=session['user']) }}">My Jobs</a></li>
                     <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
