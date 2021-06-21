@@ -17,7 +17,13 @@
             <!-- navbar -->
             <nav>
                 <div class="nav-wrapper logo-color">
-                    <a href="{{ url_for('welcome_page')}}" class="brand-logo"><img class="logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a>
+                    <a href="
+                    {% if not session.user %}
+                        {{ url_for('welcome_page') }}
+                    {% else %}
+                        {{ url_for('homepage_latest_jobs', username=session['user'])}}
+                    {% endif %}
+                    " class="brand-logo"><img class="logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                     <ul class="right hide-on-med-and-down">
                         {% if not session.user %}

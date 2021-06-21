@@ -31,6 +31,7 @@ section {
     color: #000;
     font-size: 20px;
     width: 250px;
+    margin: 0;
 }
 /*footer*/
 footer {
@@ -213,6 +214,9 @@ nav ul a {
     background-color: rgba(84, 110, 122, 0.9);
     border-radius: 10px;
 }
+.btn-small {
+    margin: 10px;
+}
 /*login page*/
 .form-container {
     padding-top: 80px;
@@ -321,7 +325,6 @@ td.symbol {
     height: 150px;
 }
 .button-row {
-    padding: 30px;
     margin-top: 30px;
 }
 .description-text {
@@ -356,7 +359,7 @@ td.symbol {
 }
 .search-detail-result {
     color: #fff;
-    font-size: 20px;
+    font-size: 15px;
 }
 .hr-src {
     background-color: #ffe600;
@@ -508,6 +511,11 @@ td.symbol {
     .src-result-header {
         font-size: 20px;
         background-color: #ffe600;
+    }
+    .search-detail-result {
+        color: #fff;
+        font-size: 15px;
+        margin: 0 5px;
     }
     .employer {
         display: none;

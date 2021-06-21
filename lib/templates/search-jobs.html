@@ -52,14 +52,13 @@
                         </h5>
                     </div>
                     <div class="col s10 offset-s1 m6">
-                        <div>
+                        <h5>
                             {%- for category in result.category -%}
-                                <h6 class="search-detail-result">
+                                <div class="left search-detail-result">
                                     {{- category.title() -}}
-                                </h6>
-                                <br>
+                                </div>
                             {%- endfor -%}
-                        </div>
+                        </h5>
                     </div> 
                 </div>
                 <hr class="hr-src">
@@ -101,11 +100,13 @@
                         </h5>
                     </div>
                 </div>
-                <div class="row button-row">
-                    <div class="col s12 center-align">
-                        <a href="{{ url_for('contact', job_id=result._id)}}" class="btn btn-small green">Apply</a>
+                {% if result.created_by != username %}
+                    <div class="row button-row">
+                        <div class="col s12 center-align">
+                            <a href="{{ url_for('contact', job_id=result._id)}}" class="btn btn-small green">Apply</a>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         {% endfor %}
     </div>

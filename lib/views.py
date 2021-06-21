@@ -523,13 +523,13 @@ def contact_company(company_id):
             {"username": username})["company_name"]
     defoult_email_from = mongo.db.users.find_one(
             {"username": username})["email"]
-    company_to = mongo.db.users.find_one(
+    company_name_to = mongo.db.users.find_one(
             {"_id": ObjectId(company_id)})['company_name']
     defoult_email_to = mongo.db.users.find_one(
             {"_id": ObjectId(company_id)})['email']
     if request.method == "POST":
-        email_from = request.form.get("company_email_from")
-        email_to = request.form.get("company_email_to")
+        email_from = request.form.get("email_from")
+        email_to = request.form.get("email_to")
         valid_email_from = check(email_from)
         valid_email_to = check(email_to)
         if (valid_email_from or valid_email_to) is False:
@@ -546,4 +546,4 @@ def contact_company(company_id):
                            username=username, company_name=company_name,
                            defoult_email_from=defoult_email_from,
                            defoult_email_to=defoult_email_to,
-                           company_to=company_to)
+                           company_name_to=company_name_to)

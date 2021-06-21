@@ -29,11 +29,11 @@
                                     {{- job_name.title() -}}
                                 {%- endfor -%}" selected>
                                 {%- for job_name in job.category -%}
-                                    {{- job_name.title() -}},
+                                    {{- job_name.title() -}}
                                 {%- endfor -%}
                             </option>
                                 {% for construction_category in construction_categories %}
-                                    <option value="{{ construction_category }}">
+                                    <option value="{{ construction_category }},">
                                         {{- construction_category.title() -}}
                                     </option>
                                 {% endfor %}
