@@ -3,26 +3,27 @@
 <section class="desk-top-bg-image">
     <div class="row">
         <a href="{{ url_for('profile', username=session['user']) }}">
-            <h4 class="col s6 offset-s4 m8 offset-m2 username-salutation">
+            <h4 class="col s10 offset-s1 m8 offset-m2 username-salutation">
                 <i class="fas fa-user-circle"></i>
                 {{ username }},
             </h4>
         </a>
     </div>
     <div class="row form-row">
-        <form action="{{ url_for('edit_job', job_id=job._id) }}" method="POST" class="col s12 m6 offset-m4 l5 offset-l5">
-            <div class="card card-color">
+        <form action="{{ url_for('edit_job', job_id=job._id) }}" method="POST" class="col s12 m7 offset-m4 l5 offset-l5">
+            <div class="card-panel card-color white-text">
+                <a href="{{ url_for('my_jobs', username=session['user']) }}" class="fas fa-times close-icon white-text right"></a>
                 <div class="row">
                     <h4 class="col s12 white-text center">Edit Job</h4>
                 </div>
                 <div class="row form-row">
-                    <div class="input-field col s8 offset-s2 center">
+                    <div class="input-field col s10 offset-s1 center">
                         <input id="job_title"  name="job_title" type="text" class="validate" value="{{ job.job_title.title() }}" required>
                         <label for="job_title">Job Title</label>
                     </div>
                 </div>
                 <div class="row form-row">
-                    <div class="input-field col s8 offset-s2 center">
+                    <div class="input-field col s10 offset-s1 center">
                         <select  id="edit_job_category"  name="edit_job_category"  class="validate" multiple required>
                             <option 
                             value="{%- for job_name in job.category -%}
@@ -42,13 +43,13 @@
                     </div>
                 </div>
                 <div class="row form-row">
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <input id="starting_date"  name="starting_date" type="text" class="datepicker validate" value="{{ job.starting_date.title() }}" required>
                         <label for="starting_date">Starting Date</label>
                     </div>
                 </div>    
                 <div class="row form-row">
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <select id="is_urgent" name="is_urgent" type="text" class="validate" required>
                             <option value="{{ job.is_urgent.title() }}" selected>{{ job.is_urgent.title() }}</option>
                             <option value="urgent">Urgent</option>
@@ -58,7 +59,7 @@
                     </div>
                 </div>
                 <div class="row form-row">
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <select id="county"  name="county" type="text" class="validate" required>
                             <option value="{{ job.county }}" selected>{{ job.county.capitalize() }}</option>
                             {% for county in COUNTIES %}
@@ -69,19 +70,19 @@
                     </div>
                 </div>
                 <div class="row form-row">
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <input id="email"  name="email" type="email" class="validate" value="{{ defoult_email }}" required>
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row form-row">
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <input id="phone"  name="phone" type="text" class="validate" pattern="[0-9]{2,20}" value="{{ job.contact_phone_number }}" required>
                         <label for="phone">Phone Number</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s8 offset-s2">
+                    <div class="input-field col s10 offset-s1">
                         <textarea id="description" name="description" class="materialize-textarea">{{ job.description.capitalize() }}</textarea>
                         <label for="description">Description</label>
                     </div>

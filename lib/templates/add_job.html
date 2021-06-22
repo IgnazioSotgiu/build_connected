@@ -3,7 +3,7 @@
 <section class="desk-top-bg-image">
     <div class="row">
         <a href="{{ url_for('profile', username=session['user']) }}">
-            <h4 class="col s6 offset-s4 m8 offset-m2 username-salutation">
+            <h4 class="col s10 offset-s1 m8 offset-m2 username-salutation">
                 <i class="fas fa-user-circle"></i>
                 {{ username }},
             </h4>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="row form-row">
                         <div class="input-field col s8 offset-s2">
-                            <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                            <textarea id="description" name="description" class="materialize-textarea" required></textarea> 
                             <label for="description">Short Description</label>
                         </div>
                     </div>

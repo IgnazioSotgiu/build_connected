@@ -9,7 +9,8 @@ import re
 
 mongo = PyMongo(app)
 
-contractor_type = ["main contractor", "sub contractor", "architect"]
+contractor_type = ["main contractor", "sub contractor", "architect",
+                   "surveyor"]
 contractor_type.sort()
 
 
@@ -296,6 +297,27 @@ def edit_profile(username):
         "edit_profile.html", username=username, my_profile=my_profile,
         construction_categories=construction_categories, COUNTIES=COUNTIES,
         contractor_type=contractor_type)
+
+
+@app.route("/delete_profile_check/<username>")
+def delete_profile_check(username):
+    my_profile = mongo.db.users.find_one({"username": username})
+
+    return render_template(
+        "delete_profile_check.html", my_profile=my_profile, username=username)
+
+
+@app.route("/delete_profile/<username>")
+def delete_profile(username):
+    my_jobs_list = mongo.db.jobs.find(
+        {"created_by": username})
+    for job in my_jobs_list:
+        mongo.db.jobs.remove({"created_by": job.created_by})
+
+    mongo.db.users.remove({"username": username})
+    session.clear()
+    flash("Your profile was successfully deleted", "success")
+    return redirect(url_for("welcome_page"))
 
 
 @app.route("/edit_password/<username>", methods=["GET", "POST"])

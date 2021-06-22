@@ -129,6 +129,9 @@
                     <a href="{{ url_for('edit_password', username= session['user']) }}">
                         <button type="submit" class="btn btn-small teal">Change Password</button>
                     </a>
+                    <a href="{{ url_for('delete_profile_check', username= session['user']) }}">
+                        <button type="submit" class="btn btn-small red">Delete Profile</button>
+                    </a>
                 </div>
             </div>
         </div>
