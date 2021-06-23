@@ -250,6 +250,9 @@ nav ul a {
     background-color: #ffe600;
     border-radius: 50%;
 }
+.fa-user-circle:before {
+    margin-left: 1px;
+}
 .src-btn-container {
     width: 100%;
 }
@@ -478,6 +481,19 @@ td.symbol {
 .swal-icon--success:after, .swal-icon--success:before {
     content: none;
 }
+/*admin dashboard*/
+.admin-button-row {
+    margin-top: 100px;
+}
+.dashboard-home-btn-container {
+    margin: 30px 0;
+}
+.dashboard-home-btn{
+    background-color: #ffe600;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 30px;
+}
 @media screen and (max-width: 990px) {
     .popular-src-btn {
         position: relative;
@@ -537,5 +553,8 @@ td.symbol {
     }
     .my-jobs-category {
         display: none;
+    }
+    .dashboard-home-btn{
+        font-size: 20px;
     }
 }

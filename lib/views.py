@@ -144,10 +144,16 @@ def login():
             if check_password_hash(
                     check_username["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Hello {}, you were successfully logged in".format(
-                        request.form.get("username")), "success")
-                return redirect(url_for(
-                    "homepage_latest_jobs", username=session["user"]))
+                if session["user"] == "admin":
+                    flash(
+                        "You have successfully logged in as admin", "success")
+                    return render_template("admin_dashboard_home.html")
+                else:
+                    flash("Hello {}, you were successfully logged in".format(
+                            request.form.get("username")), "success")
+                    return redirect(url_for(
+                        "homepage_latest_jobs", username=session["user"]))
+
             else:
                 flash(
                     "Incorrect username and/or password. Please try again.",
@@ -569,3 +575,85 @@ def contact_company(company_id):
                            defoult_email_from=defoult_email_from,
                            defoult_email_to=defoult_email_to,
                            company_name_to=company_name_to)
+
+# admin views
+
+
+def get_users():
+    return list(mongo.db.users.find())
+
+
+def get_jobs():
+    return list(mongo.db.jobs.find())
+
+
+@app.route("/admin_dashboard")
+def admin_dashboard():
+    return render_template("admin_dashboard_home.html")
+
+
+@app.route("/admin_manage_users")
+def admin_manage_users():
+    users = get_users()
+    return render_template("admin_manage_users.html", users=users)
+
+
+@app.route("/admin_manage_job_ads")
+def admin_manage_job_ads():
+    jobs = get_jobs()
+    return render_template("admin_manage_job_ads.html", jobs=jobs)
+
+
+@app.route("/admin_info_job/<job_id>")
+def admin_info_job(job_id):
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+    return render_template("admin_info_job.html", job=job)
+
+
+@app.route("/admin_edit_job/<job_id>", methods=["GET", "POST"])
+def admin_edit_job(job_id):
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+
+    if request.method == "POST":
+        valid_email = check(request.form.get("email"))
+        if valid_email is False:
+            flash(
+                "Invalid email address. Please enter a valid email address",
+                "error")
+            return redirect(url_for('admin_edit_job', job_id=job_id))
+
+        edit_job = {
+            "job_title": request.form.get("job_title").lower(),
+            "category": list(request.form.getlist("edit_job_category")),
+            "employer": mongo.db.jobs.find_one(
+                {"_id": ObjectId(job_id)})["employer"],
+            "contact_phone_number": request.form.get("phone"),
+            "contact_email": request.form.get("email"),
+            "county": request.form.get("county").lower(),
+            "starting_date": request.form.get("starting_date"),
+            "is_urgent": request.form.get("is_urgent"),
+            "description": request.form.get("description"),
+            "date_job_created": mongo.db.jobs.find_one(
+                {"_id": ObjectId(job_id)})["date_job_created"],
+            "created_by": mongo.db.jobs.find_one(
+                {"_id": ObjectId(job_id)})["created_by"]
+        }
+        mongo.db.jobs.update({"_id": ObjectId(job_id)}, edit_job)
+        flash("Job successfully edited", "success")
+        return redirect(url_for("admin_dashboard"))
+
+    return render_template("admin_edit_job.html", job=job, job_id=job_id)
+
+
+@app.route("/admin_delete_job_check/<job_id>")
+def admin_delete_job_check(job_id):
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+
+    return render_template("admin_delete_job_check.html", job=job)
+
+@app.route("/delete_entry/<entry_id>")
+def delete_entry(entry_id):
+    mongo.db.jobs.remove({"_id": ObjectId(entry_id)})
+    flash("The record was successfully deleted", "success")
+
+    return render_template("admin_dashboard_home.html")

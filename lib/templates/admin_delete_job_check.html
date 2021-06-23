@@ -1,0 +1,120 @@
+{% extends "admin_dashboard_home.html" %}
+{% block admin_options %}
+<div class="row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2">
+        <div class="card-panel card-color white-text">
+            <a href="{{ url_for('admin_manage_job_ads') }}" class="fas fa-times close-icon white-text right"></a>
+            <div>
+                <h4 class="center">{{ job.job_title.title() }}</h4>
+            </div>
+            {% if job.is_urgent == "urgent" %}
+            <div class="row">
+                <div class="col s6 offset-s3 urgent-msg-container center">
+                    <span class="text-red urgent-msg">
+                        {{ job.is_urgent }}
+                    </span>
+                </div> 
+            </div>
+            {% endif %}
+            <hr class="hr-src">
+            <hr class="hr-src">
+            <div class="row form-row">
+                <div class="col s10 offset-s1 m5 offset-m1">
+                    <h5 class="left search-detail-title">
+                        Employer:
+                    </h5>
+                </div>
+                <div class="col s10 offset-s1 m5">
+                    <h5 class="left search-detail-result">
+                        {{ job.employer.title() }}
+                    </h5>
+                </div> 
+            </div>
+            <hr class="hr-src">
+            <div class="row form-row">
+                <div class="col s10 offset-s1 m5 offset-m1">
+                    <h5 class="left search-detail-title">
+                        Location:
+                    </h5>
+                </div>
+                <div class="col s10 offset-s1 m5">
+                    <h5 class="left search-detail-result">
+                        {{ job.county.title() }}
+                    </h5>
+                </div> 
+            </div>
+            <hr class="hr-src">
+            <div class="row form-row">
+                <div class="col s10 offset-s1 m5 offset-m1">
+                    <h5 class="left search-detail-title">
+                        Category Required:
+                    </h5>
+                </div>
+                <div class="col s10 offset-s1 m5">
+                    <div>
+                        {% for category in job.category %}
+                            <h5 class="left search-detail-result">
+                                {{- category.title() -}},
+                            </h5>
+                            <br>
+                        {% endfor %}
+                    </div>
+                </div> 
+            </div>
+            <hr class="hr-src">
+            <div class="row form-row">
+                <div class="col s10 offset-s1 m5 offset-m1">
+                    <h5 class="left search-detail-title">
+                        Phone Number:
+                    </h5>
+                </div>
+                <div class="col s10 offset-s1 m5">
+                    <h5 class="left search-detail-result">
+                        {{ job.contact_phone_number.title() }}
+                    </h5>
+                </div> 
+            </div>
+            <hr class="hr-src">
+            <div class="row form-row">
+                <div class="col s10 offset-s1 m5 offset-m1">
+                    <h5 class="left search-detail-title">
+                        Email Address:
+                    </h5>
+                </div>
+                <div class="col s10 offset-s1 m5">
+                    <h5 class="left search-detail-result">
+                        {{ job.contact_email }}
+                    </h5>
+                </div> 
+            </div>
+            <hr class="hr-src">
+            <div class="row form-row">
+                <div class="col s10 offset-s1 m5 offset-m1">
+                    <h5 class="left search-detail-title">
+                        Starting Date:
+                    </h5>
+                </div>
+                <div class="col s10 offset-s1 m5">
+                    <h5 class="left search-detail-result">
+                        {{ job.starting_date }}
+                    </h5>
+                </div> 
+            </div>
+            <hr class="hr-src">
+            <div class="row">
+                <div class="col s10 offset-s1 m5 offset-m1">
+                    <h5 class="left search-detail-title">
+                        Short Description:
+                    </h5>
+                </div>
+                <span class="col s10 offset-s1">{{ job.description }}</span>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a href="{{ url_for('delete_entry', entry_id=job._id) }}" class="btn btn-small red">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
