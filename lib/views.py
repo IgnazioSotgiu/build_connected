@@ -598,6 +598,27 @@ def admin_manage_users():
     return render_template("admin_manage_users.html", users=users)
 
 
+@app.route("/admin_info_user/<user_id>")
+def admin_info_user(user_id):
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    return render_template("admin_info_user.html", user=user)
+
+
+@app.route("/admin_delete_user_check/<user_id>")
+def admin_delete_user_check(user_id):
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+
+    return render_template("admin_delete_user_check.html", user=user)
+
+
+@app.route("/admin_delete_user/<user_id>")
+def admin_delete_user(user_id):
+    mongo.db.users.remove({"_id": ObjectId(user_id)})
+    flash("The user was successfully deleted", "success")
+
+    return render_template("admin_dashboard_home.html")
+
+
 @app.route("/admin_manage_job_ads")
 def admin_manage_job_ads():
     jobs = get_jobs()
@@ -651,9 +672,10 @@ def admin_delete_job_check(job_id):
 
     return render_template("admin_delete_job_check.html", job=job)
 
-@app.route("/delete_entry/<entry_id>")
-def delete_entry(entry_id):
-    mongo.db.jobs.remove({"_id": ObjectId(entry_id)})
-    flash("The record was successfully deleted", "success")
+
+@app.route("/admin_delete_job/<job_id>")
+def admin_delete_job(job_id):
+    mongo.db.jobs.remove({"_id": ObjectId(job_id)})
+    flash("The job was successfully deleted", "success")
 
     return render_template("admin_dashboard_home.html")

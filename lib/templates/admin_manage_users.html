@@ -1,5 +1,30 @@
 {% extends "admin_dashboard_home.html" %}
 
 {% block admin_options %}
-
+<div class="row white-text">
+    <div class="col s12">
+        <table class="latest-jobs-tb striped centered">
+            <thead>
+                <tr class="latest-job-tr">
+                    <th>Username</th>
+                    <th class="employer">Company Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    {% if user.username != "admin" %}
+                    <tr class="latest-job-tr">
+                        <td>{{ user.username }}</td>
+                        <td class="employer">{{ user.company_name.title() }}</td>
+                        <td>{{ user.email }}</td>
+                        <td class="symbol"><a href="{{ url_for('admin_info_user', user_id=user._id) }}"><i class="fas fa-info-circle"></i></a></td>
+                        <td class="symbol"><a href="{{ url_for('admin_delete_user_check', user_id=user._id) }}"><i class="fas fa-times-circle"></i></a></td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
