@@ -34,9 +34,11 @@
                                         <select id="src_company_by_name" name="src_company_by_name" class="validate" required>
                                             <option value="" disabled selected>Name</option>
                                             {% for company in company_names %}
-                                                <option value="{{ company.lower() }}">
-                                                    {{- company.title() -}}
-                                                </option>
+                                                {% if company != "" %}
+                                                    <option value="{{ company.lower() }}">
+                                                        {{- company.title() -}}
+                                                    </option>
+                                                {% endif %}
                                             {% endfor %}
                                         </select>
                                         <label for="src_company_by_name"></label>
@@ -53,9 +55,11 @@
                                         <select id="src_company_by_category" name="src_company_by_category" class="validate" required>
                                             <option value="" disabled selected>Category</option>
                                             {% for category in users_categories %}
-                                                <option value="{{ category }}">
+                                                {% if category != "" %}
+                                                    <option value="{{ category }}">
                                                     {{- category -}}
-                                                </option>
+                                                    </option>
+                                                {% endif %}
                                             {% endfor %}
                                         </select>
                                         <label for="src_company_by_category"></label>
@@ -73,9 +77,11 @@
                                             class="validate" required>
                                             <option value="" disabled selected>County</option>
                                             {% for county in users_counties %}
-                                                <option value="{{ county.lower() }}">
-                                                    {{- county.title() -}}
-                                                </option>
+                                                {% if county != "" %}
+                                                    <option value="{{ county.lower() }}">
+                                                        {{- county.title() -}}
+                                                    </option>
+                                                {% endif %}
                                             {% endfor %}
                                         </select>
                                         <label for="src_company_by_county"></label>

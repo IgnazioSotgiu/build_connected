@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="row form-row">
-        <div class="col s12 l6 offset-l5 center">
+        <div class="col s12 m8 offset-m3 l6 offset-l5 center">
             <div class="card card-color">
                 <h4 class="center white-text my-profile-header">My Profile</h4>
                 <div class="row form-row">
@@ -19,7 +19,7 @@
                             Username:
                         </h5>
                     </div>
-                    <div class="col s10 offset-s1 m5 offset-m1">
+                    <div class="col s10 offset-s1 m5">
                         <h5 class="left search-detail-result">
                             {{ username }}
                         </h5>
@@ -32,7 +32,7 @@
                             Company Name:
                         </h5>
                     </div>
-                    <div class="col s10 offset-s1 m5 offset-m1">
+                    <div class="col s10 offset-s1 m5">
                         <h5 class="left search-detail-result">
                             {{ my_profile.company_name.title() }}
                         </h5>
@@ -45,7 +45,7 @@
                             Contractor Type:
                         </h5>
                     </div>
-                    <div class="col s10 offset-s1 m5 offset-m1">
+                    <div class="col s10 offset-s1 m5">
                         <h5 class="left search-detail-result">
                             {{ my_profile.contractor_type.title() }}
                         </h5>
@@ -58,11 +58,11 @@
                             Category:
                         </h5>
                     </div>
-                    <div class="col s10 offset-s1 m5 offset-m1">
+                    <div class="col s10 offset-s1 m5">
                         <div>
                             {% for category in my_profile.categories %}
-                                <h5 class="left search-detail-result">
-                                    {{ category.title() }}
+                                <h5 class="search-detail-result category-div">
+                                    {{- category.title() -}}
                                 </h5>
                                 <br>
                             {% endfor %}
@@ -76,7 +76,7 @@
                             County:
                         </h5>
                     </div>
-                    <div class="col s10 offset-s1 m5 offset-m1">
+                    <div class="col s10 offset-s1 m5">
                         <h5 class="left search-detail-result">
                             {{ my_profile.county.title() }}
                         </h5>
@@ -89,7 +89,7 @@
                             Country:
                         </h5>
                     </div>
-                    <div class="col s10 offset-s1 m5 offset-m1">
+                    <div class="col s10 offset-s1 m5">
                         <h5 class="left search-detail-result">
                             {{ my_profile.country.title() }}
                         </h5>
@@ -102,7 +102,7 @@
                             Email:
                         </h5>
                     </div>
-                    <div class="col s10 offset-s1 m5 offset-m1">
+                    <div class="col s10 offset-s1 m5">
                         <h5 class="left search-detail-result">
                             {{ my_profile.email }}
                         </h5>
@@ -115,7 +115,7 @@
                             Phone Number:
                         </h5>
                     </div>
-                    <div class="col s10 offset-s1 m5 offset-m1">
+                    <div class="col s10 offset-s1 m5">
                         <h5 class="left search-detail-result">
                             {{ my_profile.phone_number }}
                         </h5>

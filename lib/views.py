@@ -663,7 +663,9 @@ def admin_edit_job(job_id):
         flash("Job successfully edited", "success")
         return redirect(url_for("admin_dashboard"))
 
-    return render_template("admin_edit_job.html", job=job, job_id=job_id)
+    return render_template("admin_edit_job.html", job=job, job_id=job_id,
+                           construction_categories=construction_categories,
+                           COUNTIES=COUNTIES)
 
 
 @app.route("/admin_delete_job_check/<job_id>")
