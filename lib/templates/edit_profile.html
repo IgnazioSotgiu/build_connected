@@ -13,8 +13,11 @@
         <form action="{{ url_for('edit_profile', username= session['user']) }}" method="POST" class="col s12 m6 offset-m4 l5 offset-l5">
             <div class="card card-color">
                 <div class="row">
-                    <h4 class="col s12 white-text center">Edit {{ username }} profile:</h4>
+                    <div class="col s12 white-text center card-header">
+                        Edit {{ username }} profile:
+                    </div>
                 </div>
+                <hr class="hr-src">
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2 center">
                         <input id="company_name"  name="company_name" type="text" class="validate" value="{{ my_profile.company_name.title() }}">

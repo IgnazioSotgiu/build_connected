@@ -60,11 +60,14 @@
                     <li><a href="{{ url_for('register')}}">Register</a></li>
                     <li><a href="#">Info</a></li>
                 {% endif %}
-                {% if session.user %}
+                {% if session.user and session.user != "admin" %}
                     <li  class="top-li-element"><a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}">Home</a></li>
                     <li><a href="{{ url_for('add_job') }}">Add Job</a></li>
                     <li><a href="{{ url_for('my_jobs', username=session['user']) }}">My Jobs</a></li>
                     <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% endif %}
+                {% if session.user == "admin" %}
                     <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 {% endif %}
             </ul>

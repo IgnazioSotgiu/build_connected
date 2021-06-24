@@ -5,7 +5,9 @@
         <div class="card-panel card-color white-text">
             <a href="{{ url_for('admin_manage_job_ads') }}" class="fas fa-times close-icon white-text right"></a>
             <div>
-                <h4 class="center">{{ job.job_title.title() }}</h4>
+                <div class="center card-header">
+                    {{ job.job_title.title() }}
+                </div>
             </div>
             {% if job.is_urgent == "urgent" %}
             <div class="row">
@@ -54,7 +56,7 @@
                     <div>
                         {% for category in job.category %}
                             <h5 class="left search-detail-result">
-                                {{- category.title() -}},
+                                {{- category.title() -}}
                             </h5>
                             <br>
                         {% endfor %}

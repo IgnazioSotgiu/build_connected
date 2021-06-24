@@ -208,6 +208,12 @@ nav ul a {
     margin-bottom: 0;
 }
 .input-field label {
+    color: wheat;
+}
+input {
+    color: #fff;
+}
+textarea {
     color: #fff;
 }
 .card {
@@ -216,8 +222,12 @@ nav ul a {
     border-radius: 10px;
 }
 .card-color {
-    background-color: rgb(37, 156, 202);
+    background-color: #39504e;
     border-radius: 10px;
+    padding-top: 40px;
+}
+.card-header {
+    font-size: 20px;
 }
 .btn-small {
     margin: 10px;
@@ -361,8 +371,8 @@ td.symbol {
     overflow: hidden;
 }
 .src-result-header {
-    font-weight: 600;
-    font-size: 30px;
+    font-weight: 500;
+    font-size: 20px;
 }
 .pin-img {
     background: url("../docs/images/pin.png") no-repeat bottom right; 
@@ -378,7 +388,7 @@ td.symbol {
     transform: translate(0 -50%);
 }
 .search-detail-title {
-    color: #ffe600;
+    color: wheat;
     font-size: 15px;
 }
 .search-detail-result {
@@ -386,9 +396,10 @@ td.symbol {
     font-size: 15px;
 }
 .hr-src {
-    background-color: #ffe600;
+    background-color: #042922;
     height: 0.5px;
     width: 90%;
+    border: 0;
 }
 /*my jobs page */
 .my-jobs-tb {
@@ -549,8 +560,9 @@ td.symbol {
         left: 0;
     }
     .src-result-header {
-        font-size: 20px;
+        font-size: 15px;
         background-color: #ffe600;
+        padding: 10px;
     }
     .search-detail-result {
         color: #fff;

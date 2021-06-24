@@ -14,7 +14,9 @@
             <div class="card-panel card-color white-text">
                 <a href="{{ url_for('my_jobs', username=session['user']) }}" class="fas fa-times close-icon white-text right"></a>
                 <div>
-                    <h4 class="center">{{ job.job_title.title() }}</h4>
+                    <div class="center card-header">
+                        {{ job.job_title.title() }}
+                    </div>
                 </div>
                 {% if job.is_urgent == "urgent" %}
                 <div class="row form-row">

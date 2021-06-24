@@ -5,8 +5,12 @@
         <div class="card-panel card-color white-text">
             <a href="{{ url_for('admin_dashboard') }}" class="fas fa-times close-icon white-text right"></a>
             <div class="row">
-                <h4 class="col s12 white-text center">Edit Job</h4>
+                <div class="col s12 white-text center card-header">
+                    Edit Job
+                </div>
             </div>
+            <hr class="hr-src">
+            <hr class="hr-src">
             <div class="row form-row">
                 <div class="input-field col s10 offset-s1 center">
                     <input id="job_title"  name="job_title" type="text" class="validate" value="{{ job.job_title.title() }}" required>
