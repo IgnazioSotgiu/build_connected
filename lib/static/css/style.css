@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 html, body {
     width:100%;
     overflow-x:hidden;
     height: 100%;
+    font-family: "Roboto", "sans-serif";
     }
 body {
     min-height: 100vh;
@@ -74,7 +76,7 @@ nav ul a {
     top: 80px;
     height: auto;
 }
-/*background image welcome page*/
+/* welcome page*/
 .welcome-bg-image {
     background: url("../docs/images/landing-bg.jpg") no-repeat bottom right; 
     -webkit-background-size: cover;
@@ -95,6 +97,7 @@ nav ul a {
     background-color: #007d70;
     height: 5px;
     width: 60%;
+    border: 0;
 }
 .hr-mobile {
     display: none;
@@ -187,7 +190,7 @@ nav ul a {
 }
 /*registration form*/
 .multiple-select-dropdown {
-    background-color: teal;
+    background-color: #182524;
 }
 .main-row {
     margin-bottom: 0;
@@ -202,13 +205,14 @@ nav ul a {
     width: 50%;
     margin-top: 30px;
     margin-bottom: 50px;
+    border: 0;
 }
 .form-row {
     margin: 0;
     margin-bottom: 0;
 }
 .input-field label {
-    color: wheat;
+    color: #f5deb3;
 }
 input {
     color: #fff;
@@ -232,9 +236,6 @@ textarea {
 .btn-small {
     margin: 10px;
 }
-.datepicker-day-button {
-    color: #000;
-}
 /*login page*/
 .form-container {
     padding-top: 40px;
@@ -248,6 +249,7 @@ textarea {
     width: 50%;
     margin-top: 30px;
     margin-bottom: 50px;
+    border: 0;
 }
 /*homepage*/
 .username-salutation {
@@ -270,9 +272,6 @@ textarea {
 }
 .popular-searches {
     border-radius: 10px;
-}
-.popular-src-header {
-    min-height: 44px;
 }
 .popular-src-btn {
     display: none;
@@ -297,11 +296,14 @@ textarea {
     width: 30px;
     height: 30px;
     font-size: 25px;
-    color: rgb(18, 214, 18);
+    color: #ddd;
     background-color: transparent;
 }
 .fa-exclamation-triangle:before {
     font-size: 25px;
+}
+th {
+    color: #f5deb3;
 }
 td, th {
     max-width: 100px;
@@ -317,12 +319,13 @@ td.symbol {
     margin: 10px;
 }
 .popular-src-header {
+    min-height: 44px;
     margin-top: 50px;
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 500;
     text-align: center;
-    color: #fff;
+    color: #f5deb3;
 }
 .hr-home {
     width: 80%;
@@ -331,6 +334,7 @@ td.symbol {
     border: 0;
 }
 .main-popular-src-header {
+    margin-top: 40px;
     margin-bottom: 40px;
 }
 .collapsible {
@@ -341,6 +345,9 @@ td.symbol {
 /*add job page*/
 .category-div {
     width: 200px;
+}
+.datepicker-day-button {
+    color: #000;
 }
 /*delete job page*/
 .warning-container {
@@ -388,7 +395,7 @@ td.symbol {
     transform: translate(0 -50%);
 }
 .search-detail-title {
-    color: wheat;
+    color: #f5deb3;
     font-size: 15px;
 }
 .search-detail-result {
@@ -422,7 +429,7 @@ td.symbol {
 .urgent-msg {
     font-size: 30px;
     font-weight: 500;
-    color: red;
+    color: #ff0000;
 }
 /*flash message*/
 .flash-img-container {
@@ -560,7 +567,7 @@ td.symbol {
         left: 0;
     }
     .src-result-header {
-        font-size: 15px;
+        font-size: 20px;
         background-color: #ffe600;
         padding: 10px;
     }
