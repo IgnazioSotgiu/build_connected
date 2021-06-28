@@ -580,11 +580,11 @@ def contact_company(company_id):
 
 
 def get_users():
-    return list(mongo.db.users.find())
+    return list(mongo.db.users.find().sort("company_name"))
 
 
 def get_jobs():
-    return list(mongo.db.jobs.find())
+    return list(mongo.db.jobs.find().sort([['_id', -1]]))
 
 
 @app.route("/admin_dashboard")

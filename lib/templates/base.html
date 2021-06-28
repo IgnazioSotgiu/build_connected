@@ -20,8 +20,10 @@
                     <a href="
                     {% if not session.user %}
                         {{ url_for('welcome_page') }}
+                    {% elif session.user != 'admin' %}
+                        {{ url_for('homepage_latest_jobs', username=session['user']) }}
                     {% else %}
-                        {{ url_for('homepage_latest_jobs', username=session['user'])}}
+                        {{ url_for('admin_dashboard') }}
                     {% endif %}
                     " class="brand-logo"><img class="logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
@@ -39,6 +41,7 @@
                             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                         {% endif %}
                         {% if session.user == "admin" %}
+                            <li><a href="{{ url_for('login') }}">Log In</a></li>
                             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                         {% endif %}
                     </ul>
