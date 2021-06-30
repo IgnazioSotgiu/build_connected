@@ -10,7 +10,7 @@ All users of the website need to register and provide contact details in order t
 ## Content:
 >> [Website Structure](#website-structure)  
 >> [User Stories](#user-stories)  
->> Design Choices  
+>> [Design Choices](#design-choices)   
 >> [Wireframes](#wireframes)   
 >> Technologies Used  
 >> Features Implemented  
@@ -37,25 +37,50 @@ For this project two database are created one for the users (contractors databas
 
 Find user stories in a separate document [user-stories.md](./lib/static/docs/user-stories.md)
 
+## Design Choices
 
+### Fonts  
+I have chosen Roboto forn for the whole website
+### Color Palette  
+Color Palette image was taken with [Coolors](https://coolors.co/)  
 
-## future implementations
-* As a Owner I want charge a fee to users to use the service
-* As a Owner I want create a review database to allow users to rate one another and gain exposure
-* As a Owner I want display feedbacks on users profile (rating)   
-
+![](./lib/static/docs/build-connected-color-palette.png) 
 
 ## Wireframes
-The wireframes were done usin Balsamiq
+The wireframes were done usin [Balsamiq](https://balsamiq.com/)
 
-- [Landing page](./lib/static/docs/wireframes/landing-page.png)
-- [Home page](./lib/static/docs/wireframes/homepage.png)
-- [Profile page](./lib/static/docs/wireframes/profile-page.png)
-- [Log In form](./lib/static/docs/wireframes/log-in-form.png)  
-- [Register form](./lib/static/docs/wireframes/register-form.png)  
-- [Add Job page](./lib/static/docs/wireframes/add-job-page.png)  
-- [My Jobs Page](./lib/static/docs/wireframes/my-jobs-page.png)
-- [Search form](./lib/static/docs/wireframes/perform-search.png)
+First version wireframes
+
+- [Landing page](./lib/static/docs/wireframes/first-version/landing-page.png)
+- [Home page](./lib/static/docs/wireframes/first-version/homepage.png)
+- [Profile page](./lib/static/docs/wireframes/first-version/profile-page.png)
+- [Log In form](./lib/static/docs/wireframes/first-version/log-in-form.png)  
+- [Register form](./lib/static/docs/wireframes/first-version/register-form.png) 
+- [Add Job page](./lib/static/docs/wireframes/first-version/add-job-page.png)  
+- [My Jobs Page](./lib/static/docs/wireframes/first-version/my-jobs-page.png)
+- [Search form](./lib/static/docs/wireframes/first-version/perform-search.png)  
+
+Final wireframes
+
+- [landing page](./lib/static/docs/wireframes/final-version/updated-landing-page.png)  
+- [home page](./lib/static/docs/wireframes/final-version/updated-homepage.png)
+- [job info page](./lib/static/docs/wireframes/final-version/job-info.png)
+- [profile page](./lib/static/docs/wireframes/final-version/updated-profile-page.png)
+- [edit profile page](./lib/static/docs/wireframes/final-version/edit-profile.png)  
+- [delete profile page](./lib/static/docs/wireframes/final-version/delete-profile-page.png)
+- [login page](./lib/static/docs/wireframes/final-version/updated-login-page.png)  
+- [register page](./lib/static/docs/wireframes/final-version/updated-register-page.png)
+- [my jobs page](./lib/static/docs/wireframes/final-version/updated-my-jobs.png)
+- [add job page](./lib/static/docs/wireframes/final-version/updated-add-job-page.png)
+- [delete job page](./lib/static/docs/wireframes/final-version/delete-job-page.png)  
+- [jobs search result page](./lib/static/docs/wireframes/final-version/jobs-search-result.png)
+- [user search result page](./lib/static/docs/wireframes/final-version/user-search-result.png)  
+- [contact form](./lib/static/docs/wireframes/final-version/contact-form.png) 
+- [change password](./lib/static/docs/wireframes/final-version/change-password.png)
+- [admin dashboard](./lib/static/docs/wireframes/final-version/admin-dashboard.png)  
+- [admin manage jobs](./lib/static/docs/wireframes/final-version/admin-manage-jobs.png)  
+- [admin manage users](./lib/static/docs/wireframes/final-version/admin-manage-users.png) 
+
 
 
 

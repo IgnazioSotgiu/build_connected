@@ -1,7 +1,7 @@
 ## Build connected user stories
 
-Find the user stories [here](user-stories.pdf)  
-Find the trade-offs [here](trade-offs.pdf)
+Find the user stories [here](./user-stories-ms3.pdf)  
+Find the trade-offs [here](./strategy-plane-build-connected.pdf)
 
 * As a User I want to register to the website  
 ![](./user-stories-screenshots/register-form.png) 
@@ -39,7 +39,7 @@ Find the trade-offs [here](trade-offs.pdf)
 ![](./user-stories-screenshots/jobs-list.png) 
 * As a Owner I want registered user to access information on database  
 ![](./user-stories-screenshots/search-result.png)  
-* As a Owner I want users to give information about the value the platform provides  
+* As a Owner I want to give information about the value the platform provides  
 ![](./user-stories-screenshots/info-page.png)
 * As a Owner I want registered users to perform actions adding, deleting, editing their entries  
 ![](./user-stories-screenshots/my-jobs-page.png)
@@ -56,4 +56,11 @@ Find the trade-offs [here](trade-offs.pdf)
 * As a Owner I want my website to give feedback after user actions
 ![](./user-stories-screenshots/feedback1.png)
 ![](./user-stories-screenshots/feedback2.png)
+
+
+
+## Future Implementations
+* As a Owner I want charge a fee to users to use the service
+* As a Owner I want create a review database to allow users to rate one another and gain exposure
+* As a Owner I want display reviews on users profile (rating) 
 
