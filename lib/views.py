@@ -576,6 +576,11 @@ def contact_company(company_id):
                            defoult_email_to=defoult_email_to,
                            company_name_to=company_name_to)
 
+
+@app.route("/info_website")
+def info_website():
+    return render_template("info_website.html")
+
 # admin views
 
 

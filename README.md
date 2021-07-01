@@ -12,7 +12,7 @@ All users of the website need to register and provide contact details in order t
 >> [User Stories](#user-stories)  
 >> [Design Choices](#design-choices)   
 >> [Wireframes](#wireframes)   
->> Technologies Used  
+>> [Technologies Used](#technologies-used) 
 >> Features Implemented  
 >> Future Features  
 >> Testing  
@@ -79,8 +79,36 @@ Final wireframes
 - [change password](./lib/static/docs/wireframes/final-version/change-password.png)
 - [admin dashboard](./lib/static/docs/wireframes/final-version/admin-dashboard.png)  
 - [admin manage jobs](./lib/static/docs/wireframes/final-version/admin-manage-jobs.png)  
-- [admin manage users](./lib/static/docs/wireframes/final-version/admin-manage-users.png) 
+- [admin manage users](./lib/static/docs/wireframes/final-version/admin-manage-users.png)  
 
+## Technologies Used  
+
+### Languages used
+
+HTML to create elements in the page  
+CSS to style elements in the page  
+Python to add functionality to  the website and interaction with database  
+JavaScript to add elements functionality  
+
+Flask microframework
+### Libraries  
+Materialize CSS to style the elements  
+Google Fonts for Roboto font  
+Font Awesome for the icons  
+JQuery
+### Tools  
+* Github - Used for version control
+* Gitpod.io workspace - Used to develop the project and push versions to the Github repository  
+* Chrome developer tool  
+* Microsoft word - For user stories and strategy plane sheets  
+* Balsamiq - For wireframes  
+* EmailJS - To allow contact forms to send emails  
+* Sweet Alert - To display status message after the email is sent  
+* Coolors - Used to create a color palette  
+* Am I responsive - used to create Build Connected mockup image
+* Heroku - To deploy the project online
+* mongodb - To create and store no relational data  
+* werkzeug.security - To secure passwords  
 
 
 
