@@ -28,10 +28,10 @@
                     " class="brand-logo"><img class="logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo"></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                     <ul class="right hide-on-med-and-down">
-                        {% if not session.user %}
+                        {% if not session.user  or session.user == "admin"%}
                             <li><a href="{{ url_for('login') }}">Log In</a></li>
                             <li><a href="{{ url_for('register')}}">Register</a></li>
-                            <li><a href="{{ url_for('info_website')}}">Info</a></li>
+                            <li><a href="{{ url_for('info_website') }}">Info</a></li>
                         {% endif %}
                         {% if session.user and session.user != "admin" %}
                             <li><a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}">Home</a></li>
@@ -41,7 +41,6 @@
                             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                         {% endif %}
                         {% if session.user == "admin" %}
-                            <li><a href="{{ url_for('login') }}">Log In</a></li>
                             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                         {% endif %}
                     </ul>
@@ -58,10 +57,14 @@
                         <img class="sidenav-logo" src="{{url_for('static', filename='docs/images/main-logo.png') }}" alt="Build connected logo">
                     </a>
                 </li>
-                {% if not session.user %}
+                {% if not session.user or session.user == "admin" %}
                     <li class="top-li-element"><a href="{{ url_for('login') }}">Log In</a></li>
                     <li><a href="{{ url_for('register')}}">Register</a></li>
+<<<<<<< HEAD
                     <li><a href="{{ url_for('info_website')}}">Info</a></li>
+=======
+                    <li><a href="{{ url_for('info_website') }}">Info</a></li>
+>>>>>>> 6ce64662562eecf15a4e241770fa713f79526247
                 {% endif %}
                 {% if session.user and session.user != "admin" %}
                     <li  class="top-li-element"><a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}">Home</a></li>
