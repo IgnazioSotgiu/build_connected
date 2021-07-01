@@ -431,6 +431,16 @@ td.symbol {
     font-weight: 500;
     color: #ff0000;
 }
+/* info website page */
+.info-card {
+    padding: 50px 20px;
+}
+.join-us-btn {
+    background-color: #ffe600;
+    color: #000;
+    border-radius: 10px;
+    font-size: 20px;
+}
 /*flash message*/
 .flash-img-container {
     max-width: 100%;

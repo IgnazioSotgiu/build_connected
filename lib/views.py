@@ -592,11 +592,6 @@ def get_jobs():
     return list(mongo.db.jobs.find().sort([['_id', -1]]))
 
 
-@app.route("/info_website")
-def info_website():
-    return render_template("info_website.html")
-
-
 @app.route("/admin_dashboard")
 def admin_dashboard():
     return render_template("admin_dashboard_home.html")

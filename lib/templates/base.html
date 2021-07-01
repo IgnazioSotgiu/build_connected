@@ -60,11 +60,7 @@
                 {% if not session.user or session.user == "admin" %}
                     <li class="top-li-element"><a href="{{ url_for('login') }}">Log In</a></li>
                     <li><a href="{{ url_for('register')}}">Register</a></li>
-<<<<<<< HEAD
-                    <li><a href="{{ url_for('info_website')}}">Info</a></li>
-=======
                     <li><a href="{{ url_for('info_website') }}">Info</a></li>
->>>>>>> 6ce64662562eecf15a4e241770fa713f79526247
                 {% endif %}
                 {% if session.user and session.user != "admin" %}
                     <li  class="top-li-element"><a href="{{ url_for('homepage_latest_jobs', username=session['user'])}}">Home</a></li>
