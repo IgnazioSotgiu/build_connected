@@ -46,13 +46,11 @@ Find the trade-offs [here](./strategy-plane-build-connected.pdf)
 * As a Owner I want registered users to perform actions deleting, editing their profile  
 ![](./user-stories-screenshots/my-profile-actions.png)
 * As a Owner I want to have an admin profile to access and manage the data in the database  
-
 ![](./user-stories-screenshots/admin-dashboard.png)
 * As a Owner I want to be able to search, edit, delete entries in the jobs database  
 ![](./user-stories-screenshots/admin-manage-jobs.png)
 * As a Owner I want to be able to search and delete entries in the users database  
 ![](./user-stories-screenshots/admin-manage-users.png)
-
 * As a Owner I want my website to give feedback after user actions
 ![](./user-stories-screenshots/feedback1.png)
 ![](./user-stories-screenshots/feedback2.png)

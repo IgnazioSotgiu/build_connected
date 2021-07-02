@@ -401,6 +401,7 @@ td.symbol {
 .search-detail-result {
     color: #fff;
     font-size: 15px;
+    min-width: 200px;
 }
 .hr-src {
     background-color: #042922;

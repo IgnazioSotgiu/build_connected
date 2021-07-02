@@ -12,8 +12,8 @@ All users of the website need to register and provide contact details in order t
 >> [User Stories](#user-stories)  
 >> [Design Choices](#design-choices)   
 >> [Wireframes](#wireframes)   
->> [Technologies Used](#technologies-used) 
->> Features Implemented  
+>> [Technologies Used](#technologies-used)   
+>> [Implemented Features](#implemented-features)  
 >> Future Features  
 >> Testing  
 >> Bugs  
@@ -110,5 +110,19 @@ JQuery
 * mongodb - To create and store no relational data  
 * werkzeug.security - To secure passwords  
 
+### Implemented Features 
 
-
+* Responsive mobile first design
+* Organized database data in two collections
+* Created a registration form
+* Created a login form
+* Implemented edit and delete profile functionality
+* Implemented change password functionality
+* Implemented create, find, edit, delete jobs functionality
+* Created contact form to contact users
+* Created contact form to apply for jobs
+* Created an admin dashboard to manage database
+* Created message after user's actions
+* Created a log out functionality
+* Job apply button displayed for jobs ads from other users
+* Users can modify or delete only their own entries in the page my_jobs
