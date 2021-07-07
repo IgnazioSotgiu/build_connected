@@ -115,6 +115,21 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
+    <!-- Email messages-->
+    <div class="email-success-container" id="email-success-container">
+        <div class="flash-box" onclick=delete_flash(this)>
+            <div class="flash-message">
+                <div class="flash-img-container">
+                    <div class="success center"></div>
+                </div>
+                <div class="flash-message deep-orange lighten-2 center-align">Your email has been sent
+                </div>
+                <div class="flash-buttons">
+                    <a href="{{ url_for('homepage_latest_jobs', username = session['user']) }}" value="reset" class="btn btn-small email-success-btn" id="email-success-ok-btn">Ok</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

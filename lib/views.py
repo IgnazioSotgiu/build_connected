@@ -666,7 +666,7 @@ def admin_edit_job(job_id):
         }
         mongo.db.jobs.update({"_id": ObjectId(job_id)}, edit_job)
         flash("Job successfully edited", "success")
-        return redirect(url_for("admin_dashboard"))
+        return redirect(url_for("admin_manage_job_ads"))
 
     return render_template("admin_edit_job.html", job=job, job_id=job_id,
                            construction_categories=construction_categories,
@@ -685,4 +685,4 @@ def admin_delete_job(job_id):
     mongo.db.jobs.remove({"_id": ObjectId(job_id)})
     flash("The job was successfully deleted", "success")
 
-    return render_template("admin_dashboard_home.html")
+    return redirect(url_for("admin_manage_job_ads"))

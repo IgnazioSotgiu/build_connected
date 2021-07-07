@@ -25,19 +25,13 @@
                 <div class="row form-row">
                     <div class="input-field col s10 offset-s1 center">
                         <select  id="edit_job_category"  name="edit_job_category"  class="validate" multiple required>
-                            <option 
-                            value="{%- for job_name in job.category -%}
-                                    {{- job_name.title() -}}
-                                {%- endfor -%}" selected>
-                                {%- for job_name in job.category -%}
-                                    {{- job_name.title() -}}
-                                {%- endfor -%}
-                            </option>
-                                {% for construction_category in construction_categories %}
-                                    <option value="{{ construction_category }}">
-                                        {{- construction_category.title() -}}
-                                    </option>
-                                {% endfor %}
+                            {%- for construction_category in construction_categories -%}
+                                {%- if construction_category in job.category -%}
+                                    <option value="{{- construction_category -}}" selected>{{- construction_category.title() -}}</option>
+                                {% else %}
+                                    <option value="{{- construction_category -}}">{{- construction_category.title() -}}</option>
+                                {% endif %}
+                            {% endfor %}
                         </select>
                         <label for="edit_job_category">Construction Category</label>
                     </div>

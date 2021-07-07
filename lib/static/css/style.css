@@ -524,6 +524,19 @@ td.symbol {
 .swal-icon--success:after, .swal-icon--success:before {
     content: none;
 }
+/*email success message*/
+.email-success-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000000d4;
+    z-index: 2;
+}
+.email-success-container {
+    display: none;
+}
 /*admin dashboard*/
 .admin-button-row {
     margin-top: 100px;
