@@ -252,12 +252,17 @@ textarea {
     border: 0;
 }
 /*homepage*/
+.username-div {
+    width: fit-content;
+}
 .username-salutation {
     font-weight: 500;
     font-size: 30px;
     letter-spacing: 3px;
     color: #000;
     margin-top: 50px;
+    margin-left: 200px;
+    margin-bottom: 30px;
 }
 .username-salutation i {
     color: #000;
@@ -349,6 +354,12 @@ td.symbol {
 .datepicker-day-button {
     color: #000;
 }
+.datepicker-controls .select-month input {
+    color: #000;
+}
+.datepicker-controls .select-year input {
+    color: #000;
+}
 /*delete job page*/
 .warning-container {
     background-color: #000;
@@ -418,9 +429,6 @@ td.symbol {
 /*my profile*/
 .my-profile-header {
     margin-bottom: 50px;
-}
-.profile-buttons {
-    padding: 50px;
 }
 /*jobs info*/
 .urgent-msg-container {
@@ -540,6 +548,9 @@ td.symbol {
         color: #fff;
         margin: 30px auto;
     }
+    .username-salutation {
+        margin-left: 100px;
+    }
 }
 @media screen and (max-width: 600px) {
     .join-message {
@@ -577,6 +588,9 @@ td.symbol {
         top: 0;
         left: 0;
     }
+    .username-salutation {
+        margin-left: 10px;
+    }
     .src-result-header {
         font-size: 20px;
         background-color: #ffe600;
@@ -595,5 +609,8 @@ td.symbol {
     }
     .dashboard-home-btn{
         font-size: 20px;
+    }
+    .hidden-mobile-view {
+        display: none;
     }
 }

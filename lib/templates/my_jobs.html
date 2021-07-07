@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="blue-bg-image">
-    <div class="row">
+    <div class="username-div">
         <a href="{{ url_for('profile', username=session['user']) }}">
-            <h4 class="col s10 offset-s1 m8 offset-m2 username-salutation white-text">
+            <h4 class="username-salutation white-text">
                 <i class="fas fa-user-circle"></i>
                 {{ username }},
             </h4>
@@ -21,21 +21,24 @@
                 <thead>
                 <tr>
                     <th>Job Title</th>
-                    <th class="my-jobs-category">Category</th>
-                    <th>Date Entered</th>
+                    <th class="my-jobs-category hidden-mobile-view">Category</th>
+                    <th class="hidden-mobile-view">Date Entered</th>
+                    <th>Info</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
                     {% for job in my_jobs_list %}
                         <tr>
                             <td>{{ job.job_title.capitalize() }}</td>
-                            <td class="my-jobs-category">
+                            <td class="my-jobs-category hidden-mobile-view">
                                 {% for job_name in job.category %}
                                 <span>{{ job_name.title() }}</span>
                                 <br>
                                 {% endfor %}
                             </td>
-                            <td>{{ job.date_job_created }}</td>
+                            <td class="hidden-mobile-view">{{ job.date_job_created }}</td>
                             <td class="symbol"><a href="{{ url_for('my_job_info', job_id=job._id) }}"><i class="fas fa-info-circle"></i></a></td>
                             <td class="symbol"><a href="{{ url_for('edit_job', job_id=job._id) }}"><i class="far fa-edit"></i></a></td>
                             <td class="symbol"><a href="{{ url_for('delete_job_check', job_id=job._id) }}"><i class="fas fa-times-circle"></i></a></td>

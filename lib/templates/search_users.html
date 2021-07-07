@@ -92,11 +92,13 @@
                         </h5>
                     </div> 
                 </div>
+                {% if session.user != result.username %}
                 <div class="row button-row">
                     <div class="col s12 center-align">
                         <a href="{{ url_for('contact_company', company_id=result._id)}}" class="btn btn-small green">Contact</a>
                     </div>
                 </div>
+                {% endif %}
             </div>
         {% endfor %}
     </div>

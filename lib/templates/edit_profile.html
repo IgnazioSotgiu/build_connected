@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="desk-top-bg-image">
-    <div class="row">
+    <div class="username-div">
         <a href="{{ url_for('profile', username=session['user']) }}">
-            <h4 class="col s10 offset-s1 m8 offset-m2 username-salutation">
+            <h4 class="username-salutation">
                 <i class="fas fa-user-circle"></i>
                 {{ username }},
             </h4>
@@ -20,7 +20,7 @@
                 <hr class="hr-src">
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2 center">
-                        <input id="company_name"  name="company_name" type="text" class="validate" value="{{ my_profile.company_name.title() }}">
+                        <input id="company_name"  name="company_name" type="text" class="validate" value="{{ my_profile.company_name.title() }}" required>
                         <label class="active" for="company_name">Company Name</label>
                     </div>
                 </div>
