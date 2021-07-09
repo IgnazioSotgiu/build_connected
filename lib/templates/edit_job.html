@@ -44,7 +44,7 @@
                 </div>    
                 <div class="row form-row">
                     <div class="input-field col s10 offset-s1">
-                        <select id="is_urgent" name="is_urgent" type="text" class="validate" required>
+                        <select id="is_urgent" name="is_urgent" class="validate" required>
                             <option value="{{ job.is_urgent.title() }}" selected>{{ job.is_urgent.title() }}</option>
                             <option value="urgent">Urgent</option>
                             <option value="not_urgent">Not Urgent</option>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="row form-row">
                     <div class="input-field col s10 offset-s1">
-                        <select id="county"  name="county" type="text" class="validate" required>
+                        <select id="county"  name="county" class="validate" required>
                             <option value="{{ job.county }}" selected>{{ job.county.capitalize() }}</option>
                             {% for county in COUNTIES %}
                                 <option value="{{ county }}">{{ county.capitalize() }}</option>

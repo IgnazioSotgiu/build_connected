@@ -403,7 +403,7 @@ td.symbol {
     height: 50px;
     top: 5px;
     left: 50%;
-    transform: translate(0 -50%);
+    transform: translateX( -50%);
 }
 .search-detail-title {
     color: #f5deb3;
@@ -560,6 +560,7 @@ td.symbol {
         background-color: #042922;
         color: #fff;
         margin: 30px auto;
+        width: 200px;
     }
     .username-salutation {
         margin-left: 100px;
@@ -618,7 +619,7 @@ td.symbol {
         display: none;
     }
     .my-jobs-category {
-        display: non
+        display: none;
     }
     .dashboard-home-btn{
         font-size: 20px;

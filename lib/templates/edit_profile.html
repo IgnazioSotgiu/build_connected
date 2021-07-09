@@ -27,7 +27,7 @@
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2 center">
                         <select  id="contractor_type"  name="contractor_type"  class="validate" required>
-                            <option value="{{ my_profile.contractor_type.title() }}"selected>
+                            <option value="{{ my_profile.contractor_type.title() }}" selected>
                                 {{- my_profile.contractor_type.title() -}}
                             </option>
                             {% for contractor in contractor_type %}
@@ -67,7 +67,7 @@
                 </div>
                 <div class="row form-row">
                     <div class="input-field col s8 offset-s2">
-                        <select id="user_county"  name="user_county" type="text" class="validate" required>
+                        <select id="user_county"  name="user_county" class="validate" required>
                             <option value="{{ my_profile.county }}" selected>{{ my_profile.county.capitalize() }}</option>
                             {% for county in COUNTIES %}
                                 <option value="{{ county.lower() }}">{{ county.capitalize() }}</option>
@@ -90,7 +90,6 @@
                          red">Cancel</a>
                         <button type="submit" class="btn btn-small teal">Save Changes</button>
                     </div>
-                </div>
                 </div>
             </div>
         </form>

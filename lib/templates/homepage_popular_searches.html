@@ -10,9 +10,7 @@
         </a>
     </div>
     <div class="src-btn-container">
-        <a href="#popular-searches">
-            <button type="button" class="btn btn-small popular-src-btn center" id="popular-src-btn">Popular Searches</button>
-        </a>
+        <a href="#popular-searches" class="btn btn-small popular-src-btn center" id="popular-src-btn">Popular Searches</a>
     </div>
     <div class="row main-row">
         <div class="col s12 m10 offset-m1 l6 offset-l1 center">
@@ -25,7 +23,7 @@
                 <hr class="hr-home">
                 <div class="row form-row">
                     <div class="col s10 offset-s1 m8 offset-m2 l12 center">
-                        <h6 class="popular-src-header">Search Contractor<h6>
+                        <div class="popular-src-header">Search Contractor</div>
                         <ul class="collapsible">
                             <li class="popular-src-links">
                                 <div class="collapsible-header">By Name</div>
@@ -73,7 +71,7 @@
                                 <div class="collapsible-header">By County</div>
                                 <div class="collapsible-body">
                                     <form action="{{ url_for('search_users') }}" method="POST">
-                                        <select id="src_company_by_county" name="src_company_by_county" type="text"
+                                        <select id="src_company_by_county" name="src_company_by_county"
                                             class="validate" required>
                                             <option value="" disabled selected>County</option>
                                             {% for county in users_counties %}
@@ -94,7 +92,7 @@
                         </ul>
                     </div>
                     <div class="col s10 offset-s1 m8 offset-m2 l12 center">
-                        <h6 class="popular-src-header">Search Jobs<h6>
+                        <div class="popular-src-header">Search Jobs</div>>
                         <ul class="collapsible">
                         <li class="popular-src-links">
                             <div class="collapsible-header">By Employer</div>
@@ -138,7 +136,7 @@
                             <div class="collapsible-header">By County</div>
                             <div class="collapsible-body">
                                 <form action="{{ url_for('search_jobs') }}" method="POST">
-                                    <select id="src_job_by_county" name="src_job_by_county" type="text" class="validate" required>
+                                    <select id="src_job_by_county" name="src_job_by_county" class="validate" required>
                                         <option value="" disabled selected>County</option>
                                         {% for county in jobs_counties %}
                                             <option>{{ county.title() }}</option>

@@ -128,12 +128,8 @@
                 </div>
                 <hr class="hr-src">
                 <div class="profile-buttons">
-                    <a href="{{ url_for('profile', username= session['user']) }}">
-                        <button type="submit" class="btn btn-small teal">Cancel</button>
-                    </a>
-                    <a href="{{ url_for('delete_profile', username= session['user']) }}">
-                        <button type="submit" class="btn btn-small red">Confirm Delete</button>
-                    </a>
+                    <a href="{{ url_for('profile', username= session['user']) }}" class="btn btn-small teal">Cancel</a>
+                    <a href="{{ url_for('delete_profile', username= session['user']) }}" class="btn btn-small red">Confirm Delete</a>
                 </div>
             </div>
         </div>

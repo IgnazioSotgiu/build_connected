@@ -48,7 +48,7 @@
                     </div>
                     <div class="row form-row">
                         <div class="input-field col s8 offset-s2 m4 offset-m2">
-                            <select id="county"  name="county" type="text" class="validate" required>
+                            <select id="county"  name="county" class="validate" required>
                                 <option value="" disabled selected>Select</option>
                                 {% for county in COUNTIES %}
                                     <option value="{{ county }}">{{ county.capitalize() }}</option>

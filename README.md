@@ -10,16 +10,17 @@ All users of the website need to register and provide contact details in order t
 ## Content:
 >> [Website Structure](#website-structure)  
 >> [User Stories](#user-stories)  
+>> [Database Structure](#database-structure)  
 >> [Design Choices](#design-choices)   
 >> [Wireframes](#wireframes)   
 >> [Technologies Used](#technologies-used)   
 >> [Implemented Features](#implemented-features)  
->> Future Features  
->> Testing  
->> Bugs  
->> Deployment 
->> Credits  
->> Acknowledgements
+>> [Future Features](#future-features) 
+>> [Testing](#testing)  
+>> [Bugs](#bugs)  
+>> [Deployment](#deployment)
+>> [Credits](#deployment)  
+>> [Acknowledgements](#acknowledgement)
 
 ## Website Structure
 
@@ -37,6 +38,67 @@ For this project two database are created one for the users (contractors databas
 
 Find user stories in a separate document [user-stories.md](./lib/static/docs/user-stories.md)
 
+## Database Structure
+Build Connected database is structured in 2 collections:
+![Database Structure]()  
+
+### users 
+Each user record has the following fields:
+* _id
+* username  
+* company_name
+* contractor_type
+* categories
+* county
+* country
+* email  
+* phone_number  
+* password  
+
+The _id field is the ObjectId given wehn a new user registers  
+Contractor_type, categories, county, and country are entered selecting values from dropdown selection elements to keep values format consistent accross all records and avoid typo errors from user input.
+The email value have to pass the python validator to allow the user to register.  
+The phone number accepts numbers only.  
+### jobs
+Each jobs record has the following fields:  
+* job_title  
+* category  
+* employer  
+* contact_phone_number  
+* contact_email
+* county  
+* starting_date  
+* urgent  
+* description  
+* date_job_created  
+* created_by  
+
+
+A Single user can add multiple jobs into he jobs database  
+When a user creatres a new job record the value for "created_by" and "employer" are given automatically  from the user's record (username and company name). For the construction type, categories, county and country the values are chosen from a dropdown selection to keep a consistent format accross all records. The email value have to pass the python validator in order to allow the user to create a job record. Phone number field accepts numbers as input. Starting date is selected with a data picker to keep consistent format accross all records. The field date_job_created will be given by the app with datetime.date.today().
+
+### User Actions:
+register  
+log in  
+add new job  
+edit job  
+delete job 
+edit profile  
+edit password  
+delete profile  
+contact contractor  
+contact employer    
+log out  
+search contractors by:
+* name  
+* category  
+* county 
+
+search jobs by:
+* employer 
+* category 
+* county  
+
 ## Design Choices
 
 ### Fonts  
@@ -49,53 +111,26 @@ Color Palette image was taken with [Coolors](https://coolors.co/)
 ## Wireframes
 The wireframes were done usin [Balsamiq](https://balsamiq.com/)
 
-First version wireframes
+[First version wireframes](./lib/static/docs/first-wireframes.md)
 
-- [Landing page](./lib/static/docs/wireframes/first-version/landing-page.png)
-- [Home page](./lib/static/docs/wireframes/first-version/homepage.png)
-- [Profile page](./lib/static/docs/wireframes/first-version/profile-page.png)
-- [Log In form](./lib/static/docs/wireframes/first-version/log-in-form.png)  
-- [Register form](./lib/static/docs/wireframes/first-version/register-form.png) 
-- [Add Job page](./lib/static/docs/wireframes/first-version/add-job-page.png)  
-- [My Jobs Page](./lib/static/docs/wireframes/first-version/my-jobs-page.png)
-- [Search form](./lib/static/docs/wireframes/first-version/perform-search.png)  
+[Final wireframes](./lib/static/docs/final-wireframes.md)
 
-Final wireframes
-
-- [landing page](./lib/static/docs/wireframes/final-version/updated-landing-page.png)  
-- [home page](./lib/static/docs/wireframes/final-version/updated-homepage.png)
-- [job info page](./lib/static/docs/wireframes/final-version/job-info.png)
-- [profile page](./lib/static/docs/wireframes/final-version/updated-profile-page.png)
-- [edit profile page](./lib/static/docs/wireframes/final-version/edit-profile.png)  
-- [delete profile page](./lib/static/docs/wireframes/final-version/delete-profile-page.png)
-- [login page](./lib/static/docs/wireframes/final-version/updated-login-page.png)  
-- [register page](./lib/static/docs/wireframes/final-version/updated-register-page.png)
-- [my jobs page](./lib/static/docs/wireframes/final-version/updated-my-jobs.png)
-- [add job page](./lib/static/docs/wireframes/final-version/updated-add-job-page.png)
-- [delete job page](./lib/static/docs/wireframes/final-version/delete-job-page.png)  
-- [jobs search result page](./lib/static/docs/wireframes/final-version/jobs-search-result.png)
-- [user search result page](./lib/static/docs/wireframes/final-version/user-search-result.png)  
-- [contact form](./lib/static/docs/wireframes/final-version/contact-form.png) 
-- [change password](./lib/static/docs/wireframes/final-version/change-password.png)
-- [admin dashboard](./lib/static/docs/wireframes/final-version/admin-dashboard.png)  
-- [admin manage jobs](./lib/static/docs/wireframes/final-version/admin-manage-jobs.png)  
-- [admin manage users](./lib/static/docs/wireframes/final-version/admin-manage-users.png)  
 
 ## Technologies Used  
 
 ### Languages used
 
-HTML to create elements in the page  
-CSS to style elements in the page  
-Python to add functionality to  the website and interaction with database  
-JavaScript to add elements functionality  
+* HTML to create elements in the page  
+* CSS to style elements in the page  
+* Python to add functionality to  the website and interaction with database  
+* JavaScript to add elements functionality  
 
-Flask microframework
+* Flask microframework
 ### Libraries  
-Materialize CSS to style the elements  
-Google Fonts for Roboto font  
-Font Awesome for the icons  
-JQuery
+* Materialize CSS to style the elements  
+* Google Fonts for Roboto font  
+* Font Awesome for the icons  
+* JQuery
 ### Tools  
 * Github - Used for version control
 * Gitpod.io workspace - Used to develop the project and push versions to the Github repository  
@@ -125,4 +160,50 @@ JQuery
 * Created message after user's actions
 * Created a log out functionality
 * Job apply button displayed for jobs ads from other users
-* Users can modify or delete only their own entries in the page my_jobs
+* Users can modify or delete only their own entries in the page my_jobs  
+
+## Future Implementations
+* As a Owner I want charge a fee to users to use the service
+* As a Owner I want create a review database to allow users to rate one another and gain exposure
+* As a Owner I want display reviews on users profile (rating)  
+
+## Testing  
+
+Validation services:
+* W3C HTML validator  
+[HTML Result]()  
+* W3C CSS validator  
+[CSS Result]()  
+* JSHint for javascript  
+[script.js Result]()  
+[sendEmail.js Result]()
+* Chrome DevTools Lighthouse  
+[Lighthouse Result]() 
+* Python validator  
+[Python result]()
+
+Find the testing information in a separate file:  
+[User Acceptance Test]()
+
+## Bugs  
+Here the bugs found during the development and testing of the website:
+
+The following steps were used when the bug was found:
+
+Following the steps to trigger and report the bug:
+
+1. Give a short description of the problem
+1. Steps to trigger the bug:
+    1. Click the element
+    1. What expect to happen
+    1. What happened instead?
+1. Description of the unwanted behaviour.
+1. Solution found if the problem was solved  
+
+### List of bugs found in separate file [bugs.md](./lib/static/docs/bugs.md)  
+
+## Deployment 
+
+## Credits  
+
+## Aknowledgement  

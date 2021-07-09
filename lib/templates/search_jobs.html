@@ -52,14 +52,12 @@
                         </h5>
                     </div>
                     <div class="col s10 offset-s1 m6">
-                        <h5>
-                            {%- for category in result.category -%}
-                                <div class="left search-detail-result">
-                                    {{- category.title() -}}
-                                </div>
-                                <br>
-                            {%- endfor -%}
-                        </h5>
+                        {%- for category in result.category -%}
+                            <div class="left search-detail-result">
+                                {{- category.title() -}}
+                            </div>
+                            <br>
+                        {%- endfor -%}
                     </div> 
                 </div>
                 <hr class="hr-src">
