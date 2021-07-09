@@ -171,12 +171,12 @@ The wireframes were done usin [Balsamiq](https://balsamiq.com/)
 
 Validation services:
 * W3C HTML validator  
-[HTML Result]()  
+[HTML Result](./lib/static/docs/html-validator-result.md)  
 * W3C CSS validator  
-[CSS Result]()  
-* JSHint for javascript  
-[script.js Result]()  
-[sendEmail.js Result]()
+[CSS Result](./lib/static/docs/validator-screenshots/CSS_validator.png)   
+* JSHint Javascript  
+[script.js Result](./lib/static/docs/validator-screenshots/js_validator_screenshots/script.js_validator.png)  
+[sendEmail.js Result](./lib/static/docs/validator-screenshots/js_validator_screenshots/emailjs_validator.png)
 * Chrome DevTools Lighthouse  
 [Lighthouse Result]() 
 * Python validator  
