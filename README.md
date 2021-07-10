@@ -177,13 +177,11 @@ Validation services:
 * JSHint Javascript  
 [script.js Result](./lib/static/docs/validator-screenshots/js_validator_screenshots/script.js_validator.png)  
 [sendEmail.js Result](./lib/static/docs/validator-screenshots/js_validator_screenshots/emailjs_validator.png)
-* Chrome DevTools Lighthouse  
-[Lighthouse Result]() 
 * Python validator  
-[Python result]()
+[Python result](./lib/static/docs/validator-screenshots/python_validator/python_views_validator.png)
 
 Find the testing information in a separate file:  
-[User Acceptance Test]()
+[User Acceptance Test](./lib/static/docs/user-acceptance-test-build-connected.pdf)
 
 ## Bugs  
 Here the bugs found during the development and testing of the website:
