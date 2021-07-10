@@ -200,8 +200,39 @@ Following the steps to trigger and report the bug:
 
 ### List of bugs found in separate file [bugs.md](./lib/static/docs/bugs.md)  
 
-## Deployment 
+## Deployment  
 
+Build Connected app was developed using gitpod.io workspace, using git push to puss changes to the github repository.  
+The website is live in Heroku and automatic deployment from github is enabled.  
+This is the procedure to follow to deploy Build Connected to Heroku:  
+1. Go in gitpod.io build_connected workspace and create a requirement.txt file. This contains the applications and dependencies required to run build_connected. In the terminal enter the following command:  
+pip3 freeze --local > requirements.txt 
+1. Create a Procfile to tell Heroku which file runs the app, Enter in the terminal the following command:  
+echo web: python build_connected.py > Procfile
+1. Go to Heroku.com
+1. Log in to heroku 
+1. Click create new app on the top right of the screen  
+1. Enter build-connected as name app
+1. Select Europe as region
+1. Click create app  
+1. Click connect to github to setup automatic deployment from build_connected repository  
+1. Select build_connected and click search
+1. Once if find the repository click connect
+1. Scroll back to the top of the page and click on settings  
+1. On the settings page click on reveal config vars  
+1. Add The configuration var stored in the env.py file (Inclided on gitignore - not to be pushed to repository)  
+1. Click the deploy link on the top of the page  
+1. Go back to gitpod.io build_connected workspace and commit and push requirements.txt and Procfile to the repository  
+1. Go back to Heroku deploy tab  
+1. Click emable automatic deployments
+1. Click deploy branch
+1. Heroku will receive data from github repository and build the app  
+1. A message is displayed: Your app was successfully deployed  
+1. Click view to launch build-connected app  
+1. The app is deplaoyed and live in Heroku:  
+https://build-connected.herokuapp.com/
+
+The app will automatic deploy the changes pushed on github repository
 ## Credits  
 
 ## Aknowledgement  
