@@ -1,10 +1,18 @@
 ---
 # Build Connected
----
+---  
+
 ## Website Purpose:
-The aim of the website is to connect different professional subjects in the construction industry. Main contractors can register on the website and advertise jobs that need to be carried out by other professional. All users can also check contact details of particular professional to have them price a particular job. All users can add, edit, find or delete jobs that they adverise on the jobs board.
-All users can register on the website and check if any job is available in their own category, they can perform a search in the jobs database to find jobs that might be available in their county. They can search jobs from a particular contractor, check if the starting time suit them. Sub contractors once find a job that they are able and interested on carrie out they can apply by sending their availability and price to the contractor that advetize the jobs thorogh the contact form on the website.
-All users of the website need to register and provide contact details in order to use the service. They can also edit or delete their profile.
+The website aims to connect different professionals subjects in the construction industry.  
+
+---  
+
+![](./lib/static/docs/build-connected-mockup.png)
+
+
+Main contractors can register on the website and advertise jobs that need to be carried out by other professionals. All users can also check the contact details of a particular professional to have them price a particular job. All users can add, edit, find or delete jobs that they advertise on the jobs board.
+All users can register on the website and check if any job is available in their category, they can perform a search in the jobs database to find jobs that might be available in their county. They can search for jobs from a particular contractor, check if the starting time suits them. Subcontractors once find a job that they are able and interested in carrying out they can apply by sending their availability and price to the contractor that advertises the jobs through the contact form on the website.
+All users of the website need to register and provide contact details to use the service. They can also edit or delete their profile.
 
 
 ## Content:
@@ -24,23 +32,22 @@ All users of the website need to register and provide contact details in order t
 
 ## Website Structure
 
-The website is compose on a landing page that welcome the user. On the top of the page there is the navigation bar with the website name on the left and the user options on the right. The login and register links will be there with a third link to provide the user with a short information about the purpose of the website and the value join the of the service provided to the users. At the center of the page the main logo and name of the website with a bigger button to login/register and enter the website.
-At the bottom of the main page links to linkedin and twitter accounts.
-The registered user can access his/her profile page where more actions will be displayed in the navigation bar such jobs options (home, add new job, my jobs, my profile and log out). The user will be able to edit or delete only the jobs that create and can be found in my jobs page. 
-The user will also be able to edit and delete his profile and submit prices for the jobs that he is interested on carry out.  
+The website is composed of a landing page that welcomes the user. On the top of the page, there is the navigation bar with the website name on the left and the user options on the right. The login and register links will be there with a third link to provide the user with short information about the purpose of the website and the value of the service provided to the users. At the center of the page the main logo and name of the website with a bigger button to log in/register and enter the website.
+At the bottom of the main page links to LinkedIn and Twitter accounts.
+The registered user can access his/her profile page where more actions will be displayed in the navigation bar such as jobs options (home, add a new job, my jobs, my profile and log out). The user will be able to edit or delete only the jobs that create and can be found on my jobs page. 
+The user will also be able to edit and delete his profile and submit prices for the jobs that he is interested in carrying out.  
 
 *Build Connected Website Structure*
 ![](./lib/static/docs/website-structure.png)
 
-For this project two database are created one for the users (contractors database) and one for the jobs advertized. Both database are created on mongo db, for non relational database cloud storage.
+For this project, two collections are created: one for the users (contractors database) and one for the jobs advertised. Both collections are created on mongo db - non-relational database cloud storage.
 
 ## User Stories  
 
 Find user stories in a separate document [user-stories.md](./lib/static/docs/user-stories.md)
 
 ## Database Structure
-Build Connected database is structured in 2 collections:
-![Database Structure]()  
+Build Connected database is structured in 2 collections:  
 
 ### users 
 Each user record has the following fields:
@@ -55,8 +62,8 @@ Each user record has the following fields:
 * phone_number  
 * password  
 
-The _id field is the ObjectId given wehn a new user registers  
-Contractor_type, categories, county, and country are entered selecting values from dropdown selection elements to keep values format consistent accross all records and avoid typo errors from user input.
+The _id field is the ObjectId given when a new user registers  
+Contractor_type, categories, county, and country are entered selecting values from dropdown selection elements to keep values format consistent across all records and avoid typo errors from user input.
 The email value have to pass the python validator to allow the user to register.  
 The phone number accepts numbers only.  
 ### jobs
@@ -74,8 +81,8 @@ Each jobs record has the following fields:
 * created_by  
 
 
-A Single user can add multiple jobs into he jobs database  
-When a user creatres a new job record the value for "created_by" and "employer" are given automatically  from the user's record (username and company name). For the construction type, categories, county and country the values are chosen from a dropdown selection to keep a consistent format accross all records. The email value have to pass the python validator in order to allow the user to create a job record. Phone number field accepts numbers as input. Starting date is selected with a data picker to keep consistent format accross all records. The field date_job_created will be given by the app with datetime.date.today().
+A single user can add multiple jobs into the jobs collection  
+When a user creates a new job record the value for "created_by" and "employer" are given automatically from the user's record (username and company name). For the construction type, categories, county and country the values are chosen from a dropdown selection to keep a consistent format across all records. The email value has to pass the python validator to allow the user to create a job record. Phone number field accepts numbers as input. Starting date is selected with a date picker to keep a consistent format across all records. The field date_job_created will be given by the app with datetime.date.today().
 
 ### User Actions:
 register  
@@ -109,7 +116,7 @@ Color Palette image was taken with [Coolors](https://coolors.co/)
 ![](./lib/static/docs/build-connected-color-palette.png) 
 
 ## Wireframes
-The wireframes were done usin [Balsamiq](https://balsamiq.com/)
+The wireframes were done using [Balsamiq](https://balsamiq.com/)
 
 [First version wireframes](./lib/static/docs/first-wireframes.md)
 
@@ -119,13 +126,12 @@ The wireframes were done usin [Balsamiq](https://balsamiq.com/)
 ## Technologies Used  
 
 ### Languages used
-
 * HTML to create elements in the page  
 * CSS to style elements in the page  
 * Python to add functionality to  the website and interaction with database  
 * JavaScript to add elements functionality  
+* Flask microframework  
 
-* Flask microframework
 ### Libraries  
 * Materialize CSS to style the elements  
 * Google Fonts for Roboto font  
@@ -138,16 +144,16 @@ The wireframes were done usin [Balsamiq](https://balsamiq.com/)
 * Microsoft word - For user stories and strategy plane sheets  
 * Balsamiq - For wireframes  
 * EmailJS - To allow contact forms to send emails  
-* Sweet Alert - To display status message after the email is sent  
+* Sweet Alert - To display messages in the contact and contact contractor page  
 * Coolors - Used to create a color palette  
 * Am I responsive - used to create Build Connected mockup image
 * Heroku - To deploy the project online
-* mongodb - To create and store no relational data  
-* werkzeug.security - To secure passwords  
+* MongoDB - To create and store no relational data  
+* werkzeug.security - For secure passwords 
 
 ### Implemented Features 
 
-* Responsive mobile first design
+* Responsive mobile-first design
 * Organized database data in two collections
 * Created a registration form
 * Created a login form
@@ -160,12 +166,12 @@ The wireframes were done usin [Balsamiq](https://balsamiq.com/)
 * Created message after user's actions
 * Created a log out functionality
 * Job apply button displayed for jobs ads from other users
-* Users can modify or delete only their own entries in the page my_jobs  
+* Users can modify or delete only their entries on the page my_jobs  
 
 ## Future Implementations
-* As a Owner I want charge a fee to users to use the service
-* As a Owner I want create a review database to allow users to rate one another and gain exposure
-* As a Owner I want display reviews on users profile (rating)  
+* Charge a fee to users to use the service
+* Create a review database to allow users to rate one another and gain exposure
+* Display reviews on users profiles (rating)  
 
 ## Testing  
 
@@ -202,37 +208,55 @@ Following the steps to trigger and report the bug:
 
 ## Deployment  
 
-Build Connected app was developed using gitpod.io workspace, using git push to puss changes to the github repository.  
+Build Connected app was developed using gitpod.io workspace, using git push to push changes to the GitHub repository.  
 The website is live in Heroku and automatic deployment from github is enabled.  
 This is the procedure to follow to deploy Build Connected to Heroku:  
-1. Go in gitpod.io build_connected workspace and create a requirement.txt file. This contains the applications and dependencies required to run build_connected. In the terminal enter the following command:  
+1. Go to gitpod.io build_connected workspace and create a requirement.txt file. This contains the applications and dependencies required to run build_connected. In the terminal enter the following command:  
 pip3 freeze --local > requirements.txt 
 1. Create a Procfile to tell Heroku which file runs the app, Enter in the terminal the following command:  
 echo web: python build_connected.py > Procfile
 1. Go to Heroku.com
-1. Log in to heroku 
-1. Click create new app on the top right of the screen  
+1. Log in to Heroku 
+1. Click create a new app on the top right of the screen  
 1. Enter build-connected as name app
-1. Select Europe as region
+1. Select Europe as the region
 1. Click create app  
 1. Click connect to github to setup automatic deployment from build_connected repository  
 1. Select build_connected and click search
 1. Once if find the repository click connect
 1. Scroll back to the top of the page and click on settings  
 1. On the settings page click on reveal config vars  
-1. Add The configuration var stored in the env.py file (Inclided on gitignore - not to be pushed to repository)  
+1. Add The configuration var stored in the env.py file (Included on gitignore - not to be pushed to the repository)  
 1. Click the deploy link on the top of the page  
 1. Go back to gitpod.io build_connected workspace and commit and push requirements.txt and Procfile to the repository  
 1. Go back to Heroku deploy tab  
-1. Click emable automatic deployments
+1. Click enable automatic deployments
 1. Click deploy branch
 1. Heroku will receive data from github repository and build the app  
 1. A message is displayed: Your app was successfully deployed  
 1. Click view to launch build-connected app  
-1. The app is deplaoyed and live in Heroku:  
+1. The app is deployed and live in Heroku:  
 https://build-connected.herokuapp.com/
 
-The app will automatic deploy the changes pushed on github repository
+The app will automatic deploy the changes pushed on GitHub repository
 ## Credits  
+### Images
+* Logo ideas https://www.logodesign.net/logos
+* sign Image by <a href="https://pixabay.com/users/clker-free-vector-images-3736/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=40026">Clker-Free-Vector-Images</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=40026">Pixabay</a>  
+* worker square - http://clipart-library.com/clipart/construction-worker-clipart_4.htm  
+* landing page - <a href='https://www.freepik.com/photos/building'>Building photo created by freepik - www.freepik.com</a>
+* Blue abstract structure background - Image by <a href="https://pixabay.com/users/pixaline-1569622/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1634110">Pixaline</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1634110">Pixabay</a>  
+* pin image - http://clipart-library.com/clipart/6iy5rkKnT.htm  
+* brick background image - Photo by <a href="https://unsplash.com/@sonance?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Viktor Forgacs</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+### Tutorials
 
-## Aknowledgement  
+* For the testing: https://usersnap.com/blog/user-acceptance-testing-example/ https://usersnap.com/blog/user-acceptance-testing-right/  
+* The user acceptance testing template was taken from:
+    - [usersnap website](https://usersnap.com/)
+    - [Tutorial Example](https://usersnap.com/blog/user-acceptance-testing-right/)  
+*  Key Generator - https://randomkeygen.com/ 
+
+## Acknowledgement  
+I receive inspiration and guidance for this project from:
+
+Code Institute
