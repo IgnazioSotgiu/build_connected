@@ -238,7 +238,20 @@ echo web: python build_connected.py > Procfile
 1. The app is deployed and live in Heroku:  
 https://build-connected.herokuapp.com/
 
-The app will automatic deploy the changes pushed on GitHub repository
+The app will automatic deploy the changes pushed on GitHub repository  
+
+## Running Build Connected Locally
+1. Navigate to Github.com
+1. Navigate to "IgnazioSotgiu/build_connected" repository
+1. Click on "IgnazioSotgiu/build_connected" to open the repository
+1. Click on the Code button
+1. Select copy the URL in the dropdown menu
+1. Open your favourite IDE and enter the command: git clone https://github.com/IgnazioSotgiu/build_connected.git
+1. Then you can navigate through the repository files  
+1. Check requirements.txt to see which dependancies are needed to run the application
+1. Create an env.py file to store your environment variables 
+
+To clone the repository input this command: git clone https://github.com/IgnazioSotgiu/trivia-quiz.git
 ## Credits  
 ### Images
 * Logo ideas https://www.logodesign.net/logos
