@@ -10,7 +10,7 @@ import re
 mongo = PyMongo(app)
 
 contractor_type = ["main contractor", "sub contractor", "architect",
-                   "surveyor"]
+                   "quantity surveyor", "project manager"]
 contractor_type.sort()
 
 
@@ -25,7 +25,7 @@ construction_categories = ["electrician", "plumber",
                            "roofing operative", "site manager",
                            "stonemason", "wall and floor tyler",
                            "welder engineer", "technical coordinator",
-                           "general contractor"]
+                           "- general contractor"]
 construction_categories.sort()
 
 

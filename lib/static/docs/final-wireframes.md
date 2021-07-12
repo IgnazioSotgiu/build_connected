@@ -1,20 +1,20 @@
 ## Final Wireframes  
 
-Landing Page
+Landing Page  
 ![landing page](./wireframes/final-version/updated-landing-page.png)  
-Homepage
+Homepage  
 ![home page](.//wireframes/final-version/updated-homepage.png)  
-Job Info Page
+Job Info Page  
 ![job info page](./wireframes/final-version/job-info.png)  
-Profile Page
-![profile page](./wireframes/final-version/updated-profile-page.png)  
-Edit Profile Page
-![edit profile page](./wireframes/final-version/edit-profile.png)  
+Profile Page  
+![profile page](./wireframes/final-version/updated-profile-page.png)    
+Edit Profile Page  
+![edit profile page](./wireframes/final-version/edit-profile.png)    
 Delete Profile Page   
-![delete profile page](./wireframes/final-version/delete-profile-page.png)  
-Login Page
+![delete profile page](./wireframes/final-version/delete-profile-page.png)   
+Login Page  
 ![login page](./wireframes/final-version/updated-login-page.png)  
-Register Page
+Register Page  
 ![register page](./wireframes/final-version/updated-register-page.png)  
 My Jobs Page  
 ![my jobs page](./wireframes/final-version/updated-my-jobs.png)  

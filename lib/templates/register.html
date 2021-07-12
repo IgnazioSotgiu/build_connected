@@ -39,7 +39,7 @@
                                 <option value="" disabled>Select</option>
                                     {% for construction_category in construction_categories %}
                                         <option value="{{ construction_category }}">
-                                            {{- construction_category.capitalize() -}}
+                                            {{- construction_category.title() -}}
                                         </option>
                                     {% endfor %}
                             </select>
