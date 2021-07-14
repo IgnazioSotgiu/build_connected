@@ -23,7 +23,7 @@ construction_categories = ["electrician", "plumber",
                            "kitchen fitter", "painter and decorator",
                            "risk manager", "project manager", "scaffolder",
                            "roofing operative", "site manager",
-                           "stonemason", "wall and floor tyler",
+                           "stonemason", "wall and floor tiler",
                            "welder engineer", "technical coordinator",
                            "- general contractor"]
 construction_categories.sort()

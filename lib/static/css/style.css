@@ -22,6 +22,9 @@ section {
     justify-content: center;
     align-items: center;
 }
+.btn {
+    border-radius: 10px;
+}
 /*back to top button*/
 .back-to-top-row {
     margin: 0;
@@ -142,22 +145,8 @@ nav ul a {
     margin-bottom: 50px;
 }
 /*background images*/
-.concrete-wall-bg-image {
-    background: url("../docs/images/concrete-wall-bg.jpg") no-repeat bottom left; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 .brick-bg-image {
     background: url("../docs/images/brick-bg.jpg") no-repeat bottom right; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.concrete-bg-image {
-    background: url("../docs/images/concrete.jpg") no-repeat bottom left; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -414,6 +403,10 @@ td.symbol {
     font-size: 15px;
     min-width: 200px;
 }
+.job-title {
+    font-size: 30px;
+    color: #f5deb3;
+}
 .hr-src {
     background-color: #042922;
     height: 0.5px;
@@ -547,8 +540,6 @@ td.symbol {
 .dashboard-home-btn{
     background-color: #ffe600;
     border-radius: 10px;
-    padding: 10px;
-    font-size: 30px;
 }
 .dash-title {
     margin-bottom: 30px;

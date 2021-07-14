@@ -8,16 +8,12 @@
         </h4>
     </div>
     <div class="dashboard-home-btn-container center">
-        <a href="{{ url_for('admin_dashboard') }}" class="black-text center dashboard-home-btn">Admin Dashboard Home
-        </a>
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-large dashboard-home-btn black-text">Admin Dashboard Home</a>
+        <a href="{{ url_for('admin_manage_users') }}" class="btn btn-large green black-text">View Users</a>
+        <a href="{{ url_for('admin_manage_job_ads') }}" class="btn btn-large blue black-text">View Job Ads</a>
     </div>
     <div class="row">
         <div class="col s12 m10 offset-m1 l8 offset-l2">
-            <h5 class="white-text center dash-title">Manage Database</h5>
-            <div class="row">
-                <a href="{{ url_for('admin_manage_users') }}" class="col s4 offset-s1 btn btn-large green">View Users</a>
-                <a href="{{ url_for('admin_manage_job_ads') }}" class="col s4 offset-s2 btn btn-large blue">View Job Ads</a>
-            </div>
             {% block admin_options %}
             {% endblock %}
         </div>
