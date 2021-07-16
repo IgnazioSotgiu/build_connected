@@ -23,7 +23,7 @@ All users of the website need to register and provide contact details to use the
 >> [Wireframes](#wireframes)   
 >> [Technologies Used](#technologies-used)   
 >> [Implemented Features](#implemented-features)  
->> [Future Features](#future-features) 
+>> [Future Features](#future-features)  
 >> [Testing](#testing)  
 >> [Bugs](#bugs)  
 >> [Deployment](#deployment)
